@@ -41,7 +41,7 @@ class Navigation extends HTMLElement {
                         </ul>
                         <div class="social-icons">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/bombay_gothic/"><i class="fab fa-instagram"></i></a>
                             <div class="cart-icon">
                                 <a href="https://shop.bombaygothic.com/cart"><i class="fas fa-shopping-bag"></i></a>
                                 <span class="cart-count">0</span>
