@@ -7,9 +7,10 @@ class Footer extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <footer>
-                <div class="container">
-                    <p>&copy; ${new Date().getFullYear()} Bombaygothic. All rights reserved.</p>
-                </div>
+            <p>&copy; ${new Date().getFullYear()} Bombaygothic. All rights reserved.<a class="nav-link" href="aboutus.html">About BombayGothic</a> </p> 
+                <!-- <div class="container">
+                    
+                </div> -->
             </footer>
         `;
     }

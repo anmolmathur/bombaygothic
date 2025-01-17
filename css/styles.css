@@ -148,6 +148,18 @@ footer {
     color: #666;
 }
 
+/* General styles for larger screens */
+.container {
+    align-items: center;
+    /*display: flex;
+    flex-direction: column; /* Adjust as needed, e.g., row if items should be horizontal 
+    justify-content: center;
+    
+    width: 80%;  Adjust based on layout needs and breakpoints
+    margin: auto;  Centers the container horizontally 
+    padding: 20px;  Optional, for spacing inside the container */
+  } 
+
 /* Media Queries */
 @media (max-width: 768px) {
     .category-grid {
@@ -163,5 +175,9 @@ footer {
     .social-icons {
         justify-content: center;
         margin-top: 1rem;
+    }
+
+    .container {
+        width: 95%; /* Adjust based on layout needs and readability */
     }
 }
