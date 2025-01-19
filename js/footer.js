@@ -8,6 +8,7 @@ class Footer extends HTMLElement {
         this.innerHTML = `
             <footer>
                 <div class="container">
+                    <p>CITY..CULTURE..CURIOS</p>
                     <p>&copy; ${new Date().getFullYear()} Bombaygothic. All rights reserved.</p>     
                 </div>
             </footer>
