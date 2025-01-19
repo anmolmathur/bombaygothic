@@ -3,13 +3,13 @@ body {
     font-family: 'Goudy Old Style', sans-serif;
     line-height: 1.6;
     padding-top: 80px;
-    background-color: #AA4837;
+    background-color: #993333;
 }
 
 /* Navigation styles */
 .navbar {
     /*background-color: white;*/
-    background-color: #AA4837;
+    background-color: #993333;
     border-bottom: 1px solid #eee;
 }
 
