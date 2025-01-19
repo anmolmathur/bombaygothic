@@ -32,6 +32,9 @@ class Navigation extends HTMLElement {
                             <li class="nav-item">
                                 <a class="nav-link" href="books.html">books</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://shop.bombaygothic.com/pages/about-us">about us</a>
+                            </li>
                         </ul>
                         <div class="social-icons">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
