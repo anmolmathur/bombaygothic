@@ -20,6 +20,15 @@ body {
     text-transform: none;
 }
 
+.navbar-brand-small {
+    font-family: 'Lovtony', sans-serif;
+    /*font-family: 'Lovtony Sans', sans-serif;*/
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #333;
+    text-transform: none;
+}
+
 .nav-link {
     color: #333;
     font-size: 1.2rem;
@@ -155,6 +164,7 @@ footer {
 /* General styles for larger screens */
 .container {
     align-items: center;
+
     /*display: flex;
     flex-direction: column; /* Adjust as needed, e.g., row if items should be horizontal 
     justify-content: center;
@@ -162,7 +172,15 @@ footer {
     width: 80%;  Adjust based on layout needs and breakpoints
     margin: auto;  Centers the container horizontally 
     padding: 20px;  Optional, for spacing inside the container */
-  } 
+} 
+
+.description {
+    align-items: center;
+    margin-top: 20px; /* Add some space above the text */
+    font-size: 14px; /* Adjust the font size as needed */
+    line-height: 1.5; /* Improve readability with better line spacing */
+    color: #333; /* Darker shade for contrast against white background */
+}
 
 /* Media Queries */
 @media (max-width: 768px) {
