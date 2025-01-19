@@ -131,6 +131,7 @@ footer {
     font-weight: normal;
     text-transform: lowercase;
     margin: 0;
+    color: white;
 }
 
 .section-description {
@@ -138,6 +139,7 @@ footer {
     margin: 1rem auto;
     font-size: 0.9rem;
     color: #666;
+    color: white;
 }
 
 /* Content grid styles */
@@ -161,12 +163,14 @@ footer {
 .content-item-title {
     font-size: 1rem;
     margin: 0.5rem 0;
+    color: white;
 }
 
 .content-item-description {
     max-width: 600px;
     font-size: 0.9rem;
     color: #666;
+    color: white;
 }
 
 /* General styles for larger screens */
