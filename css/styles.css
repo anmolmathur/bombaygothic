@@ -157,6 +157,7 @@ footer {
 }
 
 .content-item-description {
+    max-width: 600px;
     font-size: 0.9rem;
     color: #666;
 }
