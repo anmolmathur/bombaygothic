@@ -3,11 +3,13 @@ body {
     font-family: 'Goudy Old Style', sans-serif;
     line-height: 1.6;
     padding-top: 80px;
+    background-color: #AA4837;
 }
 
 /* Navigation styles */
 .navbar {
-    background-color: white;
+    /*background-color: white;*/
+    background-color: #AA4837;
     border-bottom: 1px solid #eee;
 }
 
@@ -17,6 +19,7 @@ body {
     font-size: 2.2rem;
     font-weight: normal;
     color: #333;
+    color: white;
     text-transform: none;
 }
 
@@ -26,11 +29,13 @@ body {
     font-size: 1.2rem;
     font-weight: normal;
     color: #333;
+    color: white;
     text-transform: none;
 }
 
 .nav-link {
     color: #333;
+    color: white;
     font-size: 1.2rem;
     text-transform: lowercase;
     margin: 0 10px;
@@ -45,6 +50,7 @@ body {
 
 .social-icons a {
     color: #333;
+    color: white;
     text-decoration: none;
 }
 
@@ -96,6 +102,7 @@ body {
 .category-title {
     font-size: 1.2rem;
     color: #333;
+    color: white;
     text-decoration: none;
     text-transform: lowercase;
     margin-top: 1rem;
@@ -165,7 +172,7 @@ footer {
 /* General styles for larger screens */
 .container {
     align-items: center;
-
+    color: white;
     /*display: flex;
     flex-direction: column; /* Adjust as needed, e.g., row if items should be horizontal 
     justify-content: center;
