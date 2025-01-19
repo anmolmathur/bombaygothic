@@ -24,6 +24,9 @@ class Navigation extends HTMLElement {
                                 <a class="nav-link" href="heritagewalks.html">heritage walks</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="consultancy.html">consultancy</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="installations.html">art installations</a>
                             </li>
                             <li class="nav-item">
