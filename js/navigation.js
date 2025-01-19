@@ -21,9 +21,6 @@ class Navigation extends HTMLElement {
                                 <a class="nav-link" href="https://shop.bombaygothic.com/">shop</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="consultancy.html">consultancy</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="heritagewalks.html">heritage walks</a>
                             </li>
                             <li class="nav-item">
@@ -31,9 +28,6 @@ class Navigation extends HTMLElement {
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="press.html">press & media</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="projects.html">interior projects</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="books.html">books</a>
