@@ -21,6 +21,10 @@ body {
     color: #333;
     color: white;
     text-transform: none;
+
+    @media only screen and (max-width: 768px) {
+        font-size: 1.5rem;
+    }
 }
 
 .navbar-brand-small {
