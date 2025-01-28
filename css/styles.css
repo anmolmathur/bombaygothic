@@ -14,8 +14,8 @@ body {
 }
 
 .navbar-brand {
-    font-family: 'Lovtony', sans-serif;
-    /*font-family: 'Lovtony Sans', sans-serif;*/
+    /*font-family: 'Lovtony', sans-serif;*/
+    font-family: 'Lovtony Sans', sans-serif;
     font-size: 2.2rem;
     font-weight: normal;
     color: #333;
@@ -28,8 +28,8 @@ body {
 }
 
 .navbar-brand-small {
-    font-family: 'Lovtony', sans-serif;
-    /*font-family: 'Lovtony Sans', sans-serif;*/
+    /*font-family: 'Lovtony', sans-serif;*/
+    font-family: 'Lovtony Sans', sans-serif;
     font-size: 1.2rem;
     font-weight: normal;
     color: #333;
