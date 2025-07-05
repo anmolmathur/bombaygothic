@@ -14,6 +14,7 @@ class Footer extends HTMLElement {
                             <li><a href="/">Home</a></li>
                             <li><a href="https://shop.bombaygothic.com/">Shop</a></li>
                             <li><a href="aboutus.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">

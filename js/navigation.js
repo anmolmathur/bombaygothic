@@ -38,6 +38,9 @@ class Navigation extends HTMLElement {
                             <li class="nav-item">
                                 <a class="nav-link" href="aboutus.html">about us</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">contact</a>
+                            </li>
                         </ul>
                         <div class="social-icons">
                             <a href="https://www.instagram.com/bombay_gothic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
