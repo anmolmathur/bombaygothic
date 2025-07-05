@@ -8,7 +8,7 @@ class Navigation extends HTMLElement {
         this.innerHTML = `
             <div class="site-header-container fixed-top">
                 <div class="announcement-bar">
-                    We were @Kalaghoda Art Festival - Stall 105. - Welcome to our Online Store
+                    Welcome to Bombay Gothic! Explore our unique collection of heritage-inspired products and services.
                 </div>
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container-fluid">
