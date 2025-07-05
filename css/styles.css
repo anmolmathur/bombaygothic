@@ -36,17 +36,19 @@ a:hover {
 }
 
 .navbar-brand {
-    font-size: 1.8rem;
+    font-family: 'Lovtony', sans-serif;
+    font-size: 2.2rem;
+    font-weight: normal;
+    text-transform: none;
 }
 
 .nav-link {
+    font-family: 'Goudy Old Style', serif;
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    font-weight: normal;
+    margin: 0 10px;
     color: #121212;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin: 0 1rem;
 }
 
 .nav-link:hover, .social-icons a:hover {
@@ -146,6 +148,12 @@ footer {
     z-index: 2;
 }
 
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    /* Adds a subtle shadow to the arrows to make them visible on light backgrounds */
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.7));
+}
+
 .carousel-indicators [data-bs-target] {
     width: 10px;
     height: 10px;
@@ -161,6 +169,7 @@ footer {
 .hero-title {
     font-size: 5rem;
     color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Adds shadow for readability */
     margin: 0;
 }
 
@@ -171,6 +180,7 @@ footer {
     letter-spacing: 2px;
     text-transform: uppercase;
     color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Adds shadow for readability */
 }
 
 .intro-section {
