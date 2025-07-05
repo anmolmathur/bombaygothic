@@ -258,6 +258,21 @@ footer {
     color: #555;
 }
 
+/* About Us Page Specifics */
+.about-content img {
+    width: 100%;
+    height: auto;
+}
+
+.about-text {
+    padding-left: 3rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
 /* 5. Media Queries */
 @media (max-width: 768px) {
     .hero-title {
@@ -271,5 +286,9 @@ footer {
     }
     .navbar {
         padding: 1rem;
+    }
+    .about-text {
+        padding-left: 1rem; /* Default bootstrap padding */
+        margin-top: 2rem;
     }
 }
