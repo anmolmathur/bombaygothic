@@ -1,0 +1,6 @@
+# Allow all friendly web crawlers to access the site
+User-agent: *
+Disallow:
+
+# Provide the location of the sitemap
+Sitemap: https://www.bombaygothic.com/sitemap.xml
