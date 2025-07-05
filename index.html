@@ -30,26 +30,39 @@
     <main class="homepage">
         <!-- Hero Section -->
         <section id="heroCarousel" class="hero-section carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <!-- Video from Pexels: https://www.pexels.com/video/3689545/ -->
+                    <!-- *Please download the video from https://www.pexels.com/video/3689545/ and save it as /videos/hero-video.mp4* -->
                     <video class="carousel-video" autoplay loop muted>
-                        <source src="https://videos.pexels.com/video-files/3689545/3689545-hd.mp4" type="video/mp4">
+                        <source src="videos/hero-video.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="carousel-item">
-                    <!-- Image from Unsplash: https://unsplash.com/photos/a-large-building-with-a-clock-tower-on-top-of-it-1617369324553-c39c5b41295f -->
-                    <img src="https://images.unsplash.com/photo-1617369324553-c39c5b41295f?q=80&w=2574&auto=format&fit=crop" class="d-block w-100" alt="Chhatrapati Shivaji Terminus in Mumbai">
+                    <!-- *Please download the image from https://unsplash.com/photos/1617369324553-c39c5b41295f and save it as /images/hero-cst.jpg* -->
+                    <img src="images/hero-cst.jpg" class="d-block w-100" alt="Chhatrapati Shivaji Terminus in Mumbai">
                 </div>
                 <div class="carousel-item">
-                    <!-- Image from Unsplash: https://unsplash.com/photos/a-tall-clock-tower-with-a-sky-background-1586719390749-61b7a33a35a3 -->
-                    <img src="https://images.unsplash.com/photo-1586719390749-61b7a33a35a3?q=80&w=2574&auto=format&fit=crop" class="d-block w-100" alt="Rajabai Clock Tower in Mumbai">
+                    <!-- *Please download the image from https://unsplash.com/photos/1586719390749-61b7a33a35a3 and save it as /images/hero-rajabai.jpg* -->
+                    <img src="images/hero-rajabai.jpg" class="d-block w-100" alt="Rajabai Clock Tower in Mumbai">
                 </div>
             </div>
             <div class="hero-content">
                 <h1 class="hero-title">Bombay Gothic</h1>
                 <p class="hero-subtitle">City, Culture, Curios</p>
             </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </section>
 
         <!-- Intro Text Section -->

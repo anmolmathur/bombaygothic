@@ -146,6 +146,18 @@ footer {
     z-index: 2;
 }
 
+.carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #fff;
+    opacity: 0.5;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
 .hero-title {
     font-size: 5rem;
     color: white;
