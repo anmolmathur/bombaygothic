@@ -3,17 +3,19 @@ New Design System for Bombay Gothic
 Inspired by shop.bombaygothic.com (Dawn Theme) and kerenelise.co.nz
 --- */
 
-/* 1. Base & Typography */
+/* ==========================================================================
+   1. Base & Typography
+   ========================================================================== */
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     line-height: 1.6;
-    padding-top: 80px;
+    padding-top: 80px; /* Adjust if navbar height changes */
     background-color: #F8F5F1; /* Light, warm off-white from Shopify */
     color: #121212; /* Dark text from Shopify */
 }
 
-h1, h2, h3, h4, h5, h6, .section-title, .content-item-title, .navbar-brand {
+h1, h2, h3, h4, h5, h6, .section-title, .content-item-title {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     color: #121212;
@@ -28,7 +30,11 @@ a:hover {
     color: #80362d; /* Accent red from Shopify */
 }
 
-/* 2. Reusable Components (Navbar & Footer) */
+/* ==========================================================================
+   2. Reusable Components
+   ========================================================================== */
+
+/* --- Navbar --- */
 .navbar {
     background-color: #F8F5F1;
     border-bottom: 1px solid #E8E6E1;
@@ -67,6 +73,29 @@ a:hover {
     font-size: 1.2rem;
 }
 
+/* --- Cart Icon --- */
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #80362d;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Footer --- */
 footer {
     background-color: #E8E6E1; /* Slightly darker beige for contrast */
     padding: 4rem 2rem;
@@ -103,7 +132,29 @@ footer {
     font-size: 1.2rem;
 }
 
-/* 3. Homepage Specific Styles */
+/* --- Buttons --- */
+.btn-outline-dark {
+    color: #121212;
+    border-color: #121212;
+    border-radius: 0;
+    padding: 0.75rem 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-outline-dark:hover {
+    background-color: #80362d;
+    border-color: #80362d;
+    color: white;
+}
+
+/* ==========================================================================
+   3. Homepage Styles
+   ========================================================================== */
+
+/* --- Hero Carousel --- */
 .hero-section {
     position: relative;
     height: 85vh;
@@ -125,8 +176,8 @@ footer {
 }
 
 .hero-content {
-    position: relative;
-    z-index: 3; /* Ensure text is above the overlay */
+    position: absolute;
+    z-index: 3; /* Ensure text is above the overlay and controls */
 }
 
 .carousel-inner, .carousel-item {
@@ -141,11 +192,6 @@ footer {
     height: 100%;
     object-fit: cover; /* This makes the image/video cover the area without distortion */
     z-index: 1;
-}
-
-.hero-section .hero-content {
-    position: absolute;
-    z-index: 2;
 }
 
 .carousel-control-prev-icon,
@@ -183,9 +229,12 @@ footer {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Adds shadow for readability */
 }
 
+/* --- Intro & Showcase --- */
 .intro-section {
     padding: 5rem 0;
     max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 1.2rem;
     line-height: 1.8;
     font-family: 'Playfair Display', serif;
@@ -221,6 +270,7 @@ footer {
     font-size: 1.75rem;
 }
 
+/* --- Founder Section --- */
 .founder-section {
     background-color: #E8E6E1;
     padding: 5rem 0;
@@ -236,23 +286,9 @@ footer {
     margin-bottom: 2rem;
 }
 
-.btn-outline-dark {
-    color: #121212;
-    border-color: #121212;
-    border-radius: 0;
-    padding: 0.75rem 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 400;
-}
-
-.btn-outline-dark:hover {
-    background-color: #80362d;
-    border-color: #80362d;
-    color: white;
-}
-
-/* 4. Generic Inner Page Styles */
+/* ==========================================================================
+   4. Generic Inner Page Styles
+   ========================================================================== */
 .section-header {
     text-align: center;
     padding: 4rem 0 2rem;
@@ -298,7 +334,11 @@ footer {
     color: #555;
 }
 
-/* About Us Page Specifics */
+/* ==========================================================================
+   5. Page-Specific Styles
+   ========================================================================== */
+
+/* --- About Us Page --- */
 .about-content img {
     width: 100%;
     height: auto;
@@ -313,27 +353,7 @@ footer {
     line-height: 1.8;
 }
 
-/* 5. Media Queries */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-    .founder-section .col-md-5 {
-        margin-bottom: 2rem;
-    }
-    .navbar {
-        padding: 1rem;
-    }
-    .about-text {
-        padding-left: 1rem; /* Default bootstrap padding */
-        margin-top: 2rem;
-    }
-}
-
-/* Contact Page Specifics */
+/* --- Contact Page --- */
 .contact-section {
     padding-bottom: 4rem;
 }
@@ -386,4 +406,26 @@ footer {
 
 .contact-form .form-control::placeholder {
     color: #999;
+}
+
+/* ==========================================================================
+   6. Media Queries
+   ========================================================================== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .founder-section .col-md-5 {
+        margin-bottom: 2rem;
+    }
+    .navbar {
+        padding: 1rem;
+    }
+    .about-text {
+        padding-left: 1rem; /* Default bootstrap padding */
+        margin-top: 2rem;
+    }
 }
