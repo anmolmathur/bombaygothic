@@ -10,7 +10,7 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     line-height: 1.6;
-    padding-top: 80px; /* Adjust if navbar height changes */
+    padding-top: 125px; /* Increased padding for announcement bar + navbar */
     background-color: #F8F5F1; /* Light, warm off-white from Shopify */
     color: #121212; /* Dark text from Shopify */
 }
@@ -33,6 +33,18 @@ a:hover {
 /* ==========================================================================
    2. Reusable Components
    ========================================================================== */
+
+/* --- Announcement Bar --- */
+.announcement-bar {
+    background-color: #121212;
+    color: #F8F5F1;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
 
 /* --- Navbar --- */
 .navbar {
