@@ -4,7 +4,6 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 import os
 from datetime import datetime
-import io
 
 class QRCodeGenerator:
     def __init__(self, root):
