@@ -7,8 +7,8 @@ class Navigation extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
             <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-                <div class="container">
-                    <a class="navbar-brand" href="#">Bombay Gothic</a>
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">Bombay Gothic</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -36,12 +36,12 @@ class Navigation extends HTMLElement {
                                 <a class="nav-link" href="books.html">books</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="https://shop.bombaygothic.com/pages/about-us">about us</a>
+                                <a class="nav-link" href="aboutus.html">about us</a>
                             </li>
                         </ul>
                         <div class="social-icons">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://www.instagram.com/bombay_gothic/"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/bombay_gothic/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                             <div class="cart-icon">
                                 <a href="https://shop.bombaygothic.com/cart"><i class="fas fa-shopping-bag"></i></a>
                                 <span class="cart-count">0</span>

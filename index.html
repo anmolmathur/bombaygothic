@@ -11,11 +11,12 @@
     <meta property="og:url" content="https://www.bombaygothic.com/">
     <meta property="og:title" content="Bombay Gothic - City, Culture, Curios">
     <meta property="og:description" content="Explore Bombay Gothic: a celebration of Mumbai's rich heritage through illustrated art, design consultancy, curated heritage walks, and unique books.">
-    <meta property="og:image" content="https://www.bombaygothic.com/images/og-image.jpg">
+    <meta property="og:image" content="https://www.bombaygothic.com/images/og-image.jpg"> <!-- *Ensure this is a high-quality preview image* -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/goudy-old-style" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/lovtony" rel="stylesheet">                
     <link href="css/styles.css" rel="stylesheet">
     <script src="js/navigation.js"></script>
     <script src="js/footer.js"></script>
@@ -23,46 +24,64 @@
 <body>
     <!-- Add the head manager component at the start of the body -->
     <head-manager></head-manager>
-
     <!-- Navigation -->
     <site-navigation></site-navigation>
     
-    <!-- Main Content -->
-    <div class="container">
-        <div class="category-grid">
-            <div class="category-item">
-                <a href="https://shop.bombaygothic.com/" class="category-title"><img src="/images/shoponline.jpg" alt="Illustrated art prints and products from Bombay Gothic"></a>
-                <a href="https://shop.bombaygothic.com/" class="category-title">shop</a>
+    <main class="homepage">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Bombay Gothic</h1>
+                <p class="hero-subtitle">City, Culture, Curios</p>
             </div>
-            <div class="category-item">
-                <a href="consultancy.html" class="category-title"><img src="/images/consultancy.jpg" alt="Digital design consultancy services"></a>
-                <a href="consultancy.html" class="category-title">consultancy</a>
+        </section>
+
+        <!-- Intro Text Section -->
+        <section class="intro-section container text-center">
+            <p>An ode to the past with relevance in the present, Bombay Gothic is a convergence of cultures, a love for the city, and a passion for art and cultural heritage.</p>
+        </section>
+
+        <!-- Category Showcase Section -->
+        <section class="category-showcase container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 showcase-item">
+                    <a href="https://shop.bombaygothic.com/">
+                        <img src="/images/shoponline.jpg" alt="Illustrated art prints and products from Bombay Gothic">
+                        <h2 class="showcase-title">Shop The Collection</h2>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 showcase-item">
+                    <a href="consultancy.html">
+                        <img src="/images/consultancy.jpg" alt="Digital design consultancy services">
+                        <h2 class="showcase-title">Design Consultancy</h2>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-6 showcase-item">
+                    <a href="heritagewalks.html">
+                        <img src="/images/heritagewalks.jpg" alt="Curated heritage walking tours of Bombay">
+                        <h2 class="showcase-title">Heritage Walks</h2>
+                    </a>
+                </div>
             </div>
-            <div class="category-item">
-                <a href="heritagewalks.html" class="category-title"><img src="/images/heritagewalks.jpg" alt="Curated heritage walking tours of Bombay"></a>
-                <a href="heritagewalks.html" class="category-title">heritage walks</a>
+        </section>
+
+        <!-- Meet the Founder Section -->
+        <section class="founder-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5">
+                        <img src="https://placehold.co/600x750/e8e6e1/333?text=Portrait+of+Kruti+Garg" alt="*A portrait of Kruti Garg, founder of Bombay Gothic*">
+                    </div>
+                    <div class="col-md-6 offset-md-1">
+                        <h2 class="section-title">Meet Kruti Garg</h2>
+                        <p>*Bombay Gothic was founded in 2021 by Conservation architect Kruti Garg. It combines her love for the city and passion for art and cultural heritage. Her work aims to add art to our everyday lives through a series of relatable illustrated cityscapes of Bombay, evoking a sense of nostalgia and celebrating the unique 'Bombay Gothic' architectural style.*</p>
+                        <a href="aboutus.html" class="btn btn-outline-dark">More About Our Story</a>
+                    </div>
+                </div>
             </div>
-            <div class="category-item">
-                <a href="installations.html" class="category-title"><img src="/images/artinstallation.jpg" alt="Public art installations celebrating Bombay's heritage"></a>
-                <a href="installations.html" class="category-title">art installations</a>
-            </div>
-            <div class="category-item">
-                <a href="press.html" class="category-title"><img src="/images/pressandmedia.jpg" alt="Bombay Gothic featured in press and media"></a>
-                <a href="press.html" class="category-title">press & media</a>
-            </div>
-            <div class="category-item">
-                <a href="books.html" class="category-title"><img src="/images/books.jpg" alt="Books on Bombay's architecture and culture"></a>
-                <a href="books.html" class="category-title">books</a>
-            </div>
-        </div>
-    </div>
-<!--
-    <div class="container">
-        <p>
-            <span class="navbar-brand-small">Bombay Gothic</span> CITY..CULTURE..CURIOS
-        </p>
-    </div>
--->
+        </section>
+    </main>
+
     <site-footer></site-footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
