@@ -12,10 +12,13 @@
     <meta property="og:title" content="Consultancy - Bombay Gothic">
     <meta property="og:description" content="Specialized digital design consultancy, transforming architectural heritage into compelling visual narratives.">
     <meta property="og:image" content="https://www.bombaygothic.com/images/consultancy-og-image.jpg"> <!-- Create a specific preview image for this page -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/goudy-old-style" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/lovtony" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <script src="js/navigation.js"></script>
     <script src="js/footer.js"></script>
@@ -23,13 +26,12 @@
 <body>
     <head-manager></head-manager>
     <site-navigation></site-navigation>
-
-    <div class="section-header">
-        <h1 class="section-title">consultancy</h1>
-        <p class="section-description">Transform your vision into striking visual narratives with our specialized digital design consultancy services. We bridge the gap between architectural heritage and contemporary design, creating unique graphic solutions that tell compelling stories.</p>
-    </div>
-
-    <div class="container">
+    <main>
+        <section class="hero-section-inner" style="background-image: url('https://images.unsplash.com/photo-1555611384-955c4e3a4336?q=80&w=2670&auto=format&fit=crop');">
+            <h1 class="hero-title">Consultancy</h1>
+        </section>
+        <div class="container py-5">
+        <p class="section-description text-center">Transform your vision into striking visual narratives with our specialized digital design consultancy services. We bridge the gap between architectural heritage and contemporary design, creating unique graphic solutions that tell compelling stories.</p>
         <div class="content-grid">
             <div class="content-item">
                 <img src="images/consultancy1.png" alt="Durga Puja Souvenirs">
@@ -56,7 +58,7 @@
             </div>
         </div>
     </div>
-
+    </main>
     <site-footer></site-footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>

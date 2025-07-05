@@ -12,31 +12,29 @@
     <meta property="og:title" content="Heritage Walks - Bombay Gothic">
     <meta property="og:description" content="Join our curated walking tours to explore the rich architectural heritage of Bombay, from Victorian Gothic marvels to Art Deco treasures.">
     <meta property="og:image" content="https://www.bombaygothic.com/images/heritagewalks-og-image.jpg"> <!-- Create a relevant preview image -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/goudy-old-style" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/lovtony" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <script src="js/navigation.js"></script>
     <script src="js/footer.js"></script>
 </head>
 <body>
-    <!-- Add the head manager component at the start of the body -->
     <head-manager></head-manager>
-    <!-- Include Navigation -->
-    <!-- Navigation -->
     <site-navigation></site-navigation>
-
-
-    <div class="section-header">
-        <h1 class="section-title">heritage walks</h1>
-        <p class="section-description">Explore Bombay's rich architectural heritage through our curated walking tours.</p>
-    </div>
-
-    <div class="container">
+    <main>
+        <section class="hero-section-inner" style="background-image: url('https://images.unsplash.com/photo-1617859529361-30f3537a8b6c?q=80&w=2574&auto=format&fit=crop');">
+            <h1 class="hero-title">Heritage Walks</h1>
+        </section>
+        <div class="container py-5">
+        <p class="section-description text-center">*Explore Bombay's rich architectural heritage through our curated walking tours. Each walk is a journey through time, uncovering the stories behind the city's most iconic structures.*</p>
         <div class="content-grid">
             <div class="content-item">
-                <img src="/api/placeholder/400/400" alt="Gothic Walk">
+                <img src="https://images.unsplash.com/photo-1562222222-393399415894?q=80&w=2670&auto=format&fit=crop" alt="Gothic Walk">
                 <h2 class="content-item-title">Gothic Bombay Walk</h2>
                 <p class="content-item-description">A 3-hour journey through the city's Victorian Gothic architecture.</p>
                 <button class="btn btn-outline-dark">Book Now</button>
@@ -44,7 +42,7 @@
             <!-- Add more walking tours -->
         </div>
     </div>
-
+    </main>
     <site-footer></site-footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
