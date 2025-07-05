@@ -8,7 +8,7 @@ class Navigation extends HTMLElement {
         this.innerHTML = `
             <div class="site-header-container fixed-top">
                 <div class="announcement-bar">
-                    Free shipping on all orders above INR 2000
+                    We were @Kalaghoda Art Festival - Stall 105. - Welcome to our Online Store
                 </div>
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container-fluid">

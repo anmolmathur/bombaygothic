@@ -36,8 +36,9 @@ a:hover {
 
 /* --- Announcement Bar --- */
 .announcement-bar {
-    background-color: #121212;
-    color: #F8F5F1;
+    background-color: #F8F5F1; /* Match the navbar background */
+    color: #121212; /* Use dark text for readability on a light background */
+    border-bottom: 1px solid #E8E6E1; /* Add a separator line */
     text-align: center;
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
