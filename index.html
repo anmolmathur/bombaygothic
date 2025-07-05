@@ -29,7 +29,23 @@
     
     <main class="homepage">
         <!-- Hero Section -->
-        <section class="hero-section">
+        <section id="heroCarousel" class="hero-section carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <!-- Video from Pexels: https://www.pexels.com/video/3689545/ -->
+                    <video class="carousel-video" autoplay loop muted>
+                        <source src="https://videos.pexels.com/video-files/3689545/3689545-hd.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="carousel-item">
+                    <!-- Image from Unsplash: https://unsplash.com/photos/a-large-building-with-a-clock-tower-on-top-of-it-1617369324553-c39c5b41295f -->
+                    <img src="https://images.unsplash.com/photo-1617369324553-c39c5b41295f?q=80&w=2574&auto=format&fit=crop" class="d-block w-100" alt="Chhatrapati Shivaji Terminus in Mumbai">
+                </div>
+                <div class="carousel-item">
+                    <!-- Image from Unsplash: https://unsplash.com/photos/a-tall-clock-tower-with-a-sky-background-1586719390749-61b7a33a35a3 -->
+                    <img src="https://images.unsplash.com/photo-1586719390749-61b7a33a35a3?q=80&w=2574&auto=format&fit=crop" class="d-block w-100" alt="Rajabai Clock Tower in Mumbai">
+                </div>
+            </div>
             <div class="hero-content">
                 <h1 class="hero-title">Bombay Gothic</h1>
                 <p class="hero-subtitle">City, Culture, Curios</p>
@@ -70,7 +86,8 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-5">
-                        <img src="https://placehold.co/600x750/e8e6e1/333?text=Portrait+of+Kruti+Garg" alt="*A portrait of Kruti Garg, founder of Bombay Gothic*">
+                        <!-- Photo of Kruti Garg -->
+                        <img src="images/About us 720 x 480 px.jpg" alt="Kruti Garg, founder of Bombay Gothic">
                     </div>
                     <div class="col-md-6 offset-md-1">
                         <h2 class="section-title">Meet Kruti Garg</h2>
