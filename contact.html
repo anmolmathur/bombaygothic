@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="js/headmanager.js"></script>
+    <meta charset="UTF-8">
+    <meta name="description" content="Get in touch with Bombay Gothic for collaborations, press inquiries, or questions about our products. We'd love to hear from you.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Bombay Gothic</title>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.bombaygothic.com/contact.html">
+    <meta property="og:title" content="Contact Us - Bombay Gothic">
+    <meta property="og:description" content="Get in touch with Bombay Gothic for collaborations, press inquiries, or questions about our products.">
+    <meta property="og:image" content="https://www.bombaygothic.com/images/contact-og-image.jpg"> <!-- *Create a relevant preview image* -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/navigation.js"></script>
+    <script src="js/footer.js"></script>
+</head>
+<body>
+  <!-- Add the head manager component at the start of the body -->
+  <head-manager></head-manager>
+    <!-- Navigation -->
+  <site-navigation></site-navigation>
+
+<main>
+    <div class="section-header">
+        <h1 class="section-title">Get In Touch</h1>
+        <p class="section-description">We'd love to hear from you. Whether you have a question about our products, consultancy services, or just want to say hello, please reach out.</p>
+    </div>
+
+    <section class="contact-section container">
+        <div class="row">
+            <div class="col-lg-5 contact-info">
+                <h2 class="content-item-title">Contact Details</h2>
+                <p>*For inquiries, collaborations, or press features, please use the form or email us directly.*</p>
+                <ul class="contact-details-list">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:hello@bombaygothic.com">*hello@bombaygothic.com*</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> *Mumbai, India*</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+                <!-- Replace the action URL with your Formspree endpoint -->
+                <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+    <site-footer></site-footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

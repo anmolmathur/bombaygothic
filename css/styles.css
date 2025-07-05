@@ -292,3 +292,58 @@ footer {
         margin-top: 2rem;
     }
 }
+
+/* Contact Page Specifics */
+.contact-section {
+    padding-bottom: 4rem;
+}
+
+.contact-info p {
+    line-height: 1.8;
+}
+
+.contact-details-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.contact-details-list li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+.contact-details-list li i {
+    margin-right: 1rem;
+    color: #80362d;
+    width: 20px;
+    text-align: center;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form .form-control {
+    background-color: #fff;
+    border: 1px solid #E8E6E1;
+    border-radius: 0;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form .form-control:focus {
+    background-color: #fff;
+    border-color: #80362d;
+    box-shadow: none;
+}
+
+.contact-form label {
+    display: none; /* Using placeholders instead */
+}
+
+.contact-form .form-control::placeholder {
+    color: #999;
+}
