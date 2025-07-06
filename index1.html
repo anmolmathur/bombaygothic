@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombay Gothic - City, Culture, Curios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. Base & Typography
+           ========================================================================== */
+        :root {
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --color-dark: #1a1a1a;
+            --color-light: #fdfdfd;
+            --color-bohemian: #c57d56; /* Terracotta */
+            --color-lines: #5d00ff; /* Electric Blue/Fuchsia */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-light);
+            color: var(--color-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================================================
+           2. Header & Navigation
+           ========================================================================== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.5s forwards;
+        }
+
+        .main-header.scrolled {
+            background-color: var(--color-light);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--color-dark);
+        }
+
+        .main-nav a {
+            font-family: var(--font-sans);
+            text-decoration: none;
+            color: var(--color-dark);
+            margin-left: 2rem;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-dark);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           3. Hero Section
+           ========================================================================== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('images/hero_background.png') no-repeat center center/cover;
+            color: var(--color-light);
+        }
+
+        .hero h1 {
+            font-size: 7vw;
+            color: var(--color-light);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-family: var(--font-sans);
+            font-weight: 300;
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            color: var(--color-light);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            margin-top: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Sketch Animation */
+        .hero h2::before, .hero h2::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            background: var(--color-light);
+            width: 0;
+            animation: drawLine 2s ease-out 1s forwards;
+        }
+        .hero h2::before { top: 0; left: 0; }
+        .hero h2::after { bottom: 0; right: 0; }
+
+        @keyframes drawLine {
+            to { width: 100%; }
+        }
+
+        /* ==========================================================================
+           4. Founder's Introduction
+           ========================================================================== */
+        .founder-section {
+            padding: 8rem 0;
+            background-color: var(--color-light);
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .founder-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .founder-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .founder-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-text p {
+            font-size: 1.1rem;
+            max-width: 40ch;
+        }
+
+        /* ==========================================================================
+           5. Collections Showcase
+           ========================================================================== */
+        .collections-split {
+            display: flex;
+            min-height: 90vh;
+        }
+
+        .panel {
+            flex: 1;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: flex 0.5s ease;
+        }
+
+        .panel h3 { font-size: 2.5rem; }
+        .panel p { font-size: 1rem; margin-top: 1rem; max-width: 35ch; }
+
+        .panel-bohemian {
+            background: url('images/collection-bohemian.jpg') no-repeat center center/cover;
+            color: var(--color-light);
+        }
+
+        .panel-lines {
+            background: url('images/collection-lines.jpg') no-repeat center center/cover;
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            filter: grayscale(100%);
+        }
+
+        .panel-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel-bohemian .panel-overlay { background-color: rgba(197, 125, 86, 0.8); }
+        
+        .panel:hover .panel-overlay { opacity: 1; }
+
+        .shop-button {
+            text-decoration: none;
+            color: var(--color-light);
+            border: 2px solid var(--color-light);
+            padding: 1rem 2.5rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .shop-button:hover {
+            background-color: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        /* Color Splash Effect */
+        .panel-lines::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 1px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--color-lines) 20%, transparent 70%);
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.6s ease;
+        }
+
+        .panel-lines:hover::before {
+            transform: translate(-50%, -50%) scale(1500); /* Large scale to cover the panel */
+            opacity: 0.8;
+        }
+
+        .panel-lines .panel-content {
+            position: relative;
+            z-index: 2;
+            transition: color 0.4s ease;
+        }
+        .panel-lines:hover .panel-content { color: var(--color-light); }
+        .panel-lines:hover .shop-button { border-color: var(--color-light); color: var(--color-light); }
+        .panel-lines:hover .shop-button:hover { background-color: var(--color-light); color: var(--color-lines); }
+
+        /* ==========================================================================
+           6. Featured Product
+           ========================================================================== */
+        .featured-section {
+            padding: 8rem 0;
+            background-color: #f4f4f4;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .featured-text {
+            opacity: 0;
+        }
+        .featured-text.visible {
+            opacity: 1;
+        }
+
+        .featured-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-text p {
+            font-size: 1.1rem;
+            max-width: 45ch;
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+        }
+
+        /* ==========================================================================
+           7. Footer
+           ========================================================================== */
+        .main-footer {
+            padding: 4rem 0;
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            text-align: center;
+        }
+
+        .footer-social a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+        .footer-social a:hover { color: var(--color-bohemian); }
+
+        .footer-contact { margin: 1.5rem 0; }
+        .footer-nav { margin-top: 1.5rem; }
+        .footer-nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .footer-nav a:hover { opacity: 1; }
+
+        /* ==========================================================================
+           8. Animations & Responsiveness
+           ========================================================================== */
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* For JS scroll animations */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 900px) {
+            .main-nav { display: none; } /* Simple hide for mobile, can be replaced with a burger menu */
+            .founder-grid, .featured-grid { grid-template-columns: 1fr; }
+            .founder-image { order: 1; }
+            .founder-text { order: 2; text-align: center; }
+            .founder-text p { margin: 0 auto; }
+            .featured-image { order: 1; }
+            .featured-text { order: 2; text-align: center; }
+            .featured-text p { margin: 0 auto; }
+            .collections-split { flex-direction: column; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 12vw; }
+            .hero h2 { font-size: 1rem; letter-spacing: 0.3rem; }
+            .founder-text h2, .featured-text h3, .panel h3 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <a href="#" class="logo">Bombay Gothic</a>
+        <nav class="main-nav">
+            <a href="#">Collections</a>
+            <a href="#">About</a>
+            <a href="#">Consultancy</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Bombay Gothic</h1>
+            <h2>City..Culture..Curios</h2>
+        </section>
+
+        <section class="founder-section">
+            <div class="container founder-grid">
+                <div class="founder-image fade-in-element">
+                    <img src="images/founder-portrait.jpg" alt="Portrait of Kruti Garg, Conservation Architect">
+                </div>
+                <div class="founder-text fade-in-element">
+                    <h2>An Architect's Ode to Her City</h2>
+                    <p>Bombay Gothic is the vision of Conservation Architect Kruti Garg. It's where a passion for Mumbai's heritage and a love for art converge, turning architectural masterpieces into art for your everyday life.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="collections-split">
+            <div class="panel panel-bohemian">
+                <div class="panel-content">
+                    <h3>Bombay Bohemian</h3>
+                    <p>A vibrant, eclectic mix reflecting the city's free-spirited energy.</p>
+                </div>
+                <div class="panel-overlay">
+                    <a href="#" class="shop-button">Shop the Collection</a>
+                </div>
+            </div>
+            <div class="panel panel-lines">
+                <div class="panel-content">
+                    <h3>Where Lines Meet Colour</h3>
+                    <p>Modern monochrome finesse meets a vivid pop of color.</p>
+                </div>
+                 <div class="panel-overlay">
+                    <a href="#" class="shop-button">Shop the Collection</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section">
+            <div class="container featured-grid">
+                <div class="featured-text fade-in-element">
+                    <h3>Each Piece Tells a Story</h3>
+                    <p>Our Clock Tower cups are an homage to the Rajabai Clock Tower, bringing a piece of Victorian Gothic charm to your table.</p>
+                </div>
+                <div class="featured-image fade-in-element">
+                    <img src="images/product-cups.jpg" alt="Clock Tower Cocktail Cups">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-social">
+            <a href="#" aria-label="Instagram">@Bombay_gothic</a>
+        </div>
+        <div class="footer-contact">
+            <a href="mailto:bombaygothic@gmail.com">bombaygothic@gmail.com</a>
+        </div>
+        <nav class="footer-nav">
+            <a href="#">Collections</a>
+            <a href="#">About</a>
+            <a href="#">Consultancy</a>
+            <a href="#">Contact</a>
+        </nav>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header scroll effect
+            const header = document.querySelector('.main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Intersection Observer for scroll animations
+            const fadeElements = document.querySelectorAll('.fade-in-element');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
