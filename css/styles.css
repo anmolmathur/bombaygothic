@@ -226,6 +226,9 @@ footer {
 }
 
 .hero-title {
+    font-family: 'Lovtony', sans-serif;
+    font-weight: normal;
+    text-transform: none;
     font-size: 5rem;
     color: white;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Adds shadow for readability */
