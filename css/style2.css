@@ -2,6 +2,14 @@
    New `index2.html` styles, inspired by kerenelise.co.nz
    ========================================================================== */
 
+@import url('https://fonts.cdnfonts.com/css/lovtony');
+
+@font-face{font-family:'Switzer Regular';src:url('../Reference Website/By Keren Elise® - Branding & Design Studio_files/switzer-regular.woff');}
+@font-face{font-family:'Switzer Medium';src:url('../Reference Website/By Keren Elise® - Branding & Design Studio_files/switzer-medium.woff');}
+@font-face{font-family:'Saigon Extra Light';src:url('../Reference Website/By Keren Elise® - Branding & Design Studio_files/saigon-extralight-webfont.woff');}
+@font-face{font-family:'Saigon Extra Ligjt Italic';src:url('../Reference Website/By Keren Elise® - Branding & Design Studio_files/saigon-extralightitalic-webfont.woff');}
+
+
 /* 1. Base & Typography
    ========================================================================== */
 :root {
@@ -16,7 +24,6 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
     padding: 0;
 }
 
@@ -170,64 +177,23 @@ a {
 }
 
 .hero-text-container {
+    /* No longer need the fixed height and absolute positioning for text lines */
+}
+
+.hero h1 {
     font-family: var(--font-serif);
+    font-size: clamp(2rem, 6vw, 4rem);
+    max-width: 20ch;
+    margin: 0 auto;
+    line-height: 1.2;
     font-weight: 200;
-    text-transform: uppercase;
-    font-size: clamp(2rem, 10vw, 7rem);
-    line-height: 0.9;
-    position: relative;
-    width: 100%;
-    height: 3em; /* Adjust based on line-height and font-size */
-}
-
-.hero-line {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    gap: 0.2em;
-}
-.hero-line span {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(50px);
-    animation: slide-up 1s forwards;
-}
-
-.line-1 { top: 0; }
-.line-2 { top: 0.9em; }
-.line-3 { top: 1.8em; }
-
-.line-1 span:nth-child(1) { animation-delay: 0.2s; }
-.line-1 span:nth-child(2) { animation-delay: 0.3s; }
-.line-1 span:nth-child(3) { animation-delay: 0.4s; }
-
-.line-2 span:nth-child(1) { animation-delay: 0.5s; }
-.line-2 span:nth-child(2) { animation-delay: 0.6s; }
-.line-2 span:nth-child(3) { animation-delay: 0.7s; }
-
-.line-3 span:nth-child(1) { animation-delay: 0.8s; }
-
-@keyframes slide-up {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-subtext {
-    margin-top: 2rem;
-    max-width: 50ch;
-    font-size: 1.1rem;
-    font-family: var(--font-sans);
 }
 
 /* ==========================================================================
-   4. About Section
+   4. Image Scroll & Creator Sections
    ========================================================================== */
-/* Make sections after hero scroll over it */
-.about-section,
+/* Make sections after hero scroll over it. The creator-section will hide the hero. */
+.creator-section,
 .services-section,
 .marquee-section,
 .testimonials-section,
@@ -237,45 +203,82 @@ a {
     background-color: var(--color-bg);
 }
 
-.about-section {
-    padding: 8rem 0;
+.image-scroll-section {
+    position: relative; /* Needed for z-index and absolute children */
+    z-index: 2; /* To scroll over the hero */
+    background-color: transparent; /* To show the hero behind it */
+    height: 150vh; /* Taller to allow for scrolling effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide parts of images that go off-screen */
 }
 
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: center;
+.image-scroll-text {
+    max-width: 40ch;
+    text-align: center;
+    font-size: 1.5rem;
+    position: sticky;
+    top: 50vh;
+    transform: translateY(-50%);
+    z-index: 10; /* Text on top */
 }
-.about-images {
-    position: relative;
-    height: 500px; /* Give the container a height */
-}
-.about-images img {
+
+.scroll-img {
     position: absolute;
+    width: 25vw;
+    max-width: 300px;
+    height: auto;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.5s ease-out; /* Smooth transition for JS changes */
 }
-.about-img-1 { width: 60%; top: 0; left: 5%; }
-.about-img-2 { width: 35%; top: 40%; left: 0; z-index: 2; }
-.about-img-3 { width: 45%; top: 20%; left: 50%; }
 
-.about-text {
-    text-align: center;
-    margin-top: 2rem;
+.img-1 { top: 10%; left: 15%; }
+.img-2 { top: 50%; left: 5%; }
+.img-3 { top: 20%; right: 15%; }
+
+
+.creator-section {
+    padding: 0; /* Edge to edge */
+    min-height: 90vh;
 }
-.about-text h2 {
+
+.creator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.creator-image {
+    height: 100%;
+    min-height: 90vh;
+}
+
+.creator-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.creator-text {
+    padding: 4rem 8%;
+    text-align: left;
+}
+.creator-text h2 {
     font-family: var(--font-serif-italic);
     font-size: 2.5rem;
     font-weight: 200;
 }
-.about-text h3 {
+.creator-text h3 {
     font-family: var(--font-sans);
     font-weight: 500;
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
-.about-text p {
+.creator-text p {
     max-width: 45ch;
     margin: 0 auto 2rem;
 }
@@ -483,10 +486,10 @@ a {
 }
 
 @media (max-width: 900px) {
-    .about-grid, .featured-grid, .footer-grid { grid-template-columns: 1fr; }
-    .about-images { order: 1; }
-    .about-text { order: 2; text-align: center; }
-    .about-text p { margin: 0 auto; }
+    .creator-grid, .featured-grid, .footer-grid { grid-template-columns: 1fr; }
+    .creator-image { order: 1; min-height: 50vh; }
+    .creator-text { order: 2; text-align: center; padding: 4rem 5%; }
+    .creator-text p { margin: 0 auto 2rem; }
     .featured-image { order: 1; }
     .featured-text { order: 2; text-align: center; }
     .featured-text p { margin: 0 auto; }
@@ -503,5 +506,5 @@ a {
     }
     .hero h1 { font-size: 12vw; }
     .hero h2 { font-size: 1rem; letter-spacing: 0.3rem; }
-    .about-text h2, .featured-text h3, .panel h3, .section-heading { font-size: 2rem; }
+    .creator-text h2, .featured-text h3, .panel h3, .section-heading { font-size: 2rem; }
 }

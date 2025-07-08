@@ -21,6 +21,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Image Scroll Effect
+    const scrollSection = document.querySelector('.image-scroll-section');
+    if (scrollSection) {
+        const images = scrollSection.querySelectorAll('.scroll-img');
+        
+        window.addEventListener('scroll', () => {
+            const rect = scrollSection.getBoundingClientRect();
+            
+            // Only animate when the section is in view
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                const viewportCenter = window.innerHeight / 2;
+                const sectionCenter = rect.top + rect.height / 2;
+                const progress = (viewportCenter - sectionCenter) / viewportCenter;
+
+                // Apply transforms. The multipliers determine speed and direction.
+                if (images[0]) images[0].style.transform = `translateY(${progress * -90}px) translateX(${progress * 30}px)`;
+                if (images[1]) images[1].style.transform = `translateY(${progress * 100}px) translateX(${progress * -20}px)`;
+                if (images[2]) images[2].style.transform = `translateY(${progress * 60}px) translateX(${progress * 50}px)`;
+            }
+        });
+    }
     // Testimonial Slider
     const slides = document.querySelectorAll('.testimonial-slide');
     const prevBtn = document.querySelector('.prev-btn');
