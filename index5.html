@@ -222,10 +222,14 @@
                 <div class="absolute inset-0 z-20 flex items-center justify-center">
                     <div 
                         x-data x-init="
+                            // Updated Text Randomization Script (Horizontal Only)
                             document.querySelectorAll('.random-text').forEach(el => {
-                                el.style.top = `${Math.random() * 85 + 5}%`;
-                                el.style.left = `${Math.random() * 85 + 5}%`;
-                                el.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 30 - 15}deg)`;
+                                const top = Math.random() * 85 + 5;
+                                const left = Math.random() * 85 + 5;
+                                el.style.top = `${top}%`;
+                                el.style.left = `${left}%`;
+                                // The new, simpler line for transform
+                                el.style.transform = `translate(-50%, -50%)`;
                                 el.style.opacity = 1;
                             });
                         "
@@ -243,6 +247,8 @@
                         <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Crafting Architectural<br>Stories</p>
                         <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Celebrating Bombay's<br>Heritage</p>
                         <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Weaving Heritage<br>Narratives</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Embodying Bohemian<br>Spirit</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Blending Art,<br>Culture</p>
                     </div>
                 </div>
 
@@ -648,7 +654,7 @@
     <footer class="bg-brand-beige pt-16 md:pt-24 pb-8">
         <div class="container mx-auto px-6">
             
-            <!-- Newsletter Section -->
+            <!-- Newsletter Section 
             <div class="text-center border-b border-gray-300 pb-12 mb-12">
                 <h2 class="font-playfair text-3xl md:text-4xl mb-2">Stay in the loop</h2>
                 <p class="font-raleway text-lg font-extralight text-gray-600 mb-6 max-w-lg mx-auto">Join our weekly newsletter for exclusive updates, stories from the studio, and early access to new collections.</p>
@@ -660,8 +666,8 @@
                         </svg>
                     </button>
                 </form>
-            </div>
-
+            </div> -->
+            
             <!-- Main Footer Links Grid -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
                 
