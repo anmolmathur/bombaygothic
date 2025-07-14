@@ -4,6 +4,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The <title> tag should be unique for each page -->
+    <title>Bombay Gothic - City. Culture. Curios.</title>
+    
+    <!-- External Libraries (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts (All fonts included) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+
+    <!-- External Libraries (JavaScript) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Tailwind Configuration SCRIPT -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'lovtony': ['Lovtony', 'cursive'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'raleway': ['Raleway', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-beige': '#F9F8F2',
+                        'brand-terracotta': '#AA4837',
+                        'brand-dark': '#1A1A1A',
+                        'brand-text': '#333333',
+                        'brand-consultancy': '#80352C',
+                        'brand-heritage': '#000000',
+                    },
+                    // FIX: The marquee animation is now defined here globally
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Global Styles -->
+    <style type="text/tailwindcss">
+        /* FIX: The custom Lovtony font is now defined here globally */
+        @font-face {
+            font-family: 'Lovtony';
+            src: url('lovtony.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* All other global styles (Swiper, Prose, etc.) */
+        .swiper-button-next, .swiper-button-prev {
+            color: #AA4837; background-color: rgba(255, 255, 255, 0.8); width: 44px; height: 44px; border-radius: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 18px; font-weight: bold;
+        }
+        .prose h2 { @apply font-playfair text-3xl mb-4 mt-8; } 
+        .prose p { @apply font-raleway font-extralight text-lg leading-relaxed mb-6; } 
+        .prose blockquote { @apply border-l-4 border-brand-terracotta pl-4 italic text-gray-600 my-8; }
+    </style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story - Bombay Gothic</title>
     
     <!-- (Your Master <head> content remains here) -->
@@ -77,29 +151,31 @@
 
         <!-- 
             ======================================================================
-            The Founder Section (UPDATED with smaller image)
+            The Founder Section (UPDATED with Detailed Bio)
             ======================================================================
         -->
         <section class="py-16 md:py-24">
             <div class="container mx-auto px-6">
-                <!-- 
-                    FIX APPLIED: 
-                    - Grid layout changed from a 1:1 split (md:grid-cols-2) to a 2:3 split (md:grid-cols-5).
-                    - This makes the image column narrower and the text column wider.
-                -->
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-16 items-center">
                     
-                    <!-- Left Column: Founder Image (now takes up 2 of 5 columns, making it smaller) -->
+                    <!-- Left Column: Founder Image -->
                     <div class="w-full md:col-span-2 px-8 md:px-0">
-                        <img src="images/KrutiGarg.png" alt="Kruti Garg, Founder of Bombay Gothic" class="w-full h-auto object-cover rounded-lg shadow-xl">
+                        <h2 class="font-playfair text-4xl md:text-5xl mb-8">The Founder</h2>
+                        <img src="images/KrutiGarg.png" alt="Kruti Garg, Founder and Conservation Architect at Bombay Gothic" class="w-full h-auto object-cover rounded-lg shadow-xl">
                     </div>
 
-                    <!-- Right Column: Founder Text (now takes up 3 of 5 columns, giving it more space) -->
+                    <!-- Right Column: Founder Text -->
                     <div class="font-raleway text-brand-text md:col-span-3">
-                        <h2 class="font-playfair text-4xl md:text-5xl mb-6">The Founder</h2>
+                        
+                        
+                        <!-- UPDATED: New, detailed text content -->
                         <div class="space-y-4 text-lg font-extralight leading-relaxed text-gray-700">
-                           <p>Bombay Gothic was founded in 2021 with the intention to add art to our everyday lives through a series of relatable illustrated cityscapes of Bombay, evoking a sense of nostalgia. Created by Conservation architect Kruti Garg, it combines her love for the city and passion for art and cultural heritage.</p>
+                           <p><strong>Kruti Garg is a Conservation Architect with a Masters in Architectural Conservation from the School of Planning and Architecture, Delhi.</strong> For the past 7 years, she has been actively involved in heritage conservation with ANL Associates, a leading architectural restoration firm in Mumbai.</p>
+                           <p>As part of the firm, she has worked on a variety of projects, from building conservation and interior restoration to the adaptive reuse of many buildings in Mumbai and across the country.</p>
+                           <p>In pursuance of her passion for heritage, she has been closely associated with the Kala Ghoda Association since 2010, heading the Heritage Walks section for the annual Kala Ghoda Arts Festival. She has choreographed many informative and fun heritage walks, including interactive workshops for children to help them appreciate cultural values.</p>
+                           <p>Beyond general history, Kruti has designed specialized walks focusing on unique themes like the evolution of flooring typologies, the emergence of stained glass in 19th-century buildings, and the social history of public dining in Bombay. She also customises walks and tours on demand for enthusiasts and heritage lovers.</p>
                         </div>
+                        
                         <div class="mt-8 pt-6 border-t border-gray-300">
                              <h3 class="font-bold mb-2">Contact Kruti:</h3>
                              <p class="text-gray-600"><strong>Number:</strong> 9967064688</p>

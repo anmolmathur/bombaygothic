@@ -1,67 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
+<!-- 
+    ======================================================================
+    STEP 1: Use the SAME "Master <head>" as your other pages
+    ======================================================================
+-->
 <head>
-    <script src="js/headmanager.js"></script>
     <meta charset="UTF-8">
-    <meta name="description" content="Bombay Gothic offers specialized digital design consultancy, transforming architectural heritage into compelling visual narratives and unique graphic solutions.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultancy - Bombaygothic</title>
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.bombaygothic.com/consultancy.html">
-    <meta property="og:title" content="Consultancy - Bombay Gothic">
-    <meta property="og:description" content="Specialized digital design consultancy, transforming architectural heritage into compelling visual narratives.">
-    <meta property="og:image" content="https://www.bombaygothic.com/images/consultancy-og-image.jpg"> <!-- Create a specific preview image for this page -->
+    <!-- The <title> tag should be unique for each page -->
+    <title>Bombay Gothic - City. Culture. Curios.</title>
+    
+    <!-- External Libraries (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts (All fonts included) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/goudy-old-style" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/lovtony" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
-    <script src="js/navigation.js"></script>
-    <script src="js/footer.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+
+    <!-- External Libraries (JavaScript) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Tailwind Configuration SCRIPT -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'lovtony': ['Lovtony', 'cursive'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'raleway': ['Raleway', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-beige': '#F9F8F2',
+                        'brand-terracotta': '#AA4837',
+                        'brand-dark': '#1A1A1A',
+                        'brand-text': '#333333',
+                        'brand-consultancy': '#80352C',
+                        'brand-heritage': '#000000',
+                    },
+                    // FIX: The marquee animation is now defined here globally
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Global Styles -->
+    <style type="text/tailwindcss">
+        /* FIX: The custom Lovtony font is now defined here globally */
+        @font-face {
+            font-family: 'Lovtony';
+            src: url('lovtony.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* All other global styles (Swiper, Prose, etc.) */
+        .swiper-button-next, .swiper-button-prev {
+            color: #AA4837; background-color: rgba(255, 255, 255, 0.8); width: 44px; height: 44px; border-radius: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 18px; font-weight: bold;
+        }
+        .prose h2 { @apply font-playfair text-3xl mb-4 mt-8; } 
+        .prose p { @apply font-raleway font-extralight text-lg leading-relaxed mb-6; } 
+        .prose blockquote { @apply border-l-4 border-brand-terracotta pl-4 italic text-gray-600 my-8; }
+    </style>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Consultancy - Bombay Gothic</title>
+    
+    <!-- (Paste the complete "Master <head>" content from your index5.html here) -->
+    <!-- This ensures all fonts, styles, and scripts are consistent. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 'lovtony': ['Lovtony', 'cursive'], 'playfair': ['Playfair Display', 'serif'], 'raleway': ['Raleway', 'sans-serif'], 'poppins': ['Poppins', 'sans-serif'], },
+                    colors: { 'brand-beige': '#F9F8F2', 'brand-terracotta': '#AA4837', 'brand-dark': '#1A1A1A', 'brand-text': '#333333', 'brand-consultancy': '#80352C', 'brand-heritage': '#000000', },
+                    animation: { 'marquee': 'marquee 30s linear infinite', },
+                    keyframes: { marquee: { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-100%)' }, } }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @font-face { font-family: 'Lovtony'; src: url('lovtony.ttf') format('truetype'); }
+    </style>
 </head>
-<body>
-    <head-manager></head-manager>
-    <site-navigation></site-navigation>
+
+<body class="bg-brand-beige font-raleway text-brand-text">
+
+    <!-- Step 2: Add your reusable header component -->
+    <main-header></main-header>
+
+    <!-- Main Content for the Consultancy Page -->
     <main>
-        <div class="section-header">
-            <h1 class="section-title">Consultancy</h1>
-            <p class="section-description">Transform your vision into striking visual narratives with our specialized digital design consultancy services. We bridge the gap between architectural heritage and contemporary design, creating unique graphic solutions that tell compelling stories.</p>
-        </div>
-        <div class="container">
-        <div class="content-grid">
-            <div class="content-item">
-                <img src="images/consultancy1.png" alt="Durga Puja Souvenirs">
-                <h2 class="content-item-title">durga puja souvenirs</h2>
-                <p class="content-item-description">Custom designed patterns inspired by cultural motifs, applied across various products including bags and cups. Our designs blend traditional elements with modern aesthetics to create limited edition collectibles.</p>
-            </div>
+                <!-- 
+            ======================================================================
+            NEW & CREATIVE Title Section for Consultancy Page
+            ======================================================================
+        -->
+        <!-- 
+            This section uses the main beige background as requested.
+            It's a relative container to allow for absolute positioning of the "call-out" text elements.
+        -->
+        <section class="relative bg-brand-beige py-20 md:py-32 overflow-hidden">
+            <div class="container mx-auto px-6 text-center">
 
-            <div class="content-item">
-                <img src="images/consultancy2.png" alt="Museum Reimagination">
-                <h2 class="content-item-title">reimagining museums</h2>
-                <p class="content-item-description">Contemporary graphic interpretations of museum artifacts, featuring innovative merchandise design solutions that integrate historical elements with modern functionality.</p>
-            </div>
+                <!-- The Main Headline -->
+                <h1 class="font-playfair text-5xl md:text-7xl text-brand-text max-w-4xl mx-auto">
+                    Architectural Storytelling for Visionary Brands
+                </h1>
+                <p class="font-raleway text-lg font-extralight text-gray-600 mt-4 max-w-2xl mx-auto">
+                    We partner with institutions and creative agencies to transform heritage into compelling visual narratives.
+                </p>
 
-            <div class="content-item">
-                <img src="images/consultancy3.png" alt="Heritage Design">
-                <h2 class="content-item-title">heritage-inspired storytelling</h2>
-                <p class="content-item-description">Creating unique visual narratives that bridge the gap between historical architectural elements and contemporary design aesthetics.</p>
-            </div>
+                <!-- 
+                    CREATIVE ELEMENTS:
+                    These are positioned absolutely to create the feeling of a design plan.
+                    They are hidden on mobile to keep the layout clean and appear on desktop.
+                -->
 
-            <div class="content-item">
-                <img src="images/consultancy4.png" alt="Digital Art">
-                <h2 class="content-item-title">digital art creation</h2>
-                <p class="content-item-description">Transforming architectural and cultural elements into contemporary digital artworks for various applications and platforms.</p>
+                <!-- Annotation 1: Bespoke Merchandise -->
+                <div class="hidden md:block absolute top-[20%] left-[10%] text-left">
+                    <p class="font-raleway text-sm uppercase tracking-widest text-gray-400">Bespoke Merchandise</p>
+                    <div class="h-px w-16 bg-brand-terracotta mt-1"></div>
+                </div>
+                
+                <!-- Annotation 2: Heritage Narratives -->
+                <div class="hidden md:block absolute top-[35%] right-[5%] text-right">
+                     <p class="font-raleway text-sm uppercase tracking-widest text-gray-400">Heritage Narratives</p>
+                    <div class="h-px w-20 bg-brand-terracotta mt-1 ml-auto"></div>
+                </div>
+
+                <!-- Annotation 3: Graphic Interpretation -->
+                <div class="hidden md:block absolute bottom-[25%] left-[15%] text-left">
+                     <p class="font-raleway text-sm uppercase tracking-widest text-gray-400">Graphic Interpretation</p>
+                    <div class="h-px w-24 bg-brand-terracotta mt-1"></div>
+                </div>
+
             </div>
-        </div>
-    </div>
+        </section>
+
+        <!-- Case Studies / Featured Work Section -->
+        <section class="py-16 md:py-24">
+            <div class="container mx-auto px-6 space-y-20">
+                
+                <!-- Case Study 1: Durga Puja Souvenirs -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <!-- UPDATED: Use a photo of the actual souvenirs here -->
+                        <img src="images/durga-puja-case-study.jpg" alt="Custom designed patterns for Durga Puja souvenirs" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    </div>
+                    <div>
+                        <h3 class="font-raleway text-sm tracking-widest uppercase text-brand-terracotta mb-2">Case Study</h3>
+                        <h2 class="font-playfair text-4xl mb-4">Durga Puja Souvenirs</h2>
+                        <p class="font-raleway font-extralight text-lg leading-relaxed text-gray-700">For a prestigious cultural event, we developed a series of custom patterns inspired by traditional motifs. These designs blended heritage elements with a modern aesthetic, creating a unique visual identity that was applied across limited edition collectibles including bags, cups, and stationery.</p>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Reimagining Museums -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="md:order-last">
+                         <!-- UPDATED: Use a photo of the museum merchandise here -->
+                        <img src="images/mumbai-museum-case-study.jpg" alt="Innovative merchandise design for a museum in Mumbai" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    </div>
+                    <div class="md:order-first">
+                        <h3 class="font-raleway text-sm tracking-widest uppercase text-brand-terracotta mb-2">Case Study</h3>
+                        <h2 class="font-playfair text-4xl mb-4">Reimagining Museums</h2>
+                        <p class="font-raleway font-extralight text-lg leading-relaxed text-gray-700">We collaborated with a Mumbai museum to create contemporary graphic interpretations of their artifacts. Our work involved developing innovative merchandise solutions that integrated historical elements with modern functionality, turning passive exhibits into engaging, tangible stories that visitors could take home.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Our Services Section -->
+        <section class="py-16 md:py-24 bg-brand-consultancy text-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="font-playfair text-4xl md:text-5xl mb-10">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="p-8 border border-white/20 rounded-lg">
+                        <h3 class="font-playfair text-2xl mb-2">Heritage-Inspired Storytelling</h3>
+                        <p class="font-raleway font-extralight text-gray-300">Creating unique visual narratives that bridge the gap between historical architectural elements and contemporary design.</p>
+                    </div>
+                    <div class="p-8 border border-white/20 rounded-lg">
+                        <h3 class="font-playfair text-2xl mb-2">Bespoke Merchandise Design</h3>
+                        <p class="font-raleway font-extralight text-gray-300">Developing custom product lines and collectibles that reflect your brand’s unique cultural identity and story.</p>
+                    </div>
+                    <div class="p-8 border border-white/20 rounded-lg">
+                        <h3 class="font-playfair text-2xl mb-2">Digital Art & Illustration</h3>
+                        <p class="font-raleway font-extralight text-gray-300">Transforming architectural and cultural elements into contemporary digital artworks for various applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Call to Action -->
+        <section class="py-20 md:py-32 text-center">
+            <div class="container mx-auto px-6">
+                 <h2 class="font-playfair text-4xl md:text-5xl max-w-3xl mx-auto">Let's Create Something Memorable Together</h2>
+                 <p class="font-raleway text-lg font-extralight text-gray-600 mt-4 mb-8 max-w-xl mx-auto">Have a project in mind? We'd love to hear about your vision and explore how we can bring it to life.</p>
+                 <a href="contact.html" class="inline-block bg-brand-terracotta text-white font-raleway px-10 py-4 rounded-md hover:bg-brand-dark transition-colors text-lg">
+                    Start a Conversation
+                </a>
+            </div>
+        </section>
+
     </main>
-    <site-footer></site-footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
+    <!-- Step 3: Add your reusable footer component -->
+    <main-footer></main-footer>
+
+    <!-- Step 4: Add the scripts to load your components -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </body>
 </html>
