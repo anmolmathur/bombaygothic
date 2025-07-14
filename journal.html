@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<!-- 
+    ======================================================================
+    STEP 1: Use the SAME "Master <head>" as your other pages
+    ======================================================================
+-->
+<!-- Paste the complete <head> section from your index5.html file here -->
+<!-- It should contain all your fonts, styles, and scripts (Tailwind, Swiper, etc.) -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The <title> tag should be unique for each page -->
+    <title>Bombay Gothic - City. Culture. Curios.</title>
+    
+    <!-- External Libraries (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts (All fonts included) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+
+    <!-- External Libraries (JavaScript) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Tailwind Configuration SCRIPT -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'lovtony': ['Lovtony', 'cursive'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'raleway': ['Raleway', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-beige': '#F9F8F2',
+                        'brand-terracotta': '#AA4837',
+                        'brand-dark': '#1A1A1A',
+                        'brand-text': '#333333',
+                        'brand-consultancy': '#80352C',
+                        'brand-heritage': '#000000',
+                    },
+                    // FIX: The marquee animation is now defined here globally
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Global Styles -->
+    <style type="text/tailwindcss">
+        /* FIX: The custom Lovtony font is now defined here globally */
+        @font-face {
+            font-family: 'Lovtony';
+            src: url('lovtony.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* All other global styles (Swiper, Prose, etc.) */
+        .swiper-button-next, .swiper-button-prev {
+            color: #AA4837; background-color: rgba(255, 255, 255, 0.8); width: 44px; height: 44px; border-radius: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 18px; font-weight: bold;
+        }
+        .prose h2 { @apply font-playfair text-3xl mb-4 mt-8; } 
+        .prose p { @apply font-raleway font-extralight text-lg leading-relaxed mb-6; } 
+        .prose blockquote { @apply border-l-4 border-brand-terracotta pl-4 italic text-gray-600 my-8; }
+    </style>
+</head>
+
+<body class="bg-brand-beige font-raleway text-brand-text">
+
+    <!-- Step 2: Add your reusable header component -->
+    <main-header></main-header>
+
+    <!-- Main Content for the Journal Page -->
+    <main>
+        <!-- Page Title Section -->
+        <section class="text-center py-16 md:py-24 bg-brand-beige">
+            <div class="container mx-auto px-6">
+                <h1 class="font-playfair text-5xl md:text-7xl">From the Journal</h1>
+                <p class="font-raleway text-lg font-extralight text-gray-600 mt-4 max-w-2xl mx-auto">Stories about heritage, explorations into design, and a behind-the-scenes look at the world of Bombay Gothic.</p>
+            </div>
+        </section>
+
+        <!-- Blog Grid Section -->
+        <section class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <!-- Responsive Grid for All Blog Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Blog Post Card 1 -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="blog-post-1.html" class="block">
+                            <div class="overflow-hidden">
+                                <img src="images/Kalaghoda Kaliedoscope.jpg" alt="An illustration of Kala Ghoda" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">The Magic of Kala Ghoda's Architecture</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">A deep dive into the stories and styles that define Mumbai's iconic art precinct.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Blog Post Card 2 -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="blog-post-2.html" class="block">
+                            <div class="overflow-hidden">
+                                <img src="images/CST Building Victorian Gothic.jpg" alt="An illustration of the CST Building" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Victoria Terminus: A Gothic Masterpiece</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">Uncovering the intricate details and history of the UNESCO World Heritage Site.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Blog Post Card 3 -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="blog-post-3.html" class="block">
+                            <div class="overflow-hidden">
+                                <img src="images/Gateway to India.jpg" alt="An illustration of the Gateway of India" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Beyond the Arch: The Gateway's Legacy</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">Exploring the shift to Indo-Saracenic style and its significance in Bombay's story.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Blog Post Card 4 -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="blog-post-4.html" class="block">
+                            <div class="overflow-hidden">
+                                <img src="images/heritagewalks.jpg" alt="A graphic of Gothic arches" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Our Favourite Heritage Walk Moments</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">A photographic journey through the hidden alleys and grand facades we explore on our walks.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Blog Post Card 5 -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="blog-post-5.html" class="block">
+                            <div class="overflow-hidden">
+                                <img src="images/consultancy.jpg" alt="Abstract architectural design" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">From Sketch to Product: The Design Process</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">Go behind the scenes and see how we transform architectural art into everyday curios.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Blog Post Card 6 -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="blog-post-6.html" class="block">
+                            <div class="overflow-hidden">
+                                <img src="images/KrutiGarg1.jpeg" alt="Kruti Garg" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Meet the Founder: Kruti Garg</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">An interview with our founder on her passion for architecture and the city of Bombay.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- To add a new blog post in the future, just copy one of the cards above and paste it here! -->
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Step 3: Add your reusable footer component -->
+    <main-footer></main-footer>
+
+    <!-- Step 4: Add the scripts to load your components -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+</body>
+</html>

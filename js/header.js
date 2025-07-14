@@ -42,8 +42,8 @@ class Header extends HTMLElement {
                 <a href="http://shop.bombaygothic.com" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">shop</a>
                 <a href="https://bombaygothic.com/consultancy.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
                 <a href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
-                <a href="https://bombaygothic.com/aboutus.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">about</a>
-                <a href="#" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">help</a>
+                <a href="https://bombaygothic.com/journal.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
+                <a href="https://bombaygothic.com/aboutus.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">our story</a>
             </nav>
 
             <!-- Right-Side Actions (Desktop) & Mobile Menu Button -->
@@ -84,8 +84,8 @@ class Header extends HTMLElement {
                 <a @click="mobileMenuOpen = false" href="http://shop.bombaygothic.com" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">shop</a>
                 <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/consultancy.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
                 <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
-                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/aboutus.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">about</a>
-                <a @click="mobileMenuOpen = false" href="#" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">help</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/journal.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/aboutus.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">our story</a>
                 
                 <!-- Social & Cart Icons for Mobile -->
                 <div class="flex items-center space-x-6 pt-6">
