@@ -1,0 +1,110 @@
+// js/header.js - STABLE VERSION (with Header Strip)
+
+class Header extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    // The component's HTML now includes BOTH the strip and the main header
+    this.innerHTML = `
+    <!-- Section 1: Header - Strip (Updated with Title Case Text) -->
+    <div class="bg-brand-terracotta text-white font-raleway font-extralight py-3 overflow-hidden whitespace-nowrap text-sm tracking-wider">
+        <div class="inline-block animate-marquee">
+            <!-- Text updated as per request -->
+            <span class="mx-8">CITY.. CULTURE.. CURIOS.. Explore Our Collections Inspired By Bombay's Heritage..</span>
+            <span class="mx-8">CITY.. CULTURE.. CURIOS.. Explore Our Collections Inspired By Bombay's Heritage..</span>
+            <span class="mx-8" aria-hidden="true">CITY.. CULTURE.. CURIOS.. Explore Our Collections Inspired By Bombay's Heritage..</span>
+            <span class="mx-8" aria-hidden="true">CITY.. CULTURE.. CURIOS.. Explore Our Collections Inspired By Bombay's Heritage..</span>
+        </div>
+    </div>
+    <!-- End of Section 1 -->
+
+
+    <!-- Section 2: Main Header (Final Version with All Updates) -->
+    <header 
+        x-data="{ scrolled: false, mobileMenuOpen: false }" 
+        @scroll.window="scrolled = (window.scrollY > 50)"
+        :class="{ 'bg-brand-beige shadow-lg': scrolled, 'bg-transparent': !scrolled }"
+        class="sticky top-0 z-50 w-full transition-colors duration-300 ease-in-out"
+    >
+        <div class="w-full flex justify-between items-center px-6 py-4 md:px-10">
+            
+            <!-- Logo - Aligned Left -->
+            <div class="flex-none">
+                <a href="#" class="font-lovtony text-4xl text-brand-text">
+                    Bombay Gothic
+                </a>
+            </div>
+
+            <!-- Desktop Navigation - Centered -->
+            <nav class="hidden md:flex flex-grow justify-center items-center space-x-8">
+                <a href="http://shop.bombaygothic.com" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">shop</a>
+                <a href="https://bombaygothic.com/consultancy.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
+                <a href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
+                <a href="https://bombaygothic.com/aboutus.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">about</a>
+                <a href="#" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">help</a>
+            </nav>
+
+            <!-- Right-Side Actions (Desktop) & Mobile Menu Button -->
+            <div class="flex-none flex items-center justify-end">
+                <!-- Desktop Icons & Enquire Button -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="https://www.instagram.com/bombay_gothic/" target="_blank" class="text-brand-text text-xl hover:text-brand-terracotta transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="https://shop.bombaygothic.com/cart" class="text-brand-text text-xl hover:text-brand-terracotta transition-colors"><i class="fas fa-cart-shopping"></i></a>
+                    <a href="https://bombaygothic.com/contact.html" class="bg-brand-terracotta text-white font-raleway px-5 py-2 rounded-md hover:bg-brand-dark transition-colors">
+                        enquire
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-text">
+                        <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel (Updated) -->
+        <div 
+            x-show="mobileMenuOpen" 
+            @click.away="mobileMenuOpen = false"
+            x-transition
+            class="md:hidden absolute top-0 inset-x-0 w-full bg-brand-beige shadow-lg pt-24 pb-8"
+            style="display: none;"
+        >
+            <nav class="flex flex-col items-center space-y-6">
+                <!-- Updated Links -->
+                <a @click="mobileMenuOpen = false" href="http://shop.bombaygothic.com" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">shop</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/consultancy.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/aboutus.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">about</a>
+                <a @click="mobileMenuOpen = false" href="#" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">help</a>
+                
+                <!-- Social & Cart Icons for Mobile -->
+                <div class="flex items-center space-x-6 pt-6">
+                    <a href="https://www.instagram.com/bombay_gothic/" target="_blank" class="text-brand-text text-2xl hover:text-brand-terracotta transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="https://shop.bombaygothic.com/cart" class="text-brand-text text-2xl hover:text-brand-terracotta transition-colors"><i class="fas fa-cart-shopping"></i></a>
+                </div>
+
+                <!-- Enquire Button for Mobile -->
+                <div class="pt-2">
+                    <a href="https://bombaygothic.com/contact.html" class="inline-block bg-brand-terracotta text-white font-raleway px-8 py-3 rounded-md hover:bg-brand-dark transition-colors">
+                        enquire now
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- End of Section 2 -->
+    `;
+  }
+}
+
+customElements.define('main-header', Header);

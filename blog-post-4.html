@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- ====================================================== -->
+<!-- MASTER <head> SECTION - Use this on EVERY page         -->
+<!-- ====================================================== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The <title> tag should be unique for each page -->
+    <title>Bombay Gothic - City. Culture. Curios.</title>
+    
+    <!-- External Libraries (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts (All fonts included) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+
+    <!-- External Libraries (JavaScript) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Tailwind Configuration SCRIPT -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'lovtony': ['Lovtony', 'cursive'],
+                        'playfair': ['Playfair Display', 'serif'],
+                        'raleway': ['Raleway', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-beige': '#F9F8F2',
+                        'brand-terracotta': '#AA4837',
+                        'brand-dark': '#1A1A1A',
+                        'brand-text': '#333333',
+                        'brand-consultancy': '#80352C',
+                        'brand-heritage': '#000000',
+                    },
+                    // FIX: The marquee animation is now defined here globally
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Global Styles -->
+    <style type="text/tailwindcss">
+        /* FIX: The custom Lovtony font is now defined here globally */
+        @font-face {
+            font-family: 'Lovtony';
+            src: url('lovtony.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* All other global styles (Swiper, Prose, etc.) */
+        .swiper-button-next, .swiper-button-prev {
+            color: #AA4837; background-color: rgba(255, 255, 255, 0.8); width: 44px; height: 44px; border-radius: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 18px; font-weight: bold;
+        }
+        .prose h2 { @apply font-playfair text-3xl mb-4 mt-8; } 
+        .prose p { @apply font-raleway font-extralight text-lg leading-relaxed mb-6; } 
+        .prose blockquote { @apply border-l-4 border-brand-terracotta pl-4 italic text-gray-600 my-8; }
+    </style>
+</head>
+<body class="bg-brand-beige font-raleway text-brand-text">
+
+    <!-- (Paste your complete <header> code here) -->
+    <main-header></main-header>
+
+    <main class="py-16 md:py-24">
+        <article class="container mx-auto px-6 max-w-3xl">
+            <img src="images/heritagewalks.jpg" alt="A graphic of Gothic architectural arches, representing a heritage walk" class="w-full h-auto object-cover rounded-lg shadow-xl mb-12">
+            <h1 class="font-playfair text-4xl md:text-6xl mb-6">Our Favourite Heritage Walk Moments</h1>
+            <div class="font-raleway text-sm text-gray-500 mb-8"><span>Published on September 5, 2023</span> | <span>By Kruti Garg</span></div>
+            <div class="prose max-w-none">
+                <p>There's a special magic in walking through the streets of Bombay with a purpose—to look up, to notice the details, and to listen to the stories the buildings have to tell. Our heritage walks are more than just tours; they are curated journeys through time, and today, we want to share some of our favourite moments from these explorations.</p>
+                <h2>Discovering Hidden Details</h2>
+                <p>One of the greatest joys is pointing out a detail that often goes unnoticed: a whimsical gargoyle perched on a university facade, the intricate monkey carvings on the old Secretariat building, or the stunning stained-glass windows hidden within a library. These are the moments when a familiar building suddenly becomes new again. It's the "Indian craftsman's preference to elaboration" coming to life before our very eyes.</p>
+                <blockquote>"The city reveals its secrets to those who walk its streets with open eyes and a curious heart."</blockquote>
+                <p>Each walk is a chance to connect with the city's soul. Seeing the look of wonder on someone's face as they truly appreciate the architectural genius around them is why we do what we do. It's a reminder that these buildings are not just structures; they are the keepers of our collective memory, and it's a privilege to share their stories.</p>
+            </div>
+        </article>
+    </main>
+
+    <!-- (Paste your complete <footer> code here) -->
+    <main-footer></main-footer>
+
+    <!-- Load the custom components -->
+    <script src="js/header.js"></script>
+    <script src="js/footer.js"></script>
+
+    <!-- 2. THEN, load Alpine.js. The 'defer' attribute is important. -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- 3. Finally, load other scripts that might need the page to be ready -->
+    <script async src="//www.instagram.com/embed.js"></script>
+    <script>
+    window.addEventListener('load', function() {
+        if (typeof window.instgrm !== 'undefined') {
+        window.instgrm.Embeds.process();
+        }
+    });
+    </script>
+
+</body>
+</html>
