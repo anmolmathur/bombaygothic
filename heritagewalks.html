@@ -2,10 +2,10 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <!-- (Your Master <head> content goes here) -->
+    <!-- (Your Master <head> content) -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heritage Walks Portfolio - Bombay Gothic</title>
+    <title>Heritage Walks - Bombay Gothic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -31,110 +31,156 @@
     <main-header></main-header>
 
     <main>
-        <!-- Section 1: Title Section -->
-        <section class="text-center py-16 md:py-24 bg-brand-beige">
-            <div class="container mx-auto px-6">
+    <!-- 
+        ======================================================================
+        FINAL & CORRECTED Title Section for Heritage Walks Page
+        ======================================================================
+    -->
+    <section class="relative bg-brand-beige py-20 md:py-32 overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+
+            <!-- The Main Text Content (Unchanged) -->
+            <div class="text-center max-w-3xl mx-auto">
                 <h1 class="font-playfair text-5xl md:text-7xl">Walk Through Bombay's Stories</h1>
-                <p class="font-raleway text-lg font-extralight text-gray-600 mt-4 max-w-2xl mx-auto">An experiential journey into the heart of the city's architectural and cultural soul, curated by Conservation Architect Kruti Garg.</p>
+                <p class="font-raleway text-lg font-extralight text-gray-600 mt-4">An experiential journey into the heart of the city's architectural and cultural soul, curated by Conservation Architect Kruti Garg.</p>
             </div>
-        </section>
 
-        <!-- Section 2: Kala Ghoda Arts Festival Feature -->
-        <section class="py-16 md:py-24 border-y border-gray-200">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="font-playfair text-4xl mb-4">A Decade of Storytelling at KGAF</h2>
-                    <p class="font-raleway font-extralight text-lg leading-relaxed text-gray-700">The following is a comprehensive portfolio of unique walks designed and conducted by Kruti Garg for one of Mumbai's biggest arts and cultural events, the **Kala Ghoda Arts Festival**, from 2010 to 2018.</p>
+            <!-- 
+                Creative Elements with UPDATED SIZES to prevent overlap.
+            -->
+
+            <!-- Image 1 -->
+            <!-- FIX: Width reduced from w-64 to w-52 -->
+            <div class="hidden lg:block absolute top-[15%] left-[5%] w-52 transform -rotate-3 transition-transform hover:rotate-0 hover:scale-105">
+                <img src="images/heritage-walk-guide.jpg" alt="Kruti Garg guiding a heritage walk in Mumbai" class="rounded-lg shadow-xl w-full h-auto object-cover">
+            </div>
+
+            <!-- Image 2 -->
+            <!-- FIX: Width reduced from w-56 to w-48 -->
+            <div class="hidden lg:block absolute bottom-[10%] right-[8%] w-48 transform rotate-2 transition-transform hover:rotate-0 hover:scale-105">
+                <img src="images/heritage-walk-map.jpg" alt="A custom illustrated map of Mumbai's heritage buildings" class="rounded-lg shadow-xl w-full h-auto object-cover">
+            </div>
+
+        </div>
+    </section>
+
+        <!-- Section 2: NEW Founder's Philosophy Section -->
+        <section class="py-16 md:py-24 bg-brand-beige-alt border-y border-gray-200">
+             <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+                    <div class="md:order-last">
+                        <img src="images/heritage-walk-map.jpg" alt="A custom illustrated map of Mumbai's heritage buildings" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    </div>
+                    <div class="md:order-first font-raleway font-extralight text-lg leading-relaxed text-gray-700 space-y-6">
+                        <h2 class="font-playfair text-4xl text-brand-text mb-4">All Roads Lead to Bombay...</h2>
+                        <p>Yet another walk, in another part of the city, on another day begins with awe and admiration and ends with taking home a piece of heritage which the people now are sensitised to and have begun to acknowledge...</p>
+                        <blockquote class="border-l-4 border-brand-terracotta pl-6 italic my-4 py-2">
+                           "If well designed, then heritage walks can translate into interactions... establish a **Sense of place**... and foster a sense of authentic human attachment and belonging."
+                        </blockquote>
+                        <p>Public engagement begins most simply with the idea of bringing out the sentiment for our spaces. Storytelling is an integral part of this, because people make sense of experiences and participate in cultural conversations through the stories we share. The heritage walks at Kala Ghoda have been the forerunner in using this "magnifying lens" to make each walk interactive and experiential.</p>
+                        <p>With a new theme each year, we have woven the content to resonate with the festival, all while keeping the historicity intact. We introduced bus rides, cycle tours, treasure hunts, and interactive workshops to engage with the historic space on multiple levels—making it fun and innovative for everyone, especially for kids.</p>
+                    </div>
                 </div>
             </div>
         </section>
-        
-        <!-- COMPREHENSIVE Themed Portfolio of Walks -->
+
+        <!-- Section 3: Full-width Visual Break -->
+        <section style="background-image: url('images/heritage-walk-sunset.jpg');" class="h-[50vh] bg-cover bg-center bg-fixed">
+            <div class="h-full w-full bg-black/20"></div>
+        </section>
+
+        <!-- Section 4: The Comprehensive Portfolio of Walks -->
         <section class="py-16 md:py-24">
-            <div class="container mx-auto px-6 space-y-16">
-
-                <!-- Category 1: Architectural Deep Dives -->
-                <div>
-                    <h2 class="font-playfair text-3xl md:text-4xl mb-6 border-b pb-4">Architectural Deep Dives</h2>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway">
-                        <li><span class="font-semibold text-gray-800">"Embracing Modernity" - Ballard Estate Walk</span> <span class="text-gray-500 text-sm">(2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">The Architectural Jewel's and the Queen's Necklace</span> <span class="text-gray-500 text-sm">(2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">Bygone Byculla</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">Tour of the Royal Alfred Sailor's Home</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">The Esplanade</span> <span class="text-gray-500 text-sm">(2016)</span></li>
-                        <li><span class="font-semibold text-gray-800">Banking District - Fort - Financial centre</span> <span class="text-gray-500 text-sm">(2016)</span></li>
-                        <li><span class="font-semibold text-gray-800">Mills and Docks - Foundations of a Metropolis</span> <span class="text-gray-500 text-sm">(2016)</span></li>
-                        <li><span class="font-semibold text-gray-800">Life and Works of Frederick Williams Stevens</span> <span class="text-gray-500 text-sm">(2015)</span></li>
-                        <li><span class="font-semibold text-gray-800">Walk in the premises of the Bombay High Court</span> <span class="text-gray-500 text-sm">(2014)</span></li>
-                        <li><span class="font-semibold text-gray-800">Art Deco Walk</span> <span class="text-gray-500 text-sm">(2014)</span></li>
-                        <li><span class="font-semibold text-gray-800">Walk through BMC, Victoria Terminus Railway Station, GPO</span> <span class="text-gray-500 text-sm">(2013)</span></li>
-                        <li><span class="font-semibold text-gray-800">Mumbai University Complex</span> <span class="text-gray-500 text-sm">(2013)</span></li>
-                        <li><span class="font-semibold text-gray-800">Evolution of a Modern Mumbai - Art Deco</span> <span class="text-gray-500 text-sm">(2012)</span></li>
-                        <li><span class="font-semibold text-gray-800">Around Oval Walk</span> <span class="text-gray-500 text-sm">(2011)</span></li>
-                        <li><span class="font-semibold text-gray-800">WALKING ON THE FOOTPRINT OF THE FORT WALLS</span> <span class="text-gray-500 text-sm">(2010)</span></li>
-                    </ul>
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="font-playfair text-4xl md:text-5xl">A Portfolio of Past Walks for KGAF</h2>
+                    <p class="font-raleway text-lg font-extralight text-gray-600 mt-4">The following is a comprehensive archive of the unique themes and curated journeys designed for one of Mumbai's biggest arts and cultural events, the Kala Ghoda Arts Festival.</p>
                 </div>
+                <div class="space-y-16">
+                    <!-- Categories of walks will go here -->
+                    <!-- Category 1: Architectural Deep Dives -->
+                    <div>
+                        <h3 class="font-playfair text-3xl md:text-4xl mb-6 border-b pb-4">Architectural Deep Dives</h3>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 font-raleway">
+                           <!-- All walk items here -->
+                           <li><span class="font-semibold text-gray-800">"Embracing Modernity" - Ballard Estate Walk</span> <span class="text-gray-500 text-sm">(2018)</span></li>
+                           <li><span class="font-semibold text-gray-800">The Architectural Jewel's and the Queen's Necklace</span> <span class="text-gray-500 text-sm">(2018)</span></li>
+                           <li><span class="font-semibold text-gray-800">Bygone Byculla</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                           <li><span class="font-semibold text-gray-800">Tour of the Royal Alfred Sailor's Home</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                           <li><span class="font-semibold text-gray-800">The Esplanade</span> <span class="text-gray-500 text-sm">(2016, 2010)</span></li>
+                           <li><span class="font-semibold text-gray-800">Banking District - Fort - Financial centre</span> <span class="text-gray-500 text-sm">(2016)</span></li>
+                           <li><span class="font-semibold text-gray-800">Mills and Docks - Foundations of a Metropolis</span> <span class="text-gray-500 text-sm">(2016)</span></li>
+                           <li><span class="font-semibold text-gray-800">Life and Works of Frederick Williams Stevens</span> <span class="text-gray-500 text-sm">(2015)</span></li>
+                           <li><span class="font-semibold text-gray-800">Walk in the premises of the Bombay High Court</span> <span class="text-gray-500 text-sm">(2014)</span></li>
+                           <li><span class="font-semibold text-gray-800">Art Deco Walk</span> <span class="text-gray-500 text-sm">(2014, 2010)</span></li>
+                           <li><span class="font-semibold text-gray-800">Walk through BMC, Victoria Terminus Railway Station, GPO</span> <span class="text-gray-500 text-sm">(2013)</span></li>
+                           <li><span class="font-semibold text-gray-800">Mumbai University Complex</span> <span class="text-gray-500 text-sm">(2013)</span></li>
+                           <li><span class="font-semibold text-gray-800">Evolution of a Modern Mumbai - Art Deco</span> <span class="text-gray-500 text-sm">(2012)</span></li>
+                           <li><span class="font-semibold text-gray-800">Around Oval Walk</span> <span class="text-gray-500 text-sm">(2011)</span></li>
+                           <li><span class="font-semibold text-gray-800">WALKING ON THE FOOTPRINT OF THE FORT WALLS</span> <span class="text-gray-500 text-sm">(2010)</span></li>
+                        </ul>
+                    </div>
+                    <!-- Other categories from the previous response go here -->
+                     <!-- Category 2: Cultural & Thematic Trails -->
+                    <div>
+                        <h2 class="font-playfair text-3xl md:text-4xl mb-6 border-b pb-4">Cultural & Thematic Trails</h2>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway">
+                            <li><span class="font-semibold text-gray-800">"Bombay Green" & "Colaba Green"</span> <span class="text-gray-500 text-sm">(2018)</span></li>
+                            <li><span class="font-semibold text-gray-800">"Change" is the only Constant</span> <span class="text-gray-500 text-sm">(2018)</span></li>
+                            <li><span class="font-semibold text-gray-800">Yeh hai "Bombay" meri jaan</span> <span class="text-gray-500 text-sm">(2018)</span></li>
+                            <li><span class="font-semibold text-gray-800">Celebrating the Life "LINE" of the city</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                            <li><span class="font-semibold text-gray-800">"Dramatic Cinematic Operatic" Mumbai</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                            <li><span class="font-semibold text-gray-800">Heraldic Heritage</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                            <li><span class="font-semibold text-gray-800">Visit to the pyav's restored by KGA</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                            <li><span class="font-semibold text-gray-800">Hospitality in 19th Century Bombay</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                            <li><span class="font-semibold text-gray-800">Brewing in Byculla</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                            <li><span class="font-semibold text-gray-800">Poetry In Motion</span> <span class="text-gray-500 text-sm">(2017)</span></li>
+                            <li><span class="font-semibold text-gray-800">Libraries and growth of institutions</span> <span class="text-gray-500 text-sm">(2016)</span></li>
+                            <li><span class="font-semibold text-gray-800">Watchful over Mumbai - Immortalised in stone</span> <span class="text-gray-500 text-sm">(2016)</span></li>
+                            <li><span class="font-semibold text-gray-800">Public Dining History and emergence of Irani café's</span> <span class="text-gray-500 text-sm">(2015)</span></li>
+                            <li><span class="font-semibold text-gray-800">Let there be "Light"</span> <span class="text-gray-500 text-sm">(2015)</span></li>
+                            <li><span class="font-semibold text-gray-800">Community Spaces - Mumbai Bazaar's</span> <span class="text-gray-500 text-sm">(2015)</span></li>
+                            <li><span class="font-semibold text-gray-800">Candil.. Colio… Colaba</span> <span class="text-gray-500 text-sm">(2015)</span></li>
+                            <li><span class="font-semibold text-gray-800">Jewish History & Parsi heritage</span> <span class="text-gray-500 text-sm">(2014)</span></li>
+                            <li><span class="font-semibold text-gray-800">Sailing History in Mumbai</span> <span class="text-gray-500 text-sm">(2013)</span></li>
+                            <li><span class="font-semibold text-gray-800">Historic Interiors - Evolution of Finishes</span> <span class="text-gray-500 text-sm">(2012)</span></li>
+                            <li><span class="font-semibold text-gray-800">Flora Fountain – Bombay Green</span> <span class="text-gray-500 text-sm">(2011)</span></li>
+                            <li><span class="font-semibold text-gray-800">Crawford Walk</span> <span class="text-gray-500 text-sm">(2011)</span></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Category 3: Interactive Workshops & Special Formats -->
+                    <div>
+                        <h2 class="font-playfair text-3xl md:text-4xl mb-6 border-b pb-4">Interactive Workshops & Special Formats</h2>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway">
+                            <li><span class="font-semibold text-gray-800">"The Good Bay" Heritage Walk in the Naval Dockyard</span> <span class="text-gray-500 text-sm">(2018)</span></li>
+                            <li><span class="font-semibold text-gray-800">Walk for a life - a step towards cancer prevention</span> <span class="text-gray-500 text-sm">(2018)</span></li>
+                            <li><span class="font-semibold text-gray-800">"Mumbai in the Museum" & "Fire"</span> <span class="text-gray-500 text-sm">(2018)</span></li>
+                            <li><span class="font-semibold text-gray-800">Food Walk with Vicky Ratnani</span> <span class="text-gray-500 text-sm">(2016)</span></li>
+                            <li><span class="font-semibold text-gray-800">Heritage Cycle Ride</span> <span class="text-gray-500 text-sm">(2015, 2016, 2018)</span></li>
+                            <li><span class="font-semibold text-gray-800">Stained Glass Workshop and walk</span> <span class="text-gray-500 text-sm">(2014)</span></li>
+                            <li><span class="font-semibold text-gray-800">Boat ride showing the eastern waterfront with BPT</span> <span class="text-gray-500 text-sm">(2014)</span></li>
+                            <li><span class="font-semibold text-gray-800">Heritage Walk and Workshop (Horniman circle)</span> <span class="text-gray-500 text-sm">(2013)</span></li>
+                            <li><span class="font-semibold text-gray-800">Stained glass: A colouring book</span> <span class="text-gray-500 text-sm">(2012)</span></li>
+                            <li><span class="font-semibold text-gray-800">Art Gallery Walk</span> <span class="text-gray-500 text-sm">(2012)</span></li>
+                            <li><span class="font-semibold text-gray-800">Photography: Through a looking glass</span> <span class="text-gray-500 text-sm">(2012)</span></li>
+                            <li><span class="font-semibold text-gray-800">Heritage Bus Tour</span> <span class="text-gray-500 text-sm">(2011)</span></li>
+                        </ul>
+                    </div>
 
-                <!-- Category 2: Cultural & Thematic Trails -->
-                <div>
-                    <h2 class="font-playfair text-3xl md:text-4xl mb-6 border-b pb-4">Cultural & Thematic Trails</h2>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway">
-                        <li><span class="font-semibold text-gray-800">"Bombay Green" & "Colaba Green"</span> <span class="text-gray-500 text-sm">(2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">"Change" is the only Constant</span> <span class="text-gray-500 text-sm">(2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">Yeh hai "Bombay" meri jaan</span> <span class="text-gray-500 text-sm">(2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">Celebrating the Life "LINE" of the city</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">"Dramatic Cinematic Operatic" Mumbai</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">Heraldic Heritage</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">Visit to the pyav's restored by KGA</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">Hospitality in 19th Century Bombay</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">Brewing in Byculla</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">Poetry In Motion</span> <span class="text-gray-500 text-sm">(2017)</span></li>
-                        <li><span class="font-semibold text-gray-800">Libraries and growth of institutions</span> <span class="text-gray-500 text-sm">(2016)</span></li>
-                        <li><span class="font-semibold text-gray-800">Watchful over Mumbai - Immortalised in stone</span> <span class="text-gray-500 text-sm">(2016)</span></li>
-                        <li><span class="font-semibold text-gray-800">Public Dining History and emergence of Irani café's</span> <span class="text-gray-500 text-sm">(2015)</span></li>
-                        <li><span class="font-semibold text-gray-800">Let there be "Light"</span> <span class="text-gray-500 text-sm">(2015)</span></li>
-                        <li><span class="font-semibold text-gray-800">Community Spaces - Mumbai Bazaar's</span> <span class="text-gray-500 text-sm">(2015)</span></li>
-                        <li><span class="font-semibold text-gray-800">Candil.. Colio… Colaba</span> <span class="text-gray-500 text-sm">(2015)</span></li>
-                        <li><span class="font-semibold text-gray-800">Jewish History & Parsi heritage</span> <span class="text-gray-500 text-sm">(2014)</span></li>
-                        <li><span class="font-semibold text-gray-800">Sailing History in Mumbai</span> <span class="text-gray-500 text-sm">(2013)</span></li>
-                        <li><span class="font-semibold text-gray-800">Historic Interiors - Evolution of Finishes</span> <span class="text-gray-500 text-sm">(2012)</span></li>
-                        <li><span class="font-semibold text-gray-800">Flora Fountain – Bombay Green</span> <span class="text-gray-500 text-sm">(2011)</span></li>
-                        <li><span class="font-semibold text-gray-800">Crawford Walk</span> <span class="text-gray-500 text-sm">(2011)</span></li>
-                    </ul>
+                    <!-- Category 4: Walks for Children -->
+                    <div>
+                        <h2 class="font-playfair text-3xl md:text-4xl mb-6 border-b pb-4">Walks for Children</h2>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway">
+                            <li><span class="font-semibold text-gray-800">Story Walk into 19th Century Bombay (Ages 8+)</span> <span class="text-gray-500 text-sm">(2016)</span></li>
+                            <li><span class="font-semibold text-gray-800">Heritage Treasure Hunt</span> <span class="text-gray-500 text-sm">(2012)</span></li>
+                            <li><span class="font-semibold text-gray-800">Gateway of India to Children's area</span> <span class="text-gray-500 text-sm">(2012)</span></li>
+                            <li><span class="font-semibold text-gray-800">Walk through the Premises of the GPO</span> <span class="text-gray-500 text-sm">(2012)</span></li>
+                            <li><span class="font-semibold text-gray-800">Flora Fountain to Horniman Circle (Treasure Hunt)</span> <span class="text-gray-500 text-sm">(2011)</span></li>
+                            <li><span class="font-semibold text-gray-800">Art Deco Walk (with "Art Dekho" Workshop)</span> <span class="text-gray-500 text-sm">(2010)</span></li>
+                        </ul>
+                    </div>
                 </div>
-                
-                <!-- Category 3: Interactive Workshops & Special Formats -->
-                 <div>
-                    <h2 class="font-playfair text-3xl md:text-4xl mb-6 border-b pb-4">Interactive Workshops & Special Formats</h2>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway">
-                        <li><span class="font-semibold text-gray-800">"The Good Bay" Heritage Walk in the Naval Dockyard</span> <span class="text-gray-500 text-sm">(2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">Walk for a life - a step towards cancer prevention</span> <span class="text-gray-500 text-sm">(2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">"Mumbai in the Museum" & "Fire"</span> <span class="text-gray-500 text-sm">(2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">Food Walk with Vicky Ratnani</span> <span class="text-gray-500 text-sm">(2016)</span></li>
-                        <li><span class="font-semibold text-gray-800">Heritage Cycle Ride</span> <span class="text-gray-500 text-sm">(2015, 2016, 2018)</span></li>
-                        <li><span class="font-semibold text-gray-800">Stained Glass Workshop and walk</span> <span class="text-gray-500 text-sm">(2014)</span></li>
-                        <li><span class="font-semibold text-gray-800">Boat ride showing the eastern waterfront with BPT</span> <span class="text-gray-500 text-sm">(2014)</span></li>
-                        <li><span class="font-semibold text-gray-800">Heritage Walk and Workshop (Horniman circle)</span> <span class="text-gray-500 text-sm">(2013)</span></li>
-                        <li><span class="font-semibold text-gray-800">Stained glass: A colouring book</span> <span class="text-gray-500 text-sm">(2012)</span></li>
-                        <li><span class="font-semibold text-gray-800">Art Gallery Walk</span> <span class="text-gray-500 text-sm">(2012)</span></li>
-                        <li><span class="font-semibold text-gray-800">Photography: Through a looking glass</span> <span class="text-gray-500 text-sm">(2012)</span></li>
-                        <li><span class="font-semibold text-gray-800">Heritage Bus Tour</span> <span class="text-gray-500 text-sm">(2011)</span></li>
-                    </ul>
-                </div>
-
-                <!-- Category 4: Walks for Children -->
-                <div>
-                    <h2 class="font-playfair text-3xl md:text-4xl mb-6 border-b pb-4">Walks for Children</h2>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway">
-                        <li><span class="font-semibold text-gray-800">Story Walk into 19th Century Bombay (Ages 8+)</span> <span class="text-gray-500 text-sm">(2016)</span></li>
-                        <li><span class="font-semibold text-gray-800">Heritage Treasure Hunt</span> <span class="text-gray-500 text-sm">(2012)</span></li>
-                        <li><span class="font-semibold text-gray-800">Gateway of India to Children's area</span> <span class="text-gray-500 text-sm">(2012)</span></li>
-                        <li><span class="font-semibold text-gray-800">Walk through the Premises of the GPO</span> <span class="text-gray-500 text-sm">(2012)</span></li>
-                        <li><span class="font-semibold text-gray-800">Flora Fountain to Horniman Circle (Treasure Hunt)</span> <span class="text-gray-500 text-sm">(2011)</span></li>
-                        <li><span class="font-semibold text-gray-800">Art Deco Walk (with "Art Dekho" Workshop)</span> <span class="text-gray-500 text-sm">(2010)</span></li>
-                    </ul>
-                </div>
-
             </div>
         </section>
 
