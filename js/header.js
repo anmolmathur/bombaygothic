@@ -32,7 +32,7 @@ class Header extends HTMLElement {
             
             <!-- Logo - Aligned Left -->
             <div class="flex-none">
-                <a href="#" class="font-lovtony text-4xl text-brand-text">
+                <a href="https://bombaygothic.com/" class="font-lovtony text-4xl text-brand-text">
                     Bombay Gothic
                 </a>
             </div>
