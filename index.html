@@ -337,12 +337,13 @@
         2. `background-size: 100% auto;` makes the image width fit the screen exactly.
         3. Removed 'bg-fixed' to ensure predictable sizing and better mobile performance.
     -->
-    <section 
+    <section
         style="
             background-image: url('images/Kala Ghoda website.jpg');
-            background-size: 100% auto; /* THIS IS THE KEY FIX */
-        " 
-        class="relative h-[60vh] md:h-[80vh] w-full bg-center bg-no-repeat"
+            background-size: cover;
+            background-position: center center;
+        "
+        class="relative h-[60vh] md:h-[80vh] w-full bg-no-repeat"
     >
         <!-- The overlay is kept to maintain a consistent look -->
         <div class="absolute inset-0 bg-black/10"></div>
