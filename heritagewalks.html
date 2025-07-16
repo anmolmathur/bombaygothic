@@ -130,14 +130,10 @@
                     <div class="bg-brand-beige p-6 shadow-md hover:shadow-lg transition-shadow rounded-lg">
                         <h3 class="font-playfair text-3xl md:text-4xl mb-4 pb-4 border-b-2 border-brand-terracotta/30 text-brand-text">Architectural Deep Dives</h3>
                         <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 font-raleway text-gray-700 mt-6">
-                            <li class="hover:bg-brand-beige-alt/50 px-2 py-1 rounded transition-colors"
-                                data-walk-name="Embracing Modernity - Ballard Estate Walk (2018)"
-                                data-walk-description="The Walk ends at Pundole's...">
-                                <span class="font-semibold text-gray-800">"Embracing Modernity" - Ballard Estate Walk</span> <span class="text-gray-500 text-sm">(2018)</span>
-                            </li>
+                            
                            <!-- All walk items here -->
                            <li data-walk-name="Embracing Modernity - Ballard Estate Walk (2018)"
-                               data-walk-description="The Walk ends at Pundole's...">
+                               data-walk-description="The Walk ends at Pundole's, Hamilton House with a visit to the Sarmaya Exhibition.">
                                <span class="font-semibold text-gray-800">"Embracing Modernity" - Ballard Estate Walk</span> <span class="text-gray-500 text-sm">(2018)</span>
                            </li>
                            <li><span class="font-semibold text-gray-800">The Architectural Jewel's and the Queen's Necklace</span> <span class="text-gray-500 text-sm">(2018)</span></li>
@@ -161,11 +157,7 @@
                      <div class="bg-brand-beige p-6 shadow-md hover:shadow-lg transition-shadow rounded-lg">
                          <h3 class="font-playfair text-3xl md:text-4xl mb-4 pb-4 border-b-2 border-brand-terracotta/30 text-brand-text">Cultural & Thematic Trails</h3>
                          <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway text-gray-700 mt-6">
-                             <li class="hover:bg-brand-beige-alt/50 px-2 py-1 rounded transition-colors"
-                                 data-walk-name="Bombay Green & Colaba Green (2018)"
-                                 data-walk-description="Explore Mumbai's green spaces...">
-                                 <span class="font-semibold text-gray-800">"Bombay Green" & "Colaba Green"</span> <span class="text-gray-500 text-sm">(2018)</span>
-                             </li>
+                             
                             <li data-walk-name="Bombay Green & Colaba Green (2018)"
                                 data-walk-description="Explore Mumbai's green spaces...">
                                 <span class="font-semibold text-gray-800">"Bombay Green" & "Colaba Green"</span> <span class="text-gray-500 text-sm">(2018)</span>
@@ -202,10 +194,6 @@
                                 data-walk-description="Discover Mumbai's naval history...">
                                 <span class="font-semibold text-gray-800">"The Good Bay" Heritage Walk in the Naval Dockyard</span> <span class="text-gray-500 text-sm">(2018)</span>
                             </li>
-                            <li data-walk-name="The Good Bay Heritage Walk (2018)"
-                                data-walk-description="Discover Mumbai's naval history...">
-                                <span class="font-semibold text-gray-800">"The Good Bay" Heritage Walk in the Naval Dockyard</span> <span class="text-gray-500 text-sm">(2018)</span>
-                            </li>
                             <li><span class="font-semibold text-gray-800">Walk for a life - a step towards cancer prevention</span> <span class="text-gray-500 text-sm">(2018)</span></li>
                             <li><span class="font-semibold text-gray-800">"Mumbai in the Museum" & "Fire"</span> <span class="text-gray-500 text-sm">(2018)</span></li>
                             <li><span class="font-semibold text-gray-800">Food Walk with Vicky Ratnani</span> <span class="text-gray-500 text-sm">(2016)</span></li>
@@ -226,10 +214,6 @@
                         <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 font-raleway text-gray-700 mt-6">
                             <li class="hover:bg-brand-beige-alt/50 px-2 py-1 rounded transition-colors"
                                 data-walk-name="Story Walk into 19th Century Bombay (2016)"
-                                data-walk-description="A family-friendly historical journey...">
-                                <span class="font-semibold text-gray-800">Story Walk into 19th Century Bombay (Ages 8+)</span> <span class="text-gray-500 text-sm">(2016)</span>
-                            </li>
-                            <li data-walk-name="Story Walk into 19th Century Bombay (2016)"
                                 data-walk-description="A family-friendly historical journey...">
                                 <span class="font-semibold text-gray-800">Story Walk into 19th Century Bombay (Ages 8+)</span> <span class="text-gray-500 text-sm">(2016)</span>
                             </li>
@@ -261,7 +245,7 @@
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
     <!-- Walk Description Widget -->
-    <div id="walk-widget" class="fixed z-50 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-brand-terracotta/20 opacity-0 pointer-events-none transition-opacity duration-200 max-w-sm">
+    <div id="walk-widget" class="fixed z-50 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-brand-terracotta/20 opacity-0 pointer-events-none transition-opacity duration-200 max-w-sm touch-none">
         <h3 class="font-playfair text-xl text-brand-terracotta mb-2" id="walk-title"></h3>
         <p class="font-raleway text-gray-700" id="walk-description"></p>
     </div>
@@ -291,21 +275,28 @@
                 });
             });
             
-            // Mobile click interactions
+            // Mobile touch interactions
             walkItems.forEach(item => {
-                item.addEventListener('click', (e) => {
+                // Show widget on touch
+                item.addEventListener('touchstart', (e) => {
                     if (window.innerWidth > 768) return;
                     
+                    e.preventDefault(); // Prevent default touch behavior
                     const rect = e.target.getBoundingClientRect();
-                    widget.style.left = `${rect.left + 20}px`;
-                    widget.style.top = `${rect.top + 20}px`;
+                    
+                    // Position widget slightly below touch point
+                    widget.style.left = `${rect.left}px`;
+                    widget.style.top = `${rect.bottom + 10}px`;
                     
                     widget.querySelector('#walk-title').textContent = item.dataset.walkName;
                     widget.querySelector('#walk-description').textContent = item.dataset.walkDescription;
                     
-                    const isVisible = !widget.classList.contains('opacity-0');
-                    widget.classList.toggle('opacity-0', isVisible);
-                    widget.classList.toggle('pointer-events-none', isVisible);
+                    widget.classList.remove('opacity-0', 'pointer-events-none');
+                });
+                
+                // Hide widget when touch ends
+                item.addEventListener('touchend', () => {
+                    widget.classList.add('opacity-0', 'pointer-events-none');
                 });
             });
         });
