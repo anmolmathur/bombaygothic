@@ -54,6 +54,7 @@
                         'playfair': ['Playfair Display', 'serif'],
                         'raleway': ['Raleway', 'sans-serif'],
                         'poppins': ['Poppins', 'sans-serif'],
+                        'facelio': ['facelio', 'sans-serif'],
                     },
                     colors: {
                         'brand-beige': '#F9F8F2',
@@ -87,6 +88,17 @@
                Please ensure your font file is renamed and in the same folder.
             */
             src: url('lovtony.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'facelio';
+            /* 
+               UPDATED FONT PATH:
+               Looks for the simplified 'Facelio.ttf' filename.
+               Please ensure your font file is renamed and in the same folder.
+            */
+            src: url('Facelio.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -265,11 +277,10 @@
                     >
                         <div class="absolute inset-0 flex items-center justify-center">
                             <!-- The UPDATED Headline -->
-                            <h1 class="font-playfair text-5xl md:text-6xl lg:text-7xl font-normal text-brand-text leading-tight md:leading-snug text-center">
-                                Curating <span class="font-poppins font-thin italic">nostalgic </span>cityscapes<br>
-                                <span class="font-poppins font-thin italic">and artistic </span>curios<br>
-                                <span class="font-poppins font-thin italic">that celebrate</span><br>
-                                 Bombay.
+                            <h1 class="font-raleway text-5xl md:text-6xl lg:text-7xl font-normal text-brand-text leading-tight md:leading-snug text-center">
+                                Curating <br>nostalgic <span class="font-facelio italic"> cityscapes</span><br>
+                                and artistic<span class="font-facelio font-thin italic"> curios</span><br>
+                                that celebrate<br><span class="font-facelio font-thin italic"> Bombay</span>
                             </h1>
                         </div>
                         <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Crafting Architectural<br>Stories</p>
