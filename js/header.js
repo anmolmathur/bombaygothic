@@ -59,7 +59,7 @@ class Header extends HTMLElement {
 
             <!-- Desktop Navigation - Centered -->
             <nav class="hidden md:flex flex-grow justify-center items-center space-x-8">
-                <button type="button" @click="shopMenuOpen = !shopMenuOpen" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors focus:outline-none" aria-haspopup="true" :aria-expanded="shopMenuOpen.toString()">shop</button>
+                <button type="button" @click="shopMenuOpen = !shopMenuOpen" class="font-raleway transition-colors focus:outline-none border-b-2 border-transparent pb-1" :class="{ 'text-brand-terracotta border-brand-terracotta': shopMenuOpen, 'text-brand-text hover:text-brand-terracotta': !shopMenuOpen }" aria-haspopup="true" :aria-expanded="shopMenuOpen.toString()">shop</button>
                 <a href="https://bombaygothic.com/consultancy.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
                 <a href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
                 <a href="https://bombaygothic.com/journal.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
