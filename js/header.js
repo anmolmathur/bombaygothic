@@ -152,7 +152,7 @@ class Header extends HTMLElement {
                         </a>
                         <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com/collections" target="_blank" class="group block text-center">
                             <div class="relative overflow-hidden rounded-lg bg-white aspect-square w-20 sm:w-24 mx-auto">
-                                <img src="images/Gateway to India.jpg" alt="By Collection" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300">
+                                <img src="images/pressand media1.jpg" alt="By Collection" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300">
                             </div>
                             <div class="mt-2 font-playfair text-sm">By Collection</div>
                         </a>
