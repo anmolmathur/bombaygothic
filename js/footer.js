@@ -21,9 +21,14 @@ class Footer extends HTMLElement {
               </div> -->
               <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
                   <div class="col-span-2 md:col-span-1">
-                      <a href="index5.html" class="font-lovtony text-4xl text-brand-text mb-4 inline-block">Bombay Gothic</a>
-                      <p class="font-raleway font-extralight text-gray-600">CITY | CULTURE | CURIOS</p>
-                  </div>
+                    <a href="#" class="font-karlotte text-2xl text-brand-text">
+                    BOMBAY
+                    </a>
+                    <a href="#" class="font-lovtony text-4xl text-brand-text mb-4 inline-block">
+                        Gothic
+                    </a>
+                    <p class="font-raleway font-extralight text-gray-600">CITY .. CULTURE .. CURIOS</p>
+                  </div> 
                   <div>
                       <h3 class="font-raleway font-bold tracking-wider mb-4">Explore</h3>
                       <nav class="flex flex-col space-y-3 font-raleway font-extralight">
