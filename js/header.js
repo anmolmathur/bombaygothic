@@ -52,8 +52,8 @@ class Header extends HTMLElement {
             
             <!-- Logo - Aligned Left -->
             <div class="flex-none">
-                <a href="https://bombaygothic.com/" class="font-lovtony text-4xl text-brand-text">
-                    Bombay Gothic
+                <a href="https://bombaygothic.com/" class="flex items-center space-x-2">
+                    <img src="images/Logotype.png" alt="Bombay Gothic Logo" class="h-20 w-auto scale-150">
                 </a>
             </div>
 

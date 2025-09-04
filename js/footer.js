@@ -21,11 +21,8 @@ class Footer extends HTMLElement {
               </div> -->
               <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
                   <div class="col-span-2 md:col-span-1">
-                    <a href="#" class="font-karlotte text-2xl text-brand-text">
-                    BOMBAY
-                    </a>
-                    <a href="#" class="font-lovtony text-4xl text-brand-text mb-4 inline-block">
-                        Gothic
+                    <a href="https://bombaygothic.com/" class="flex items-center justify-center md:justify-start mb-4">
+                        <img src="images/Logotype.png" alt="Bombay Gothic Logo" class="h-16 w-auto scale-150">
                     </a>
                     <p class="font-raleway font-extralight text-gray-600">CITY .. CULTURE .. CURIOS</p>
                   </div> 
