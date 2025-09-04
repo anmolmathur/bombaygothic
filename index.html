@@ -181,12 +181,12 @@
 
             <!-- Desktop Navigation - Centered -->
             <nav class="hidden md:flex flex-grow justify-center items-center space-x-8">
-                <button type="button" @click="shopMenuOpen = !shopMenuOpen" class="font-raleway transition-colors focus:outline-none border-b-2 border-transparent pb-1" :class="{ 'text-brand-terracotta border-brand-terracotta': shopMenuOpen, 'text-brand-text hover:text-brand-terracotta': !shopMenuOpen }" aria-haspopup="true" :aria-expanded="shopMenuOpen.toString()">shop</button>
-                <a href="https://bombaygothic.com/consultancy.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
-                <a href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
-                <a href="https://bombaygothic.com/journal.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
-                <a href="https://shop.bombaygothic.com/collections/all-products" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">products</a>
-                <a href="https://bombaygothic.com/aboutus.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">our story</a>
+                <button type="button" @click="shopMenuOpen = !shopMenuOpen" class="font-raleway text-lg transition-colors focus:outline-none border-b-2 border-transparent pb-1" :class="{ 'text-brand-terracotta border-brand-terracotta': shopMenuOpen, 'text-brand-text hover:text-brand-terracotta': !shopMenuOpen }" aria-haspopup="true" :aria-expanded="shopMenuOpen.toString()">shop</button>
+                <a href="https://bombaygothic.com/consultancy.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
+                <a href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
+                <a href="https://bombaygothic.com/journal.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
+                <a href="https://shop.bombaygothic.com/collections/all-products" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">products</a>
+                <a href="https://bombaygothic.com/aboutus.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">our story</a>
             </nav>
 
             <!-- Right-Side Actions (Desktop) & Mobile Menu Button -->
@@ -318,16 +318,20 @@
             <!-- Layer 1: The Hero Scene (Images and Text) -->
             <div class="absolute inset-0 z-10 bg-brand-beige">
                 <!-- Text Container -->
-                <div class="absolute inset-0 z-20 flex items-center justify-center">
+                <div class="absolute inset-0 z-20 flex items-start justify-center pt-4 md:pt-8">
                     <div 
                         x-data x-init="
                             // Updated Text Randomization Script (Horizontal Only)
                             document.querySelectorAll('.random-text').forEach(el => {
-                                const top = Math.random() * 85 + 5;
-                                const left = Math.random() * 85 + 5;
+                                // Avoid center area (30%-70% both horizontally and vertically)
+                                let top, left;
+                                do {
+                                    top = Math.random() * 90 + 5;
+                                    left = Math.random() * 90 + 5;
+                                } while (top > 25 && top < 75 && left > 25 && left < 75);
+                                
                                 el.style.top = `${top}%`;
                                 el.style.left = `${left}%`;
-                                // The new, simpler line for transform
                                 el.style.transform = `translate(-50%, -50%)`;
                                 el.style.opacity = 1;
                             });
@@ -342,11 +346,11 @@
                                 that <span class="font-raleway font-thin italic">celebrate</span><br><span class="font-facelio text-8xl"> Bombay</span>
                             </h1>
                         </div>
-                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Crafting Architectural<br>Stories</p>
-                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Celebrating Bombay's<br>Heritage</p>
-                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Weaving Heritage<br>Narratives</p>
-                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Embodying Bohemian<br>Spirit</p>
-                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity">Blending Art,<br>Culture</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity hidden md:block">Crafting Architectural<br>Stories</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity hidden md:block">Celebrating Bombay's<br>Heritage</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity hidden md:block">Weaving Heritage<br>Narratives</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity hidden md:block">Embodying Bohemian<br>Spirit</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 transition-opacity hidden md:block">Blending Art,<br>Culture</p>
                     </div>
                 </div>
 
