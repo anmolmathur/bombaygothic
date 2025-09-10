@@ -12,7 +12,9 @@ class Navigation extends HTMLElement {
                 </div>
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="/">Bombay Gothic</a>
+                        <div class="d-flex justify-content-center flex-grow-1 d-lg-none">
+                            <a class="navbar-brand" href="/">Bombay Gothic</a>
+                        </div>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                             <span class="navbar-toggler-icon"></span>
                         </button>
