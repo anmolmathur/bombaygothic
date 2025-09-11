@@ -29,12 +29,12 @@ class Header extends HTMLElement {
     this.innerHTML = `
     <!-- Section 1: Header - Strip (Updated with Title Case Text) -->
     <div class="bg-brand-terracotta text-white font-raleway font-extralight py-3 overflow-hidden whitespace-nowrap text-sm tracking-wider">
-        <div class="inline-block animate-marquee">
+        <div class="w-full inline-block animate-marquee" style="margin: 0 10%;">
             <!-- Text updated as per request -->
-            <span class="mx-8">CITY.. CULTURE.. CURIOS.. Explore Our Collections Inspired By Bombay's Heritage..</span>
-            <span class="mx-8">CITY.. CULTURE.. CURIOS.. Explore Our Collections Inspired By Bombay's Heritage..</span>
-            <span class="mx-8" aria-hidden="true">CITY.. CULTURE.. CURIOS.. Explore Our Collections Inspired By Bombay's Heritage..</span>
-            <span class="mx-8" aria-hidden="true">CITY.. CULTURE.. CURIOS.. Explore Our Collections Inspired By Bombay's Heritage..</span>
+            <span class="mx-8">CITY.. CULTURE.. CURIOS..</span>
+            <span class="mx-8">CITY.. CULTURE.. CURIOS..</span>
+            <span class="mx-8" aria-hidden="true">CITY.. CULTURE.. CURIOS..</span>
+            <span class="mx-8" aria-hidden="true">CITY.. CULTURE.. CURIOS..</span>
         </div>
     </div>
     <!-- End of Section 1 -->
@@ -64,7 +64,7 @@ class Header extends HTMLElement {
 <div class="hidden w-full md:flex justify-between items-center">
                 <!-- Logo - Aligned Left -->
                 <div class="flex-none">
-                    <a href="https://bombaygothic.com/" class="flex items-center space-x-2">
+                    <a href="https://bombaygothic.com/" class="flex items-center space-x-2 ml-4">
                         <img src="images/Logotype.png" alt="Bombay Gothic Logo" class="h-20 w-auto scale-150">
                     </a>
                 </div>
