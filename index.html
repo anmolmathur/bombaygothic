@@ -82,6 +82,16 @@
         }
     </script>
 
+    <script>
+        // Safari-specific fix for scrolling issue
+        (function() {
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            if (isSafari) {
+                document.documentElement.classList.add('is-safari');
+            }
+        })();
+    </script>
+
     <style type="text/tailwindcss">
         @font-face {
             font-family: 'Lovtony';
@@ -143,6 +153,13 @@
         /* Custom style to make Instagram embeds match the site's rounded corner style */
         .instagram-media {
             border-radius: 0.5rem; /* This matches Tailwind's 'rounded-lg' */
+        }
+    </style>
+
+    <style>
+        /* Apply the transform hack only on Safari */
+        .is-safari .sticky-container-safari-fix {
+            transform: translateZ(0);
         }
     </style>
 </head>
@@ -326,7 +343,7 @@
             x-data="{ scrollY: 0 }"
             x-init="scrollY = window.scrollY"
             @scroll.window.throttle.16ms="scrollY = window.scrollY"
-            class="sticky top-0 h-screen w-full overflow-hidden"
+            class="sticky top-0 h-screen w-full overflow-hidden sticky-container-safari-fix"
         >
             <!-- Layer 1: The Hero Scene (Images and Text) -->
             <div class="absolute inset-0 z-10 bg-brand-beige">
@@ -723,40 +740,40 @@
                 -->
                 <!-- Post 7 -->
                 <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOD0kCdDCpW/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOD0kCdDCpW/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
                 </div>
                 <!-- Post 8 -->
                 <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNppAjit6Mg/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNppAjit6Mg/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
                 </div>
                 <!-- Post 1 -->
                 <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DLxC7n-SYNT/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DLxC7n-SYNT/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
                 </div>
 
                 <!-- Post 2 -->
                 <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLkfMOZobQ-/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLkfMOZobQ-/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
                 </div>
 
                 <!-- Post 3 -->
                 <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLSZeX7ojqw/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLSZeX7ojqw/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
                 </div>
 
                 <!-- Post 4 -->
                 <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DFnjLaeT-U7/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DFnjLaeT-U7/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
                 </div>
                 
                 <!-- Post 5 -->
                 <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DFpGt-KoNcs/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DFpGt-KoNcs/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
                 </div>
 
                 <!-- Post 6 -->
                 <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CPgHqYrn59N/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CPgHqYrn59N/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
                 </div>
             </div>
         </div>
