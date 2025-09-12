@@ -71,7 +71,8 @@ class Header extends HTMLElement {
 
                 <!-- Desktop Navigation - Centered -->
                 <nav class="hidden md:flex flex-grow justify-center items-center space-x-8">
-                    <button type="button" @click="shopMenuOpen = !shopMenuOpen" class="font-raleway transition-colors focus:outline-none border-b-2 border-transparent pb-1" :class="{ 'text-brand-terracotta border-brand-terracotta': shopMenuOpen, 'text-brand-text hover:text-brand-terracotta': !shopMenuOpen }" aria-haspopup="true" :aria-expanded="shopMenuOpen.toString()">shop</button>
+                    <!-- <button type="button" @click="shopMenuOpen = !shopMenuOpen" class="font-raleway transition-colors focus:outline-none border-b-2 border-transparent pb-1" :class="{ 'text-brand-terracotta border-brand-terracotta': shopMenuOpen, 'text-brand-text hover:text-brand-terracotta': !shopMenuOpen }" aria-haspopup="true" :aria-expanded="shopMenuOpen.toString()">shop</button> -->
+                    <a href="https://shop.bombaygothic.com/" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors border-b-2 border-transparent hover:border-brand-terracotta pb-1">shop</a> 
                     <a href="https://bombaygothic.com/consultancy.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
                     <a href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
                     <a href="https://bombaygothic.com/journal.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
@@ -146,9 +147,10 @@ class Header extends HTMLElement {
             style="display: none;"
         >
             <nav class="flex flex-col items-center space-y-6">
-                <!-- Updated Links -->
+                <!-- Updated Links 
                 <button @click="mobileShopOpen = !mobileShopOpen" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">shop</button>
-                <!-- Mobile Shop Submenu -->
+                -->
+                <!-- Mobile Shop Submenu 
                 <div x-show="mobileShopOpen" x-transition class="w-full px-6">
                     <div class="grid grid-cols-3 gap-4">
                         <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com/collections/all" target="_blank" class="group block text-center">
@@ -170,7 +172,8 @@ class Header extends HTMLElement {
                             <div class="mt-2 font-playfair text-sm">By Collection</div>
                         </a>
                     </div>
-                </div>
+                </div> -->
+                <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">shop</a>
                 <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/consultancy.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
                 <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
                 <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/journal.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
