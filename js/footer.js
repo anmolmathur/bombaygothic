@@ -32,6 +32,7 @@ class Footer extends HTMLElement {
                           <a href="http://shop.bombaygothic.com" target="_blank" class="text-gray-600 hover:text-brand-terracotta">shop</a>
                           <a href="consultancy.html" class="text-gray-600 hover:text-brand-terracotta">consultancy</a>
                           <a href="heritagewalks.html" class="text-gray-600 hover:text-brand-terracotta">heritage walks</a>
+                          <a href="corporate.html" class="text-gray-600 hover:text-brand-terracotta">corporate</a>
                       </nav>
                   </div>
                   <div>

@@ -32,17 +32,19 @@
     <title>Corporate & Hospitality — Bombay Gothic</title>
 
     <!-- External Libraries (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts (All fonts included) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
 
     <!-- External Libraries (JavaScript) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <!-- Tailwind Configuration -->
+    <!-- Tailwind Configuration SCRIPT -->
     <script>
         tailwind.config = {
             theme: {
@@ -77,11 +79,20 @@
 
     <!-- Custom Global Styles -->
     <style type="text/tailwindcss">
+        /* FIX: The custom Lovtony font is now defined here globally */
         @font-face {
             font-family: 'Lovtony';
             src: url('lovtony.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
+        }
+
+        /* All other global styles (Swiper, Prose, etc.) */
+        .swiper-button-next, .swiper-button-prev {
+            color: #AA4837; background-color: rgba(255, 255, 255, 0.8); width: 44px; height: 44px; border-radius: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 18px; font-weight: bold;
         }
         .prose h2 { @apply font-playfair text-3xl mb-4 mt-8; }
         .prose p  { @apply font-raleway font-extralight text-lg leading-relaxed mb-6; }
@@ -231,6 +242,9 @@
         </section>
 
         <!-- ─── Featured curated sets ────────────────────────────────────── -->
+        <!-- HIDDEN until Kruti finalises the curated-set lineup. To re-enable,
+             remove the surrounding comment markers below. -->
+        <!--
         <section class="py-16 md:py-24 bg-brand-beige">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -239,56 +253,52 @@
                         A starting point. Every set can be tailored to your brand, occasion, and budget.
                     </p>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <!-- Set 1 -->
                     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                         <div class="aspect-[4/3] bg-gradient-to-br from-stone-200 to-stone-400 flex items-center justify-center">
                             <span class="text-stone-500 font-raleway text-sm">Hospitality Welcome Set</span>
                         </div>
                         <div class="p-6">
                             <h3 class="font-playfair text-xl mb-1">The Hospitality Welcome Suite</h3>
-                            <p class="font-raleway text-xs uppercase tracking-widest text-brand-terracotta mb-3">Hotel · ₹3,500 / set</p>
+                            <p class="font-raleway text-xs uppercase tracking-widest text-brand-terracotta mb-3">Hotel · price on request</p>
                             <p class="font-raleway font-extralight text-gray-700 text-sm leading-relaxed">
                                 A Tides of Time candle, a Bombay Bohemian coaster set, and a hand-numbered welcome card. Co-branded with the hotel's name on a hidden inner sleeve.
                             </p>
                         </div>
                     </div>
-
-                    <!-- Set 2 -->
                     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                         <div class="aspect-[4/3] bg-gradient-to-br from-amber-100 to-amber-300 flex items-center justify-center">
                             <span class="text-amber-700 font-raleway text-sm">Father's Day Set</span>
                         </div>
                         <div class="p-6">
                             <h3 class="font-playfair text-xl mb-1">Father's Corner Set</h3>
-                            <p class="font-raleway text-xs uppercase tracking-widest text-brand-terracotta mb-3">Corporate · ₹4,800 / set</p>
+                            <p class="font-raleway text-xs uppercase tracking-widest text-brand-terracotta mb-3">Corporate · price on request</p>
                             <p class="font-raleway font-extralight text-gray-700 text-sm leading-relaxed">
                                 Lancet Line whiskey glasses (set of 2), an architectural journal, and the On Civic Duty flask. For the discerning gift, in a heritage box.
                             </p>
                         </div>
                     </div>
-
-                    <!-- Set 3 -->
                     <div class="bg-white rounded-lg shadow-sm overflow-hidden">
                         <div class="aspect-[4/3] bg-gradient-to-br from-rose-100 to-rose-300 flex items-center justify-center">
                             <span class="text-rose-800 font-raleway text-sm">Diwali Heritage Box</span>
                         </div>
                         <div class="p-6">
                             <h3 class="font-playfair text-xl mb-1">Diwali Heritage Box</h3>
-                            <p class="font-raleway text-xs uppercase tracking-widest text-brand-terracotta mb-3">Festive · ₹2,800 / set</p>
+                            <p class="font-raleway text-xs uppercase tracking-widest text-brand-terracotta mb-3">Festive · price on request</p>
                             <p class="font-raleway font-extralight text-gray-700 text-sm leading-relaxed">
                                 A Bom Bahia candle, the Kala Ghoda kaleidoscope playing cards, and four marble-finish coasters. Wrapped in a cloth sleeve with hand-stitched detail.
                             </p>
                         </div>
                     </div>
                 </div>
-
                 <p class="text-center font-raleway text-sm font-extralight text-gray-500 mt-12 max-w-2xl mx-auto italic">
                     Visuals shown are placeholders pending the latest catalogue. Real product photography available in the downloadable PDF below.
                 </p>
             </div>
         </section>
+        -->
+        <!-- /HIDDEN -->
+
 
         <!-- ─── Catalogue download ───────────────────────────────────────── -->
         <section class="py-16 md:py-20 bg-brand-dark text-white">
