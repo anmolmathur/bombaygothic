@@ -78,6 +78,7 @@ class Header extends HTMLElement {
                     <a href="https://bombaygothic.com/journal.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
                     <a href="https://shop.bombaygothic.com/collections/all-products" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">products</a>
                     <a href="https://bombaygothic.com/aboutus.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">our story</a>
+                    <a href="https://bombaygothic.com/corporate.html" class="font-raleway text-brand-text hover:text-brand-terracotta transition-colors">corporate</a>
                 </nav>
 
                 <!-- Right-Side Actions (Desktop) & Mobile Menu Button -->
@@ -179,6 +180,7 @@ class Header extends HTMLElement {
                 <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/journal.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
                 <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com/collections/all-products" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">products</a>
                 <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/aboutus.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">our story</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/corporate.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">corporate</a>
                 
                 <!-- Social & Cart Icons for Mobile -->
                 <div class="flex items-center space-x-6 pt-6">
