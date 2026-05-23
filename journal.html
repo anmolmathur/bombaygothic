@@ -8,21 +8,27 @@
     <!-- SEO / Metadata -->
     <title>Journal - Stories of Art, Heritage & Design | Bombay Gothic</title>
     <meta name="description" content="Explore the Bombay Gothic journal for stories on Mumbai's heritage, behind-the-scenes design processes, and deep dives into the city's architectural wonders.">
-    <meta name="keywords" content="Bombay Gothic, journal, blog, Mumbai heritage, architecture blog, design stories, Indian art, conservation, Kruti Garg, cityscapes">
-    <link rel="canonical" href="https://www.bombaygothic.com/journal.html">
+    <meta name="keywords" content="Bombay Gothic, journal, blog, Mumbai heritage, architecture blog, design stories, Indian art, conservation, Kruti Garg, cityscapes, Gothic Revival, Victorian Gothic, Bombay architecture">
+
+    <!--
+        Canonical points to shop.bombaygothic.com/blogs/news (the canonical
+        home of the journal since 23 May 2026). Google indexes the shop URL;
+        this page remains a marketing-site overview of the same articles.
+    -->
+    <link rel="canonical" href="https://shop.bombaygothic.com/blogs/news">
 
     <!-- Social Media Sharing (Open Graph & Twitter) -->
     <meta property="og:title" content="Journal - Stories of Art, Heritage & Design | Bombay Gothic">
     <meta property="og:description" content="Explore the Bombay Gothic journal for stories on Mumbai's heritage, behind-the-scenes design processes, and deep dives into the city's architectural wonders.">
-    <meta property="og:image" content="https://www.bombaygothic.com/images/BombayGothic_Landscape.jpg"> <!-- NOTE: Create a 1200x630 image for this path, maybe a collage of blog post images -->
-    <meta property="og:url" content="https://www.bombaygothic.com/journal.html">
+    <meta property="og:image" content="https://www.bombaygothic.com/images/BombayGothic_Landscape.jpg">
+    <meta property="og:url" content="https://shop.bombaygothic.com/blogs/news">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bombay Gothic">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Journal - Stories of Art, Heritage & Design | Bombay Gothic">
     <meta name="twitter:description" content="Explore the Bombay Gothic journal for stories on Mumbai's heritage, behind-the-scenes design processes, and deep dives into the city's architectural wonders.">
-    <meta name="twitter:image" content="https://www.bombaygothic.com/images/BombayGothic_Landscape.jpg"> <!-- NOTE: This can be the same as the og:image -->
+    <meta name="twitter:image" content="https://www.bombaygothic.com/images/BombayGothic_Landscape.jpg">
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -30,12 +36,12 @@
     <link rel="shortcut icon" href="/favicon/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    
+
     <!-- External Libraries (CSS) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Google Fonts (All fonts included) -->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
@@ -63,7 +69,6 @@
                         'brand-consultancy': '#80352C',
                         'brand-heritage': '#000000',
                     },
-                    // FIX: The marquee animation is now defined here globally
                     animation: {
                         'marquee': 'marquee 30s linear infinite',
                     },
@@ -80,7 +85,6 @@
 
     <!-- Custom Global Styles -->
     <style type="text/tailwindcss">
-        /* FIX: The custom Lovtony font is now defined here globally */
         @font-face {
             font-family: 'Lovtony';
             src: url('lovtony.ttf') format('truetype');
@@ -88,22 +92,40 @@
             font-style: normal;
         }
 
-        /* All other global styles (Swiper, Prose, etc.) */
         .swiper-button-next, .swiper-button-prev {
             color: #AA4837; background-color: rgba(255, 255, 255, 0.8); width: 44px; height: 44px; border-radius: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .swiper-button-next:after, .swiper-button-prev:after {
             font-size: 18px; font-weight: bold;
         }
-        .prose h2 { @apply font-playfair text-3xl mb-4 mt-8; } 
-        .prose p { @apply font-raleway font-extralight text-lg leading-relaxed mb-6; } 
+        .prose h2 { @apply font-playfair text-3xl mb-4 mt-8; }
+        .prose p { @apply font-raleway font-extralight text-lg leading-relaxed mb-6; }
         .prose blockquote { @apply border-l-4 border-brand-terracotta pl-4 italic text-gray-600 my-8; }
+
+        /* BG addition (2026-05-23): journal-pick badge for cards whose
+           illustration has been generically repurposed. Subtle terracotta
+           ribbon in the top-right of the image area. */
+        .journal-pick {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(170, 72, 55, 0.92);
+            color: #fff;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 400;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            z-index: 2;
+            backdrop-filter: blur(4px);
+        }
     </style>
 </head>
 
 <body class="bg-brand-beige font-raleway text-brand-text">
 
-    <!-- Step 2: Add your reusable header component -->
     <main-header></main-header>
 
     <!-- Main Content for the Journal Page -->
@@ -113,20 +135,131 @@
             <div class="container mx-auto px-6">
                 <h1 class="font-playfair text-5xl md:text-7xl">From the Journal</h1>
                 <p class="font-raleway text-lg font-extralight text-gray-600 mt-4 max-w-2xl mx-auto">Stories about heritage, explorations into design, and a behind-the-scenes look at the world of Bombay Gothic.</p>
+                <p class="font-raleway text-sm font-extralight text-gray-500 mt-6">
+                    Full articles live on <a href="https://shop.bombaygothic.com/blogs/news" class="text-brand-terracotta hover:underline">shop.bombaygothic.com/blogs/news</a>.
+                </p>
             </div>
         </section>
 
-        <!-- Blog Grid Section -->
+        <!-- Blog Grid Section: 13 cards, sorted newest first.
+             Each "read more" routes to the canonical article on shop.bombaygothic.com.
+             Cards 8–13 carry a "Gothic History" badge — they repurpose existing
+             illustrations generically since these articles don't have unique
+             bombaygothic.com source illustrations. -->
         <section class="py-16 md:py-24">
             <div class="container mx-auto px-6">
-                <!-- Responsive Grid for All Blog Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div id="journal-grid" data-cards-per-page="6" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                    <!-- Blog Post Card 1 -->
+                    <!-- Card 1: Gothic Revival (Feb 2026) -->
                     <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
-                        <a href="blog-post-1.html" class="block">
+                        <a href="https://shop.bombaygothic.com/blogs/news/gothic-revival" class="block">
+                            <div class="overflow-hidden relative">
+                                <span class="journal-pick">Gothic History</span>
+                                <img src="images/BombayGothic_Landscape.jpg" alt="An illustration evoking the Gothic Revival movement" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Gothic Revival</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">How an 18th-century English movement championed by Pugin and Walpole rekindled the medieval spirit and shaped buildings the world over.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Card 2: The Master Masons of Gothic Architecture (Oct 2025) -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="https://shop.bombaygothic.com/blogs/news/the-master-masons-of-gothic-architecture" class="block">
+                            <div class="overflow-hidden relative">
+                                <span class="journal-pick">Gothic History</span>
+                                <img src="images/heritage-walk-guide.jpg" alt="Gothic arches representing master masons' craftsmanship" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">The Master Masons of Gothic Architecture</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">From the 11th century onward, extraordinary men of vision — bishops, architects, and master masons — built the cathedrals that defined an era.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Card 3: Gothic Revival in India (Sep 2025) -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="https://shop.bombaygothic.com/blogs/news/gothic-revival-in-india-how-bombay-became-a-gothic-masterpiece" class="block">
+                            <div class="overflow-hidden relative">
+                                <span class="journal-pick">Gothic History</span>
+                                <img src="images/High Court website.jpg" alt="Bombay High Court — a quintessential example of Gothic Revival in India" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Gothic Revival in India: How Bombay Became a Gothic Masterpiece</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">No other Indian city has Bombay's profusion of neo-Gothic. Discover how the style was stripped of religious iconography and reimagined on Indian soil.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Card 4: The Gothic Revival: Reclaiming the Medieval Spirit (Sep 2025) -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="https://shop.bombaygothic.com/blogs/news/the-gothic-revival-reclaiming-the-medieval-spirit" class="block">
+                            <div class="overflow-hidden relative">
+                                <span class="journal-pick">Gothic History</span>
+                                <img src="images/Kala Ghoda website.jpg" alt="Heritage architecture echoing the medieval Gothic spirit" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">The Gothic Revival: Reclaiming the Medieval Spirit</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">After centuries in obscurity, Gothic architecture was revived in 18th-century England — and went on to shape the very identity of Bombay.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Card 5: Gothic Architecture: Origins, Innovations, and Cultural Influence (Aug 2025) -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="https://shop.bombaygothic.com/blogs/news/gothic-architecture-origins-innovations-and-cultural-influence" class="block">
+                            <div class="overflow-hidden relative">
+                                <span class="journal-pick">Gothic History</span>
+                                <img src="images/CST Illustration.jpg" alt="Gothic spires and pointed arches — innovations of the style" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Gothic Architecture: Origins, Innovations, and Cultural Influence</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">Pointed arches, ribbed vaults, flying buttresses — how a 12th-century French innovation created some of the world's most iconic buildings.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Card 6: Patrons and Master Masons: The Architects of Gothic Europe (Aug 2025) -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="https://shop.bombaygothic.com/blogs/news/patrons-and-master-masons-the-architects-of-gothic-europe" class="block">
+                            <div class="overflow-hidden relative">
+                                <span class="journal-pick">Gothic History</span>
+                                <img src="images/consultancy3.png" alt="Abstract architectural design representing master masons' craft" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Patrons and Master Masons: The Architects of Gothic Europe</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">The kings, clergy, and craftsmen behind the cathedrals — a tour through medieval Europe's most influential patrons and builders.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Card 7: Gothic – The Term (Aug 2025) -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="https://shop.bombaygothic.com/blogs/news/gothic-the-term-understanding-the-origins-of-a-misunderstood-style" class="block">
+                            <div class="overflow-hidden relative">
+                                <span class="journal-pick">Gothic History</span>
+                                <img src="images/Urbs_Prima_in_Indis_fa6a5a1b-f42f-47c0-83ce-d948b296ce1b.webp" alt="An artistic representation of Gothic architectural form" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-playfair text-2xl mb-2">Gothic – The Term: Understanding the Origins of a Misunderstood Style</h3>
+                                <p class="font-raleway font-extralight text-gray-600 mb-4">The word "Gothic" is often associated with dark aesthetics — but the style was actually designed to bring more sunlight into spaces.</p>
+                                <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Card 8: The Magic of Kala Ghoda's Architecture (Nov 2023) -->
+                    <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="https://shop.bombaygothic.com/blogs/news/the-magic-of-kala-ghodas-architecture" class="block">
                             <div class="overflow-hidden">
-                                <img src="images/Kalaghoda Kaliedoscope.jpg" alt="An illustration of Kala Ghoda" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                <img src="images/Kalaghoda Kaliedoscope.jpg" alt="An illustration of the heritage buildings in Kala Ghoda" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
                             </div>
                             <div class="p-6">
                                 <h3 class="font-playfair text-2xl mb-2">The Magic of Kala Ghoda's Architecture</h3>
@@ -136,11 +269,11 @@
                         </a>
                     </div>
 
-                    <!-- Blog Post Card 2 -->
+                    <!-- Card 9: Victoria Terminus: A Gothic Masterpiece (Oct 2023) -->
                     <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
-                        <a href="blog-post-2.html" class="block">
+                        <a href="https://shop.bombaygothic.com/blogs/news/victoria-terminus-a-gothic-masterpiece" class="block">
                             <div class="overflow-hidden">
-                                <img src="images/CST Building Victorian Gothic.jpg" alt="An illustration of the CST Building" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                <img src="images/CST Building Victorian Gothic.jpg" alt="An illustration of the CST building" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
                             </div>
                             <div class="p-6">
                                 <h3 class="font-playfair text-2xl mb-2">Victoria Terminus: A Gothic Masterpiece</h3>
@@ -150,9 +283,9 @@
                         </a>
                     </div>
 
-                    <!-- Blog Post Card 3 -->
+                    <!-- Card 10: Beyond the Arch: The Gateway's Legacy (Sep 2023) -->
                     <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
-                        <a href="blog-post-3.html" class="block">
+                        <a href="https://shop.bombaygothic.com/blogs/news/beyond-the-arch-the-gateways-legacy" class="block">
                             <div class="overflow-hidden">
                                 <img src="images/Gateway to India.jpg" alt="An illustration of the Gateway of India" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
                             </div>
@@ -164,9 +297,9 @@
                         </a>
                     </div>
 
-                    <!-- Blog Post Card 4 -->
+                    <!-- Card 11: Our Favourite Heritage Walk Moments (Sep 2023) -->
                     <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
-                        <a href="blog-post-4.html" class="block">
+                        <a href="https://shop.bombaygothic.com/blogs/news/our-favourite-heritage-walk-moments" class="block">
                             <div class="overflow-hidden">
                                 <img src="images/heritagewalks.jpg" alt="A graphic of Gothic arches" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
                             </div>
@@ -178,9 +311,9 @@
                         </a>
                     </div>
 
-                    <!-- Blog Post Card 5 -->
+                    <!-- Card 12: From Sketch to Product (Aug 2023) -->
                     <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
-                        <a href="blog-post-5.html" class="block">
+                        <a href="https://shop.bombaygothic.com/blogs/news/from-sketch-to-product-the-design-process" class="block">
                             <div class="overflow-hidden">
                                 <img src="images/consultancy.jpg" alt="Abstract architectural design" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
                             </div>
@@ -192,11 +325,11 @@
                         </a>
                     </div>
 
-                    <!-- Blog Post Card 6 -->
+                    <!-- Card 13: Meet the Founder (Jul 2023) -->
                     <div class="group overflow-hidden rounded-lg shadow-lg bg-white">
-                        <a href="blog-post-6.html" class="block">
+                        <a href="https://shop.bombaygothic.com/blogs/news/meet-the-founder-an-interview-with-kruti-garg" class="block">
                             <div class="overflow-hidden">
-                                <img src="images/KrutiGarg1.jpeg" alt="Kruti Garg" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                <img src="images/KrutiGarg1.jpeg" alt="Kruti Garg, founder of Bombay Gothic" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
                             </div>
                             <div class="p-6">
                                 <h3 class="font-playfair text-2xl mb-2">Meet the Founder: Kruti Garg</h3>
@@ -206,20 +339,130 @@
                         </a>
                     </div>
 
-                    <!-- To add a new blog post in the future, just copy one of the cards above and paste it here! -->
-
                 </div>
+
+                <!-- Pagination controls — populated by JS below.
+                     Matches shop.bombaygothic.com/blogs/news pagination (6 per page). -->
+                <nav id="journal-pagination" class="flex justify-center items-center gap-2 mt-16" aria-label="Journal pagination" hidden></nav>
             </div>
         </section>
     </main>
 
-    <!-- Step 3: Add your reusable footer component -->
     <main-footer></main-footer>
 
-    <!-- Step 4: Add the scripts to load your components -->
     <script src="js/header.js"></script>
     <script src="js/footer.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
+    <!--
+        Journal pagination — 23 May 2026.
+        Pure-vanilla JS so it works without Alpine or any framework dependency.
+        Shows 6 cards per page (matching shop.bombaygothic.com/blogs/news).
+        Page is read from ?page=N (default 1). URL stays sharable / bookmarkable.
+    -->
+    <script>
+      (function () {
+        const grid = document.getElementById('journal-grid');
+        const nav = document.getElementById('journal-pagination');
+        if (!grid || !nav) return;
+
+        const cards = Array.from(grid.children).filter(function (el) {
+          return el.tagName === 'DIV';
+        });
+        const perPage = parseInt(grid.dataset.cardsPerPage || '6', 10);
+        const totalPages = Math.max(1, Math.ceil(cards.length / perPage));
+
+        function readPageFromUrl() {
+          const params = new URLSearchParams(window.location.search);
+          const raw = parseInt(params.get('page') || '1', 10);
+          if (isNaN(raw) || raw < 1) return 1;
+          if (raw > totalPages) return totalPages;
+          return raw;
+        }
+
+        function showPage(n) {
+          const start = (n - 1) * perPage;
+          const end = start + perPage;
+          cards.forEach(function (card, i) {
+            card.style.display = i >= start && i < end ? '' : 'none';
+          });
+          renderPagination(n);
+        }
+
+        function renderPagination(active) {
+          if (totalPages <= 1) {
+            nav.hidden = true;
+            return;
+          }
+          nav.hidden = false;
+          nav.innerHTML = '';
+
+          const baseBtn = 'font-raleway text-sm w-10 h-10 inline-flex items-center justify-center rounded-full transition-colors';
+          const inactive = baseBtn + ' text-brand-text hover:bg-brand-terracotta hover:text-white';
+          const activeCls = baseBtn + ' bg-brand-terracotta text-white';
+          const arrow = baseBtn + ' text-brand-text hover:text-brand-terracotta';
+          const disabled = baseBtn + ' text-gray-300 cursor-not-allowed';
+
+          function mkBtn(label, page, className, aria) {
+            const a = document.createElement('a');
+            a.textContent = label;
+            a.className = className;
+            if (page) {
+              a.href = '?page=' + page;
+              a.setAttribute('aria-label', aria || ('Go to page ' + page));
+            } else {
+              a.setAttribute('aria-disabled', 'true');
+            }
+            return a;
+          }
+
+          // Previous arrow
+          if (active > 1) {
+            nav.appendChild(mkBtn('‹', active - 1, arrow, 'Previous page'));
+          } else {
+            nav.appendChild(mkBtn('‹', null, disabled, 'Previous page'));
+          }
+
+          // Page number buttons
+          for (let p = 1; p <= totalPages; p++) {
+            nav.appendChild(mkBtn(String(p), p, p === active ? activeCls : inactive));
+          }
+
+          // Next arrow
+          if (active < totalPages) {
+            nav.appendChild(mkBtn('›', active + 1, arrow, 'Next page'));
+          } else {
+            nav.appendChild(mkBtn('›', null, disabled, 'Next page'));
+          }
+        }
+
+        // Intercept clicks: update URL via history.pushState, re-render without
+        // full page load. Falls back to native navigation if pushState fails.
+        nav.addEventListener('click', function (e) {
+          const a = e.target.closest('a[href]');
+          if (!a) return;
+          if (a.getAttribute('aria-disabled') === 'true') {
+            e.preventDefault();
+            return;
+          }
+          const url = new URL(a.href, window.location.href);
+          const p = parseInt(url.searchParams.get('page') || '1', 10);
+          if (isNaN(p) || p < 1 || p > totalPages) return;
+          e.preventDefault();
+          history.pushState({ page: p }, '', '?page=' + p);
+          showPage(p);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Back/forward button support
+        window.addEventListener('popstate', function () {
+          showPage(readPageFromUrl());
+        });
+
+        // Initial render
+        showPage(readPageFromUrl());
+      })();
+    </script>
+
 </body>
 </html>
