@@ -150,10 +150,21 @@
             font-size: 18px;
             font-weight: bold;
         }
-        /* Custom style to make Instagram embeds match the site's rounded corner style */
-        .instagram-media {
-            border-radius: 0.5rem; /* This matches Tailwind's 'rounded-lg' */
-        }
+        /* Latest from Instagram rail — auto-updating brand cards.
+           Mirrors sections/instagram-feed.liquid on shop.bombaygothic.com; change both together. */
+        .ig-rail { scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(170,72,55,.35) transparent; }
+        .ig-rail::-webkit-scrollbar { height: 4px; }
+        .ig-rail::-webkit-scrollbar-thumb { background: rgba(170,72,55,.35); border-radius: 4px; }
+        .ig-card { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; border-radius: .5rem; background: #efe9dd; color: #F9F8F2; scroll-snap-align: start; }
+        .ig-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+        .ig-card:hover img, .ig-card:focus-visible img { transform: scale(1.05); }
+        .ig-badge { position: absolute; top: .6rem; right: .6rem; width: 1.4rem; height: 1.4rem; filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)); }
+        .ig-badge svg { width: 100%; height: 100%; }
+        .ig-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.5rem 1rem 1rem; font-size: .9rem; line-height: 1.4; font-weight: 500;
+            background: linear-gradient(to top, rgba(170,72,55,.92), rgba(170,72,55,0)); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+            opacity: 0; transform: translateY(.4rem); transition: opacity .25s ease, transform .25s ease; }
+        .ig-card:hover .ig-caption, .ig-card:focus-visible .ig-caption { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .ig-card img, .ig-caption { transition: none; } }
     </style>
 
     <style>
@@ -722,73 +733,27 @@
     </section>
     <!-- End of Section 9 -->
 
-    <!-- 
+    <!--
         ======================================================================
-        FINAL & CORRECTED SECTION: Latest from Instagram (Compact Embed Row)
+        SECTION 10: Latest from Instagram — auto-updating rail
+        Posts load from https://dashboard.bombaygothic.com/api/public/instagram
+        (bg-command-center, Graph API, 1h cache). Nothing to edit by hand.
+        If the feed is unreachable the whole section stays hidden.
         ======================================================================
     -->
-    <section class="bg-brand-beige py-16 md:py-24">
+    <section class="bg-brand-beige py-16 md:py-24" data-ig-rail data-feed-url="https://dashboard.bombaygothic.com/api/public/instagram?limit=8" hidden>
         <div class="container mx-auto px-6">
-            
-            <!-- Section Title -->
             <div class="text-center mb-12">
                 <h2 class="font-playfair text-4xl md:text-5xl">Latest from Instagram</h2>
-                <a href="https://www.instagram.com/bombay_gothic/" target="_blank" class="font-raleway text-lg font-extralight text-gray-600 hover:text-brand-terracotta transition-colors">
+                <a href="https://www.instagram.com/bombay_gothic/" target="_blank" rel="noopener" class="font-raleway text-lg font-extralight text-gray-600 hover:text-brand-terracotta transition-colors">
                     @bombay_gothic
                 </a>
             </div>
-
-            <!-- 
-                Horizontally Scrolling Container
-                - 'flex' creates the row layout.
-                - 'overflow-x-auto' adds the horizontal scrollbar only when needed.
-                - 'space-x-4' adds a small gap between the posts.
-                - 'pb-4' adds padding at the bottom to make space for the scrollbar.
-            -->
-            <div class="flex overflow-x-auto space-x-4 pb-4">
-
-                <!-- 
-                    Each post is wrapped in a div to control its size.
-                    - 'flex-shrink-0' prevents the posts from being squished.
-                    - 'w-80' sets the width to 320px, forcing the embed to its minimum size.
-                -->
-                <!-- Post 7 -->
-                <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOD0kCdDCpW/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
-                </div>
-                <!-- Post 8 -->
-                <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DNppAjit6Mg/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
-                </div>
-                <!-- Post 1 -->
-                <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DLxC7n-SYNT/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
-                </div>
-
-                <!-- Post 2 -->
-                <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLkfMOZobQ-/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
-                </div>
-
-                <!-- Post 3 -->
-                <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DLSZeX7ojqw/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
-                </div>
-
-                <!-- Post 4 -->
-                <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DFnjLaeT-U7/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
-                </div>
-                
-                <!-- Post 5 -->
-                <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DFpGt-KoNcs/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
-                </div>
-
-                <!-- Post 6 -->
-                <div class="flex-shrink-0 w-80">
-                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CPgHqYrn59N/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="width:100%;"></blockquote>
-                </div>
+            <ul class="ig-rail flex overflow-x-auto gap-4 pb-4 list-none" role="list" data-ig-track></ul>
+            <div class="text-center mt-10">
+                <a href="https://www.instagram.com/bombay_gothic/" target="_blank" rel="noopener" class="inline-block font-raleway border border-brand-terracotta text-brand-terracotta px-8 py-3 rounded hover:bg-brand-terracotta hover:text-white transition-colors">
+                    Follow @bombay_gothic
+                </a>
             </div>
         </div>
     </section>
@@ -842,18 +807,41 @@
     });
     </script>
 
-    <!-- INSTAGRAM EMBED SCRIPT - ADD IT HERE -->
-    <script async src="https://www.instagram.com/embed.js"></script>
-    <!-- 
-        THIS IS THE FIX: This small script waits for the Instagram library to load,
-        and then it explicitly tells it to find and render all posts on the page.
-    -->
+    <!-- Latest from Instagram rail — renders cards from the dashboard feed -->
     <script>
-      window.addEventListener('load', function() {
-        if (typeof window.instgrm !== 'undefined') {
-          window.instgrm.Embeds.process();
-        }
-      });
+    (function () {
+        var root = document.querySelector('[data-ig-rail]');
+        if (!root) return;
+        var track = root.querySelector('[data-ig-track]');
+        var badge = {
+            VIDEO: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>',
+            CAROUSEL_ALBUM: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h14v14H7z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7v14h14" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
+        };
+        fetch(root.dataset.feedUrl, { credentials: 'omit' })
+            .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+            .then(function (data) {
+                var posts = (data && data.posts) || [];
+                if (!posts.length) return;
+                posts.forEach(function (p) {
+                    var li = document.createElement('li');
+                    li.className = 'flex-shrink-0 w-64 md:w-72';
+                    var a = document.createElement('a');
+                    a.className = 'ig-card';
+                    a.href = p.permalink; a.target = '_blank'; a.rel = 'noopener';
+                    a.setAttribute('aria-label', (p.type === 'VIDEO' ? 'Reel' : 'Post') + ' on Instagram' + (p.caption ? ': ' + p.caption : ''));
+                    var img = document.createElement('img');
+                    img.src = p.image; img.alt = p.caption || 'Bombay Gothic on Instagram';
+                    img.loading = 'lazy'; img.decoding = 'async'; img.width = 640; img.height = 640;
+                    img.onerror = function () { li.remove(); };
+                    a.appendChild(img);
+                    if (badge[p.type]) { var b = document.createElement('span'); b.className = 'ig-badge'; b.innerHTML = badge[p.type]; a.appendChild(b); }
+                    if (p.caption) { var c = document.createElement('span'); c.className = 'ig-caption'; c.textContent = p.caption; a.appendChild(c); }
+                    li.appendChild(a); track.appendChild(li);
+                });
+                root.hidden = false;
+            })
+            .catch(function () { /* feed unavailable — keep the section hidden */ });
+    })();
     </script>
 
 </body>
