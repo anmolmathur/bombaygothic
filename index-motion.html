@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombay Gothic - City. Culture. Curios.</title>
+    <!-- MOTION PREVIEW: parallel GSAP version of index.html, awaiting approval. Keep out of search until it replaces index.html. -->
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- SEO / Metadata -->
+    <meta name="description" content="Discover Bombay Gothic, where Mumbai's rich architectural heritage is transformed into nostalgic cityscapes and artistic curios. Explore our collections, design consultancy, and curated heritage walks.">
+    <meta name="keywords" content="Bombay Gothic, Mumbai, art, design, heritage, architecture, curios, souvenirs, Kruti Garg, conservation architect, heritage walks, design consultancy, Victorian Gothic">
+    <link rel="canonical" href="https://www.bombaygothic.com/">
+
+    <!-- Social Media Sharing (Open Graph & Twitter) -->
+    <meta property="og:title" content="Bombay Gothic - City, Culture, Curios">
+    <meta property="og:description" content="Discover Bombay Gothic, where Mumbai's rich architectural heritage is transformed into nostalgic cityscapes and artistic curios. Explore our collections, design consultancy, and curated heritage walks.">
+    <meta property="og:image" content="https://bombaygothic.com/images/BombayGothic_Landscape.jpg"> <!-- NOTE: Create a 1200x630px image for this path -->
+    <meta property="og:url" content="https://www.bombaygothic.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bombay Gothic">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bombay Gothic - City, Culture, Curios">
+    <meta name="twitter:description" content="Discover Bombay Gothic, where Mumbai's rich architectural heritage is transformed into nostalgic cityscapes and artistic curios. Explore our collections, design consultancy, and curated heritage walks.">
+    <meta name="twitter:image" content="https://bombaygothic.com/images/BombayGothic_Landscape.jpg"> <!-- NOTE: This can be the same as the og:image -->
+
+    <!-- Favicons (NOTE: Generate these files using a tool like https://realfavicongenerator.net/ and place them in your root folder) -->
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <meta name="theme-color" content="#F9F8F2">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+        <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- Google Fonts: Now including Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,100&family=Raleway:wght@200;400;700&display=swap" rel="stylesheet">
+        <!-- Swiper.js for the Blog Carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link href="https://fonts.cdnfonts.com/css/karlotte" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'lovtony': ['Lovtony', 'cursive'],
+                        'playfair': ['Raleway', 'sans-serif'],
+                        'raleway': ['Raleway', 'sans-serif'],
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'facelio': ['facelio', 'sans-serif'],
+                        'karlotte': ['Karlotte', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-beige': '#F9F8F2',
+                        'brand-beige-alt': '#E8D6E7',
+                        'brand-terracotta': '#AA4837',
+                        'brand-dark': '#1A1A1A',
+                        'brand-text': '#333333',
+                        'brand-consultancy': '#80352C',
+                        'brand-heritage': '#000000',
+                    },
+                    animation: {
+                        'marquee': 'marquee 40s linear infinite',
+                    },
+                    keyframes: {
+                       marquee: {
+                         '0%': { transform: 'translateX(100%)' },
+                         '100%': { transform: 'translateX(-100%)' },
+                       }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        // Safari-specific fix for scrolling issue
+        (function() {
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            if (isSafari) {
+                document.documentElement.classList.add('is-safari');
+            }
+        })();
+    </script>
+
+    <style type="text/tailwindcss">
+        @font-face {
+            font-family: 'Lovtony';
+            /* 
+               UPDATED FONT PATH:
+               Looks for the simplified 'lovtony.ttf' filename.
+               Please ensure your font file is renamed and in the same folder.
+            */
+            src: url('lovtony.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'facelio';
+            /* 
+               UPDATED FONT PATH:
+               Looks for the simplified 'Facelio.ttf' filename.
+               Please ensure your font file is renamed and in the same folder.
+            */
+            src: url('Facelio.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        /* Custom Animations for Hero Section */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        /* Smoother transitions for the hero text fade */
+        .text-fade {
+            transition: opacity 0.5s ease-in-out;
+        }
+                /* Animation for the small italic texts */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+        }
+                /* Custom styles for Swiper.js navigation arrows */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #AA4837; /* Brand Terracotta */
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 44px;
+            height: 44px;
+            border-radius: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        /* Latest from Instagram rail — auto-updating brand cards.
+           Mirrors sections/instagram-feed.liquid on shop.bombaygothic.com; change both together. */
+        .ig-rail { scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: rgba(170,72,55,.35) transparent; }
+        .ig-rail::-webkit-scrollbar { height: 4px; }
+        .ig-rail::-webkit-scrollbar-thumb { background: rgba(170,72,55,.35); border-radius: 4px; }
+        .ig-card { position: relative; display: block; aspect-ratio: 1 / 1; overflow: hidden; border-radius: .5rem; background: #efe9dd; color: #F9F8F2; scroll-snap-align: start; }
+        .ig-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+        .ig-card:hover img, .ig-card:focus-visible img { transform: scale(1.05); }
+        .ig-badge { position: absolute; top: .6rem; right: .6rem; width: 1.4rem; height: 1.4rem; filter: drop-shadow(0 1px 2px rgba(0,0,0,.45)); }
+        .ig-badge svg { width: 100%; height: 100%; }
+        .ig-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.5rem 1rem 1rem; font-size: .9rem; line-height: 1.4; font-weight: 500;
+            background: linear-gradient(to top, rgba(170,72,55,.92), rgba(170,72,55,0)); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+            opacity: 0; transform: translateY(.4rem); transition: opacity .25s ease, transform .25s ease; }
+        .ig-card:hover .ig-caption, .ig-card:focus-visible .ig-caption { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) { .ig-card img, .ig-caption { transition: none; } }
+    </style>
+
+    <style>
+        /* Apply the transform hack only on Safari */
+        .is-safari .sticky-container-safari-fix {
+            transform: translateZ(0);
+        }
+    </style>
+    <style>
+        /* Responsive font size adjustments for mobile devices */
+        @media (max-width: 768px) {
+            html {
+                font-size: 80%;
+            }
+        }
+    </style>
+    <script defer src="/js/bg-analytics.js"></script>
+
+    <!-- GSAP (motion preview) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
+    <style>
+        /* Scroll progress hairline */
+        .bg-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: #AA4837; transform: scaleX(0); transform-origin: 0 50%; z-index: 60; pointer-events: none; }
+
+        /* Hero: GSAP pins this one screen instead of the 300vh sticky wrapper */
+        .hero-seq { position: relative; height: 100vh; width: 100%; overflow: hidden; }
+        .hero-floater { will-change: transform; }
+
+        /* Kala Ghoda: oversized background layer so it can drift for parallax */
+        .kg-reveal { overflow: hidden; }
+        .kg-layer { position: absolute; left: 0; right: 0; top: -15%; bottom: -15%; background-size: cover; background-position: center; background-repeat: no-repeat; }
+
+        /* Bombay Ballad: band drifts like a passing ship */
+        .ballad-band { overflow: hidden; }
+        .ballad-band img { transform: scale(1.25); will-change: transform; }
+
+        /* Desktop + motion allowed: product grid becomes a pinned horizontal voyage */
+        @media (min-width: 1024px) {
+            .motion-ok .ballad-voyage { height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+            .motion-ok .ballad-track { display: flex; gap: 3rem; width: max-content; max-width: none; margin: 0; padding: 0 12vw; }
+            .motion-ok .ballad-track > a { width: 30vw; flex-shrink: 0; }
+            .motion-ok .ballad-track > a img { aspect-ratio: 4 / 5; }
+        }
+
+        /* SplitText line masks */
+        .split-line { overflow: hidden; padding-bottom: 0.08em; }
+
+        /* Preview badge — delete when promoting to index.html */
+        .motion-badge { position: fixed; left: 16px; bottom: 16px; z-index: 70; font: 400 11px/1 Raleway, sans-serif; letter-spacing: .2em; text-transform: uppercase; background: #1A1A1A; color: #F9F8F2; padding: 10px 14px; border-radius: 999px; opacity: .85; }
+        .motion-badge:hover { opacity: 1; background: #AA4837; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ballad-band img { transform: none; }
+        }
+    </style>
+</head>
+
+<body class="bg-brand-beige font-raleway text-brand-text">
+    <div class="bg-progress" aria-hidden="true"></div>
+    <a href="index.html" class="motion-badge" title="Open the current live homepage">motion preview &middot; view live</a>
+
+    <!-- Section 1: Header - Strip (Updated with Title Case Text) -->
+    <div class="bg-brand-terracotta text-white font-raleway font-extralight py-3 overflow-hidden whitespace-nowrap text-sm tracking-wider">
+        <div class="w-full inline-block animate-marquee" style="margin: 0 10%;">
+            <!-- Text updated as per request -->
+            <span class="mx-8">CITY.. CULTURE.. CURIOS..</span>
+            <span class="mx-8">CITY.. CULTURE.. CURIOS..</span>
+            <span class="mx-8" aria-hidden="true">CITY.. CULTURE.. CURIOS..</span>
+            <span class="mx-8" aria-hidden="true">CITY.. CULTURE.. CURIOS..</span>
+        </div>
+    </div>
+    <!-- End of Section 1 -->
+
+
+    <!-- Section 2: Main Header (Final Version with All Updates) -->
+    <header 
+        x-data="{ scrolled: false, mobileMenuOpen: false, shopMenuOpen: false, mobileShopOpen: false }" 
+        @scroll.window="scrolled = (window.scrollY > 50)"
+        :class="{ 'bg-brand-beige shadow-lg': scrolled, 'bg-transparent': !scrolled }"
+        class="sticky top-0 z-50 w-full transition-colors duration-300 ease-in-out relative"
+        @keydown.escape.window="shopMenuOpen = false"
+    >
+        <div class="w-full flex justify-between items-center px-6 py-4 md:px-10">
+            
+<!-- Mobile Header: Logo and Menu Button -->
+<div class="w-full flex justify-between items-center md:hidden">
+    <div class="flex-1 flex justify-center">
+        <!-- Centered Logo for Mobile -->
+        <a href="https://bombaygothic.com" class="flex items-center space-x-2">
+            <img src="images/Logotype.png" alt="Bombay Gothic Logo" class="h-20 w-auto scale-150">
+        </a>
+    </div>
+</div>
+
+<!-- Desktop Header: Full Width -->
+<div class="hidden w-full md:flex justify-between items-center">
+                <!-- Logo - Aligned Left -->
+                <div class="flex-none">
+                    <a href="https://bombaygothic.com" class="flex items-center space-x-2 ml-4">
+                        <img src="images/Logotype.png" alt="Bombay Gothic Logo" class="h-20 w-auto scale-150">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation - Centered -->
+                <nav class="hidden md:flex flex-grow justify-center items-center space-x-8">
+                    <!-- <button type="button" @click="shopMenuOpen = !shopMenuOpen" class="font-raleway text-lg transition-colors focus:outline-none border-b-2 border-transparent pb-1" :class="{ 'text-brand-terracotta border-brand-terracotta': shopMenuOpen, 'text-brand-text hover:text-brand-terracotta': !shopMenuOpen }" aria-haspopup="true" :aria-expanded="shopMenuOpen.toString()">shop</button> -->
+                    <a href="https://shop.bombaygothic.com/" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors border-b-2 border-transparent hover:border-brand-terracotta pb-1">shop</a> 
+                    <a href="https://bombaygothic.com/consultancy.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors border-b-2 border-transparent hover:border-brand-terracotta pb-1">consultancy</a>
+                    <a href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors border-b-2 border-transparent hover:border-brand-terracotta pb-1">heritage walks</a>
+                    <a href="https://bombaygothic.com/journal.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors border-b-2 border-transparent hover:border-brand-terracotta pb-1">journal</a>
+                    <a href="https://shop.bombaygothic.com/collections/all-products" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors border-b-2 border-transparent hover:border-brand-terracotta pb-1">products</a>
+                    <a href="https://bombaygothic.com/aboutus.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors border-b-2 border-transparent hover:border-brand-terracotta pb-1">our story</a>
+                    <a href="https://bombaygothic.com/corporate.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors border-b-2 border-transparent hover:border-brand-terracotta pb-1">corporate</a>
+                </nav>
+
+                <!-- Right-Side Actions (Desktop) & Mobile Menu Button -->
+                <div class="flex-none flex items-center justify-end">
+                    <!-- Desktop Icons & Enquire Button -->
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="https://www.instagram.com/bombay_gothic/" target="_blank" class="text-brand-text text-xl hover:text-brand-terracotta transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="https://shop.bombaygothic.com/cart" class="text-brand-text text-xl hover:text-brand-terracotta transition-colors"><i class="fas fa-cart-shopping"></i></a>
+                        <a href="https://bombaygothic.com/contact.html" class="bg-brand-terracotta text-white font-raleway px-5 py-2 rounded-md hover:bg-brand-dark transition-colors">
+                            enquire
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-brand-text">
+                    <svg x-show="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <svg x-show="mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Desktop Shop Submenu (Mega Menu) - This is currently disabled as shop button behaviour has changed -->
+        <div 
+            x-show="shopMenuOpen" 
+            x-transition 
+            @click.away="shopMenuOpen = false"
+            class="hidden md:block absolute left-0 right-0 top-full bg-brand-beige/95 backdrop-blur border-t border-gray-200 shadow-lg"
+            style="display: none;"
+        >
+            <div class="container mx-auto px-6 md:px-10 py-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <a href="https://shop.bombaygothic.com/collections/all" target="_blank" class="group block text-center">
+                        <div class="relative overflow-hidden rounded-lg bg-white aspect-square w-1/2 mx-auto">
+                            <img src="images/shoponline.jpg" alt="All Products" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300">
+                        </div>
+                        <div class="mt-4 font-playfair text-xl">All Products</div>
+                    </a>
+                    <a href="https://shop.bombaygothic.com/" target="_blank" class="group block text-center">
+                        <div class="relative overflow-hidden rounded-lg bg-white aspect-square w-1/2 mx-auto">
+                            <img src="images/artinstallation.jpg" alt="By Category" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300">
+                        </div>
+                        <div class="mt-4 font-playfair text-xl">By Category</div>
+                    </a>
+                    <a href="https://shop.bombaygothic.com/collections" target="_blank" class="group block text-center">
+                        <div class="relative overflow-hidden rounded-lg bg-white aspect-square w-1/2 mx-auto">
+                            <img src="images/pressand media1.jpg" alt="By Collection" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300">
+                        </div>
+                        <div class="mt-4 font-playfair text-xl">By Collection</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel (Updated) -->
+        <div 
+            x-show="mobileMenuOpen" 
+            @click.away="mobileMenuOpen = false"
+            x-transition
+            class="md:hidden absolute top-0 inset-x-0 w-full bg-brand-beige shadow-lg pt-24 pb-8"
+            style="display: none;"
+        >
+            <nav class="flex flex-col items-center space-y-6">
+                <!-- Updated Links 
+                <button @click="mobileShopOpen = !mobileShopOpen" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">shop</button>
+                -->
+                <!-- Mobile Shop Submenu 
+                <div x-show="mobileShopOpen" x-transition class="w-full px-6">
+                    <div class="grid grid-cols-3 gap-4">
+                        <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com/collections/all" target="_blank" class="group block text-center">
+                            <div class="relative overflow-hidden rounded-lg bg-white aspect-square w-20 sm:w-24 mx-auto">
+                                <img src="images/shoponline.jpg" alt="All Products" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300">
+                            </div>
+                            <div class="mt-2 font-playfair text-sm">All Products</div>
+                        </a>
+                        <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com/" target="_blank" class="group block text-center">
+                            <div class="relative overflow-hidden rounded-lg bg-white aspect-square w-20 sm:w-24 mx-auto">
+                                <img src="images/artinstallation.jpg" alt="By Category" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300">
+                            </div>
+                            <div class="mt-2 font-playfair text-sm">By Category</div>
+                        </a>
+                        <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com/collections" target="_blank" class="group block text-center">
+                            <div class="relative overflow-hidden rounded-lg bg-white aspect-square w-20 sm:w-24 mx-auto">
+                                <img src="images/pressand media1.jpg" alt="By Collection" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300">
+                            </div>
+                            <div class="mt-2 font-playfair text-sm">By Collection</div>
+                        </a>
+                    </div>
+                </div> -->
+                <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">shop</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/consultancy.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">consultancy</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/heritagewalks.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">heritage walks</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/journal.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">journal</a>
+                <a @click="mobileMenuOpen = false" href="https://shop.bombaygothic.com/collections/all-products" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">products</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/aboutus.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">our story</a>
+                <a @click="mobileMenuOpen = false" href="https://bombaygothic.com/corporate.html" class="font-raleway text-lg text-brand-text hover:text-brand-terracotta transition-colors">corporate</a>
+                
+                <!-- Social & Cart Icons for Mobile -->
+                <div class="flex items-center space-x-6 pt-6">
+                    <a href="https://www.instagram.com/bombay_gothic/" target="_blank" class="text-brand-text text-2xl hover:text-brand-terracotta transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="https://shop.bombaygothic.com/cart" class="text-brand-text text-2xl hover:text-brand-terracotta transition-colors"><i class="fas fa-cart-shopping"></i></a>
+                </div>
+
+                <!-- Enquire Button for Mobile -->
+                <div class="pt-2">
+                    <a href="https://bombaygothic.com/contact.html" class="inline-block bg-brand-terracotta text-white font-raleway px-8 py-3 rounded-md hover:bg-brand-dark transition-colors">
+                        enquire now
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- End of Section 2 -->
+
+    <!-- 
+        ======================================================================
+        FINAL Corrected Sections 3, 4, & 5: The "Sequential Animation"
+        ======================================================================
+    -->
+    <div class="hero-seq" id="hero-seq">
+            <!-- Layer 1: The Hero Scene (Images and Text) -->
+            <div class="absolute inset-0 z-10 bg-brand-beige">
+                <!-- Text Container -->
+                <div class="absolute inset-0 z-20 flex items-start justify-center">
+                    <div class="relative w-full h-full">
+                        <div class="hero-headline absolute inset-0 flex items-start justify-center pt-12 md:pt-24">
+                            <h1 id="hero-title" class="font-raleway font-thin text-5xl md:text-6xl lg:text-7xl font-normal text-brand-text leading-tight md:leading-snug text-center">
+                                Curating <br>nostalgic <span class="font-facelio italic text-8xl"> cityscapes</span><br>
+                                and artistic<span class="font-facelio font-thin text-8xl"> CURIOS</span><br>
+                                that <span class="font-raleway font-thin italic">celebrate</span><br><span class="font-facelio text-8xl"> Bombay</span>
+                            </h1>
+                        </div>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 hidden md:block">Crafting Architectural<br>Stories</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 hidden md:block">Celebrating Bombay's<br>Heritage</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 hidden md:block">Weaving Heritage<br>Narratives</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 hidden md:block">Embodying Bohemian<br>Spirit</p>
+                        <p class="random-text absolute font-playfair italic text-base text-gray-400 opacity-0 hidden md:block">Blending Art,<br>Culture</p>
+                    </div>
+                </div>
+
+                <!-- Image Container (behind the text) -->
+                <div class="absolute inset-0 z-10">
+                    <div class="hero-floater absolute top-[8%] left-[5%] w-24 h-20 md:w-48 md:h-32" data-depth="1.2">
+                         <img src="images/KrutiGarg1.jpeg" alt="Kruti Garg - Image 1" class="w-full h-full object-cover rounded-lg shadow-sm">
+                    </div>
+                    <div class="hero-floater absolute top-[20%] right-[5%] w-28 h-24 md:top-[25%] md:right-[10%] md:w-56 md:h-40" data-depth="0.8">
+                        <img src="images/KrutiGarg2.jpeg" alt="Kruti Garg - Image 2" class="w-full h-full object-cover rounded-lg shadow-sm">
+                    </div>
+                    <div class="hero-floater absolute top-[70%] left-[10%] w-20 h-28 md:top-auto md:bottom-[15%] md:left-[15%] md:w-40 md:h-56" data-depth="1">
+                         <img src="images/KrutiGarg3.jpeg" alt="Kruti Garg - Image 3" class="w-full h-full object-cover rounded-lg shadow-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 2: The "Meet the Creator" Section (slid up by GSAP) -->
+            <div class="creator-layer absolute inset-0 z-20">
+                <section id="section5" class="w-full h-full bg-brand-beige overflow-y-auto md:overflow-hidden px-4 py-8 md:px-10 md:py-12 flex items-center">
+                    <div class="container mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+                            <div class="creator-portrait w-full px-8 md:px-0">
+                                <img src="images/KrutiGarg.jpg" alt="Kruti Garg, Founder of Bombay Gothic" class="w-full h-auto object-cover rounded-lg shadow-xl">
+                            </div>
+                            <div class="font-raleway text-brand-text">
+                                <h2 class="creator-title font-playfair text-4xl md:text-5xl mb-6">MEET the CREATOR</h2>
+                                <div class="creator-copy space-y-4 text-lg font-extralight leading-relaxed">
+                                    <p>Born from my love for Mumbai and deep respect for its cultural heritage, Bombay Gothic began in 2021 as a way to bring art and architecture into our everyday lives. My work celebrates the city’s iconic Gothic skyline through illustrated cityscapes that spark nostalgia, honour history, and invite you to see Mumbai through a new lens.</p>
+                                    <p>As a conservation architect, I preserve the physical fabric of our cities. But through Bombay Gothic, I also try to preserve the intangible — the memories, moods, and magic that make Bombay, Bombay. Every piece is a love letter to the city’s soul — where art, heritage, and storytelling meet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+    </div>
+    <!-- End of Combined Hero Sequence -->
+
+        <!-- 
+        ======================================================================
+        Section 6: Full-Width Illustration (Corrected to Fit Screen Width)
+        ======================================================================
+    -->
+    <!--
+        FIXES APPLIED:
+        1. We are now using an inline style for precise background control.
+        2. `background-size: 100% auto;` makes the image width fit the screen exactly.
+        3. Removed 'bg-fixed' to ensure predictable sizing and better mobile performance.
+    -->
+    <section class="kg-reveal relative h-[30vh] md:h-[60vh] w-full bg-brand-beige" aria-label="Kala Ghoda illustration">
+        <div class="kg-layer" style="background-image: url('images/Kala Ghoda website.png');"></div>
+        <!-- The overlay is kept to maintain a consistent look -->
+        <!--<div class="absolute inset-0 bg-black/10"></div> -->
+    </section>
+    <!-- End of Section 6 -->
+
+    <!-- 
+        ======================================================================
+        Section 6b: New Design Series - The Bombay Ballad
+        ======================================================================
+    -->
+    <section id="bombay-ballad" class="bg-brand-beige">
+
+        <!-- Series artwork band -->
+        <div class="ballad-band w-full">
+            <img src="images/bombay-ballad/bombay-ballad-band.jpg"
+                 alt="The Bombay Ballad - maritime toile illustration of Ballard Estate: the Prongs Lighthouse, sailing ships, the Grand Hotel, the Port Trust War Memorial and the Mackinnon Mackenzie Building, drawn in burgundy against powder-blue stripes"
+                 class="w-full h-[28vh] md:h-[45vh] object-cover object-center"
+                 loading="lazy">
+        </div>
+
+        <div class="container mx-auto px-6 py-16 md:py-24 flex flex-col items-center text-center">
+
+            <span class="ballad-kicker font-raleway uppercase tracking-[0.3em] text-xs md:text-sm text-brand-terracotta mb-4">new design series</span>
+            <h2 class="ballad-title font-playfair text-4xl md:text-5xl mb-6">The Bombay Ballad</h2>
+
+            <div class="ballad-intro max-w-3xl">
+                <p class="font-raleway text-lg font-extralight leading-relaxed text-gray-600">
+                    Bombay has always been a city shaped by water. The Bombay Ballad celebrates that maritime legacy through an original interpretation of the Toile de Jouy tradition &mdash; Bombay Gothic's signature maroon set against powder-blue nautical stripes, weaving Ballard Estate's Edwardian architecture together with the harbour, its lighthouses, ships and tropical landscapes.
+                </p>
+            </div>
+        </div>
+
+        <!-- Product Grid (pinned horizontal voyage on desktop) -->
+        <div class="ballad-voyage w-full">
+            <div class="ballad-track grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 mt-14 px-6 container mx-auto">
+
+                <a href="https://shop.bombaygothic.com/products/ballard-bunder-plates" target="_blank" class="group flex flex-col">
+                    <div class="overflow-hidden rounded-md bg-white">
+                        <img src="images/bombay-ballad/bombay-ballad-plates.jpg" alt="Ballard Bunder Plates, set of two bone china plates illustrated with the Ballard Bunder Gatehouse and the Port Trust War Memorial" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300 mt-4">Ballard Bunder Plates</span>
+                </a>
+
+                <a href="https://shop.bombaygothic.com/products/portside-cup-and-saucer" target="_blank" class="group flex flex-col">
+                    <div class="overflow-hidden rounded-md bg-white">
+                        <img src="images/bombay-ballad/bombay-ballad-cup-and-saucer.jpg" alt="Portside Cup and Saucer, bone china cups on powder-blue striped saucers illustrated with the Prongs Lighthouse" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300 mt-4">Portside Cup &amp; Saucer</span>
+                </a>
+
+                <a href="https://shop.bombaygothic.com/products/the-bombay-tide-glasses" target="_blank" class="group flex flex-col">
+                    <div class="overflow-hidden rounded-md bg-white">
+                        <img src="images/bombay-ballad/bombay-ballad-glasses.jpg" alt="The Bombay Tide Glasses, translucent powder-blue striped water glasses with a burgundy lighthouse and palm illustration" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300 mt-4">The Bombay Tide Glasses</span>
+                </a>
+
+                <a href="https://shop.bombaygothic.com/products/the-lamp-and-palm-mug" target="_blank" class="group flex flex-col">
+                    <div class="overflow-hidden rounded-md bg-white">
+                        <img src="images/bombay-ballad/bombay-ballad-mug.jpg" alt="The Lamp and Palm Mug, a powder-blue striped vacuum insulated travel mug with a burgundy street lamp and palm illustration" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300 mt-4">The Lamp &amp; Palm Mug</span>
+                </a>
+
+                <a href="https://shop.bombaygothic.com/products/the-bombay-ballad-umbrella" target="_blank" class="group flex flex-col">
+                    <div class="overflow-hidden rounded-md bg-white">
+                        <img src="images/bombay-ballad/bombay-ballad-umbrella.jpg" alt="The Bombay Ballad umbrella, a sixty inch powder-blue striped golf canopy illustrated with lighthouses, ships and palms" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                    </div>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300 mt-4">Umbrella</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="container mx-auto px-6 pb-16 md:pb-24 flex flex-col items-center text-center">
+            <!-- Shop the Series Button -->
+            <div class="mt-16">
+                <a href="https://shop.bombaygothic.com/collections/the-bombay-ballad" target="_blank" class="btn-magnetic inline-block bg-brand-terracotta text-white font-raleway px-8 py-3 rounded-md hover:bg-brand-dark transition-colors">
+                    shop the bombay ballad
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- End of Section 6b -->
+
+
+    <!-- 
+        ======================================================================
+        Section 7: Curated Collections (UPDATED with New Categories & Links)
+        ======================================================================
+    -->
+    <section id="collections" class="bg-brand-beige py-16 md:py-24">
+        <div class="container mx-auto px-6 flex flex-col items-center text-center">
+
+            <!-- Text Content -->
+            <div class="max-w-3xl">
+                <h2 class="font-playfair text-4xl md:text-5xl mb-4">Curated Collections Just for You</h2>
+                <p class="font-raleway text-lg font-extralight leading-relaxed text-gray-600">Explore our curated collections of artistic curios inspired by Bombay's architectural designs and timeless charm.
+                    Each Bombay Gothic collection is a love letter to the city — capturing its architectural designs and timeless charm. Whether you're a born-and-raised Bombayite or simply in love with its spirit, our collections invite you to experience the city in a way that’s both personal and poetic.
+                </p>
+            </div>
+
+            <!-- Icon Grid (Updated with new categories) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-12 mt-16 w-full">
+                
+                <!-- Category 1: Candles -->
+                <a href="https://shop.bombaygothic.com/collections/candles" target="_blank" class="group flex flex-col items-center space-y-3">
+                    <i class="fa-solid fa-fire text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Candles</span>
+                </a>
+                
+                <!-- Category 2: Drinkware -->
+                <a href="https://shop.bombaygothic.com/collections/glass-mugs" target="_blank" class="group flex flex-col items-center space-y-3">
+                    <i class="fa-solid fa-mug-hot text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Drinkware</span>
+                </a>
+                
+                <!-- Category 3: Stationery -->
+                <a href="https://shop.bombaygothic.com/collections/notebook-notepads" target="_blank" class="group flex flex-col items-center space-y-3">
+                    <i class="fa-solid fa-book text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Stationery</span>
+                </a>
+
+                <!-- Category 4: Art Frames -->
+                <a href="https://shop.bombaygothic.com/collections/picture-frames" target="_blank" class="group flex flex-col items-center space-y-3">
+                    <i class="fa-solid fa-image text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Art Frames</span>
+                </a>
+
+                <!-- Category 5: Flasks -->
+                <a href="https://shop.bombaygothic.com/collections/flasks" target="_blank" class="group flex flex-col items-center space-y-3">
+                    <i class="fa-solid fa-prescription-bottle text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Flasks</span>
+                </a>
+
+                <!-- Category 6: Games -->
+                <a href="https://shop.bombaygothic.com/collections/memory-game" target="_blank" class="group flex flex-col items-center space-y-3">
+                    <i class="fa-solid fa-puzzle-piece text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
+                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Games</span>
+                </a>
+            </div>
+
+            <!-- Shop Collection Button -->
+            <div class="mt-16">
+                 <a href="http://shop.bombaygothic.com" target="_blank" class="btn-magnetic inline-block bg-brand-terracotta text-white font-raleway px-8 py-3 rounded-md hover:bg-brand-dark transition-colors">
+                    shop our collection
+                </a>
+            </div>
+
+        </div>
+    </section>
+    <!-- End of Section 7 -->
+    <!-- 
+        ======================================================================
+        Section 8: Other Services (Corrected with New Colors & Mobile View)
+        ======================================================================
+    -->
+    <div class="bg-brand-beige">
+
+        <!-- Part 1: Design Consultancy -->
+        <section id="consultancy" class="relative bg-brand-consultancy text-white py-20 md:py-32 overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Text Content -->
+                    <div class="text-center md:text-left">
+                        <h2 class="font-playfair text-4xl md:text-5xl mb-4">design consultancy</h2>
+                        <p class="font-raleway font-extralight text-lg leading-relaxed max-w-md mx-auto md:mx-0">
+                            Harnessing the power of architectural storytelling to create unique graphic interpretations, bespoke merchandise, and compelling brand narratives inspired by heritage.
+                        </p>
+                        <div class="mt-8">
+                            <a href="https://bombaygothic.com/consultancy.html" class="btn-magnetic inline-block bg-white text-brand-dark font-raleway px-8 py-3 rounded-md hover:bg-brand-dark hover:text-white transition-colors duration-300">
+                                know more
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Content -->
+                    <div class="relative h-80 md:h-auto">
+                        <!-- 
+                            FIX: Image is now visible on all screen sizes. 
+                            The absolute positioning only applies on desktop (md:).
+                        -->
+                         <img src="images/consultancy.jpg" alt="Abstract architectural design for consultancy" class="w-full h-full object-contain md:absolute md:-right-20 md:top-1/2 md:-translate-y-1/2 md:w-[500px] md:h-auto md:object-cover">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Part 2: Heritage Walks -->
+        <section id="heritage" class="relative bg-brand-heritage text-white py-20 md:py-32 overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Image Content -->
+                    <div class="relative h-80 md:h-auto order-last md:order-first">
+                         <img src="images/heritagewalks.jpg" alt="A graphic of Gothic arches for heritage walks" class="w-full h-full object-contain md:absolute md:-left-20 md:top-1/2 md:-translate-y-1/2 md:w-[500px] md:h-auto md:object-cover">
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="text-center md:text-left order-first md:order-last">
+                        <h2 class="font-playfair text-4xl md:text-5xl mb-4">heritage walks</h2>
+                        <p class="font-raleway font-extralight text-lg leading-relaxed max-w-md mx-auto md:mx-0">
+                           Explore Bombay’s rich architectural history through our curated walking tours. Each walk is a journey through time, uncovering the stories behind the city’s most iconic structures.
+                        </p>
+                        <div class="mt-8">
+                            <a href="https://bombaygothic.com/heritagewalks.html" class="btn-magnetic inline-block bg-brand-terracotta text-white font-raleway px-8 py-3 rounded-md hover:bg-white hover:text-brand-dark transition-colors duration-300">
+                                know more
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!-- End of Section 8 -->
+     
+    <!-- 
+        ======================================================================
+        Section 9: Blog Posts (Upgraded to a Scrollable Carousel)
+        ======================================================================
+    -->
+    <section id="journal" class="bg-brand-beige py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            
+            <!-- Section Title -->
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-4xl md:text-5xl">From the Journal</h2>
+            </div>
+
+            <!-- Swiper Carousel Container -->
+            <div class="swiper blog-swiper relative">
+                <div class="swiper-wrapper">
+
+                    <!-- Blog Post Card 1 -->
+                    <div class="swiper-slide group">
+                        <div class="overflow-hidden rounded-lg shadow-lg bg-white">
+                            <a href="blog-post-1.html" class="block">
+                                <div class="overflow-hidden">
+                                    <img src="images/Kalaghoda Kaliedoscope.jpg" alt="An illustration of Kala Ghoda" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-playfair text-2xl mb-2">The Magic of Kala Ghoda's Architecture</h3>
+                                    <p class="font-raleway font-extralight text-gray-600 mb-4 h-24">A deep dive into the stories and styles that define Mumbai's iconic art precinct.</p>
+                                    <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post Card 2 -->
+                    <div class="swiper-slide group">
+                         <div class="overflow-hidden rounded-lg shadow-lg bg-white">
+                            <a href="blog-post-2.html" class="block">
+                                <div class="overflow-hidden">
+                                    <img src="images/CST Building Victorian Gothic.jpg" alt="An illustration of the CST Building" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-playfair text-2xl mb-2">Victoria Terminus: A Gothic Masterpiece</h3>
+                                    <p class="font-raleway font-extralight text-gray-600 mb-4 h-24">Uncovering the intricate details and history of the UNESCO World Heritage Site.</p>
+                                    <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post Card 3 -->
+                    <div class="swiper-slide group">
+                        <div class="overflow-hidden rounded-lg shadow-lg bg-white">
+                            <a href="blog-post-3.html" class="block">
+                                <div class="overflow-hidden">
+                                    <img src="images/Gateway to India.jpg" alt="An illustration of the Gateway of India" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-playfair text-2xl mb-2">Beyond the Arch: The Gateway's Legacy</h3>
+                                    <p class="font-raleway font-extralight text-gray-600 mb-4 h-24">Exploring the shift to Indo-Saracenic style and its significance in Bombay's story.</p>
+                                    <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- NEW Blog Post Card 4 
+                    <div class="swiper-slide group">
+                        <div class="overflow-hidden rounded-lg shadow-lg bg-white">
+                            <a href="blog-post-4.html" class="block">
+                                <div class="overflow-hidden">
+                                    <img src="images/heritagewalks.jpg" alt="A graphic of Gothic arches" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-playfair text-2xl mb-2">Our Favourite Heritage Walk Moments</h3>
+                                    <p class="font-raleway font-extralight text-gray-600 mb-4 h-24">A photographic journey through the hidden alleys and grand facades we explore on our walks.</p>
+                                    <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- NEW Blog Post Card 5 
+                    <div class="swiper-slide group">
+                        <div class="overflow-hidden rounded-lg shadow-lg bg-white">
+                            <a href="blog-post-5.html" class="block">
+                                <div class="overflow-hidden">
+                                    <img src="images/consultancy.jpg" alt="Abstract architectural design" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-playfair text-2xl mb-2">From Sketch to Product: The Design Process</h3>
+                                    <p class="font-raleway font-extralight text-gray-600 mb-4 h-24">Go behind the scenes and see how we transform architectural art into everyday curios.</p>
+                                    <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- NEW Blog Post Card 6 
+                    <div class="swiper-slide group">
+                        <div class="overflow-hidden rounded-lg shadow-lg bg-white">
+                            <a href="blog-post-6.html" class="block">
+                                <div class="overflow-hidden">
+                                    <img src="images/KrutiGarg1.jpeg" alt="Kruti Garg" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out">
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="font-playfair text-2xl mb-2">Meet the Founder: Kruti Garg</h3>
+                                    <p class="font-raleway font-extralight text-gray-600 mb-4 h-24">An interview with our founder on her passion for architecture and the city of Bombay.</p>
+                                    <span class="font-raleway text-brand-terracotta group-hover:underline">read more</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                -->
+                </div>
+                <!-- Navigation Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End of Section 9 -->
+
+    <!-- 
+        ======================================================================
+        FINAL & CORRECTED SECTION: Latest from Instagram (Compact Embed Row)
+        ======================================================================
+    -->
+    <section id="instagram" class="bg-brand-beige py-16 md:py-24" data-ig-rail data-feed-url="https://dashboard.bombaygothic.com/api/public/instagram?limit=8" hidden>
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-4xl md:text-5xl">Latest from Instagram</h2>
+                <a href="https://www.instagram.com/bombay_gothic/" target="_blank" rel="noopener" class="font-raleway text-lg font-extralight text-gray-600 hover:text-brand-terracotta transition-colors">
+                    @bombay_gothic
+                </a>
+            </div>
+            <ul class="ig-rail flex overflow-x-auto gap-4 pb-4 list-none" role="list" data-ig-track></ul>
+            <div class="text-center mt-10">
+                <a href="https://www.instagram.com/bombay_gothic/" target="_blank" rel="noopener" class="inline-block font-raleway border border-brand-terracotta text-brand-terracotta px-8 py-3 rounded hover:bg-brand-terracotta hover:text-white transition-colors">
+                    Follow @bombay_gothic
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- End of Section 10 -->
+
+    <!-- Step 3: Add your reusable footer component -->
+    <main-footer></main-footer>
+
+    <!-- Step 4: Add the scripts to load your components -->
+    
+    <script src="js/footer.js"></script>
+    
+
+        <!-- 
+        ======================================================================
+        Section 11: Footer
+        ======================================================================
+    -->
+    <!-- Footer Component is now included above -->
+    <!-- End of Footer -->
+
+
+
+    <script>
+    const swiper = new Swiper('.blog-swiper', {
+        // Optional parameters
+        loop: true,
+        spaceBetween: 32,
+        
+        // Responsive breakpoints
+        breakpoints: {
+            // when window width is >= 640px
+            640: {
+                slidesPerView: 1,
+            },
+            // when window width is >= 768px
+            768: {
+                slidesPerView: 2,
+            },
+            // when window width is >= 1024px
+            1024: {
+                slidesPerView: 3,
+            }
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    </script>
+
+    <!-- Latest from Instagram rail — renders cards from the dashboard feed -->
+    <script>
+    (function () {
+        var root = document.querySelector('[data-ig-rail]');
+        if (!root) return;
+        var track = root.querySelector('[data-ig-track]');
+        var badge = {
+            VIDEO: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>',
+            CAROUSEL_ALBUM: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h14v14H7z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7v14h14" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
+        };
+        fetch(root.dataset.feedUrl, { credentials: 'omit' })
+            .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+            .then(function (data) {
+                var posts = (data && data.posts) || [];
+                if (!posts.length) return;
+                posts.forEach(function (p) {
+                    var li = document.createElement('li');
+                    li.className = 'flex-shrink-0 w-64 md:w-72';
+                    var a = document.createElement('a');
+                    a.className = 'ig-card';
+                    a.href = p.permalink; a.target = '_blank'; a.rel = 'noopener';
+                    a.setAttribute('aria-label', (p.type === 'VIDEO' ? 'Reel' : 'Post') + ' on Instagram' + (p.caption ? ': ' + p.caption : ''));
+                    var img = document.createElement('img');
+                    img.src = p.image; img.alt = p.caption || 'Bombay Gothic on Instagram';
+                    img.loading = 'lazy'; img.decoding = 'async'; img.width = 640; img.height = 640;
+                    img.onerror = function () { li.remove(); };
+                    a.appendChild(img);
+                    if (badge[p.type]) { var b = document.createElement('span'); b.className = 'ig-badge'; b.innerHTML = badge[p.type]; a.appendChild(b); }
+                    if (p.caption) { var c = document.createElement('span'); c.className = 'ig-caption'; c.textContent = p.caption; a.appendChild(c); }
+                    li.appendChild(a); track.appendChild(li);
+                });
+                root.hidden = false;
+                document.dispatchEvent(new CustomEvent('ig:ready'));
+            })
+            .catch(function () { /* feed unavailable — keep the section hidden */ });
+    })();
+    </script>
+
+    <!-- GSAP motion layer (preview) -->
+    <script src="js/motion.js"></script>
+
+</body>
+</html>
