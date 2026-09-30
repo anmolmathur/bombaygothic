@@ -274,7 +274,8 @@
         .cat-row-thumb { width: 56px; height: 70px; overflow: hidden; background: #efe9dd; border-radius: 50% 50% 6px 6px / 32% 32% 6px 6px; }
         .cat-row-thumb img { width: 100%; height: 100%; object-fit: cover; }
         .cat-row-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
-        .cat-row-name { display: block; overflow: hidden; padding-bottom: 0.06em; }
+        .cat-row-name { display: block; }
+        .motion-ok .cat-row-name { overflow: hidden; padding: 0.1em 0.4em 0.35em 0; margin: -0.1em -0.4em -0.35em 0; } /* mask for the rise; js lifts it afterwards */
         .cat-row-name-inner { display: inline-block; font: 300 1.3rem/1.2 Raleway, sans-serif; transition: color 0.35s, transform 0.45s cubic-bezier(.2,.7,.2,1); }
         .cat-row-sub { font: 200 0.85rem/1.4 Raleway, sans-serif; color: #6b7280; }
         .cat-row-arrow { font-size: 1.1rem; color: #AA4837; transition: transform 0.35s; }

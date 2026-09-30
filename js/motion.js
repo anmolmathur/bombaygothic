@@ -60,8 +60,12 @@
         mask: 'words',
         autoSplit: true,
         onSplit(self) {
+          // The masks clip each word; give them room for descenders (g, y) and
+          // the italic overhang of the display font, then stop clipping once risen.
+          gsap.set(self.masks, { padding: '0.12em 0.22em 0.28em', margin: '-0.12em -0.22em -0.28em' });
           return gsap.from(self.words, {
-            yPercent: 110, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.06, delay: 0.2
+            yPercent: 110, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.06, delay: 0.2,
+            onComplete: () => gsap.set(self.masks, { overflow: 'visible' })
           });
         }
       });
@@ -324,7 +328,10 @@
         const rows = $$('.cat-row', list);
         const tl = gsap.timeline({ scrollTrigger: { trigger: list, start: 'top 80%', once: true } });
         tl.fromTo($$('.cat-row-line', list), { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: 'expo.inOut', stagger: 0.08 }, 0)
-          .from($$('.cat-row-name-inner', list), { yPercent: 110, duration: 0.9, ease: 'power3.out', stagger: 0.08 }, 0.25)
+          .from($$('.cat-row-name-inner', list), {
+            yPercent: 130, duration: 0.9, ease: 'power3.out', stagger: 0.08,
+            onComplete: () => gsap.set($$('.cat-row-name', list), { overflow: 'visible' })
+          }, 0.25)
           .from($$('.cat-row-sub, .cat-row-arrow', list), { opacity: 0, x: -12, duration: 0.7, ease: 'power2.out', stagger: 0.04 }, 0.45)
           .from($$('.cat-row-thumb', list), { clipPath: 'inset(100% 0% 0% 0%)', duration: 0.9, ease: 'expo.out', stagger: 0.08 }, 0.2);
         $$('.cat-row-num', list).forEach((num, i) => tl.add(scramble(num, '0123456789'), 0.2 + i * 0.08));
