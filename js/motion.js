@@ -184,7 +184,7 @@
       chapterIn($('#collections [data-chapter]'));
       const catsMode = document.documentElement.classList;
       if (catsMode.contains('cats-cards')) catCardsIn();
-      else if (desktop && !catsMode.contains('cats-list')) catDiscsIn();
+      else if (!catsMode.contains('cats-list')) catDiscsIn();
       else catListIn();
 
       // ── Scroll-speed marquee ───────────────────────────────────────────
@@ -456,8 +456,23 @@
           track.addEventListener('pointerleave', () => { tiltX[active](0); tiltY[active](0); });
         }
 
-        // Drag to move through (converted into page scroll so pin + snap stay in charge).
-        Observer.create({
+        // Touch: a horizontal swipe steps one category (vertical scroll still works too).
+        if (!finePointer()) {
+          let swiped = false;
+          const step = d => { if (swiped) return; swiped = dragged = true; go(active + d); };
+          Observer.create({
+            target: track,
+            type: 'touch',
+            tolerance: 30,
+            lockAxis: true,
+            onLeft: () => step(1),
+            onRight: () => step(-1),
+            onRelease: () => { swiped = false; setTimeout(() => { dragged = false; }, 80); }
+          });
+        }
+
+        // Mouse drag to move through (converted into page scroll so pin + snap stay in charge).
+        if (finePointer()) Observer.create({
           target: track,
           type: 'pointer,touch',
           dragMinimum: 6,

@@ -290,10 +290,8 @@
         .cat-float { display: none; }
         /* Curated collections, variant C (desktop default): disc gallery */
         .cat-variant-discs { display: none; }
-        @media (min-width: 1024px) {
-            .motion-ok:not(.cats-list):not(.cats-cards) .cat-variant-discs { display: block; }
-            .motion-ok:not(.cats-list):not(.cats-cards) .cat-variant-list { display: none; }
-        }
+        .motion-ok:not(.cats-list):not(.cats-cards) .cat-variant-discs { display: block; }
+        .motion-ok:not(.cats-list):not(.cats-cards) .cat-variant-list { display: none; }
         .cat-variant-discs { width: 100vw; } /* parent column is centred, so this sits full-bleed */
         .disc-stage { --disc: min(50vh, 29vw); position: relative; height: calc(100vh - var(--hdr)); display: grid; grid-template-columns: minmax(280px, 25vw) 1fr minmax(240px, 20vw); grid-template-rows: 1fr auto; align-items: center; column-gap: 2vw; padding: 1.5rem 4vw 1.75rem; text-align: left; overflow: hidden; background: #F9F8F2; }
         .disc-grain { position: absolute; inset: -50%; pointer-events: none; z-index: 5; opacity: 0.08; mix-blend-mode: multiply;
@@ -330,6 +328,26 @@
         .disc-ticks { display: flex; gap: 0.5rem; }
         .disc-ticks i { display: block; width: 28px; height: 2px; background: rgba(51, 51, 51, 0.2); transition: background 0.3s, width 0.3s; }
         .disc-ticks i.is-active { width: 48px; background: #AA4837; }
+        /* Phones & tablets: stack name → disc → details → picks → progress */
+        @media (max-width: 1023px) {
+            .disc-stage { --disc: min(60vw, 32svh); height: calc(100svh - var(--hdr)); grid-template-columns: 1fr; grid-template-rows: auto 1fr auto auto auto; row-gap: 0.6rem; padding: 0.75rem 20px 1rem; }
+            .disc-info { display: contents; }
+            .disc-title-wrap { grid-row: 1; justify-content: center; text-align: center; min-height: 2.3em; margin: 0; font-size: clamp(1.9rem, 8vw, 2.6rem); }
+            .disc-track { grid-column: 1; grid-row: 2; }
+            .disc-details { grid-row: 3; }
+            .disc-row { padding: 0.55rem 0; }
+            .disc-row--index { display: none; }
+            .disc-cta { margin-top: 0.6rem; width: 100%; justify-content: center; }
+            .disc-picks { grid-column: 1; grid-row: 4; flex-direction: row; gap: 0.75rem; }
+            .disc-pick { flex: 1; grid-template-columns: 44px 1fr; gap: 0.6rem; padding: 0.6rem 0; min-width: 0; }
+            .disc-pick:last-child { border-bottom: 0; }
+            .disc-pick-img { width: 44px; height: 44px; }
+            .disc-pick .disc-label { display: none; }
+            .disc-pick-name { font-size: 0.8rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+            .disc-progress { grid-row: 5; font-size: 0.6rem; }
+            .disc-ticks i { width: 16px; }
+            .disc-ticks i.is-active { width: 28px; }
+        }
         @media (min-width: 1024px) {
             .cat-row { grid-template-columns: 3.5rem 1fr auto; gap: 1.5rem; padding: 1.1rem 0.5rem; }
             .cat-row-thumb { display: none; }
@@ -760,10 +778,12 @@
                     <div class="disc-grain" aria-hidden="true"></div>
                     <div class="disc-info">
                         <p class="disc-title-wrap"><span class="disc-title" data-field="name">drinkware</span></p>
-                        <div class="disc-row"><span class="disc-rule"></span><span class="disc-label">category</span><span class="disc-value" data-field="index">01 / 06</span></div>
+                        <div class="disc-details">
+                        <div class="disc-row disc-row--index"><span class="disc-rule"></span><span class="disc-label">category</span><span class="disc-value" data-field="index">01 / 06</span></div>
                         <div class="disc-row"><span class="disc-rule"></span><span class="disc-label">featuring</span><span class="disc-value" data-field="sub">glass mugs, flasks &amp; sippers</span></div>
                         <div class="disc-row"><span class="disc-rule"></span><span class="disc-label">signature piece</span><span class="disc-value" data-field="signature">Gothic Light Glass Mugs</span></div>
                         <a href="https://shop.bombaygothic.com/collections/drinkware" target="_blank" class="disc-cta btn-magnetic" data-field="cta">explore <span data-field="cta-name">drinkware</span> <i aria-hidden="true">&rarr;</i></a>
+                        </div>
                     </div>
                     <div class="disc-track" aria-live="polite">
                         <a href="https://shop.bombaygothic.com/collections/drinkware" target="_blank" class="disc" data-disc="0" aria-label="drinkware collection">
@@ -840,7 +860,7 @@
                     <div class="disc-progress" aria-hidden="true">
                         <span class="disc-count"><span data-field="count">01</span> / 06</span>
                         <span class="disc-ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                        <span class="disc-hint">scroll &middot; drag &middot; &larr; &rarr;</span>
+                        <span class="disc-hint"><span class="hidden lg:inline">scroll &middot; drag &middot; &larr; &rarr;</span><span class="lg:hidden">scroll &middot; swipe</span></span>
                     </div>
                 </div>
                 <script type="application/json" id="disc-data">[{"url": "https://shop.bombaygothic.com/collections/drinkware", "name": "drinkware", "sub": "glass mugs, flasks & sippers", "signature": "Gothic Light Glass Mugs", "picks": [{"url": "https://shop.bombaygothic.com/products/flask-bombay-bohemian", "name": "Bombay Bohemian Thermos Flask", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Flask2.jpg?width=240"}, {"url": "https://shop.bombaygothic.com/products/coffee-flask-sipper", "name": "Coffee Flask Sipper", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/flasksipper_gothicechoes_yellow.png?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/accessories", "name": "accessories", "sub": "diaries, totes & desk pieces", "signature": "Bound and Bold Diary", "picks": [{"url": "https://shop.bombaygothic.com/products/tote-bag-storytellers-tote", "name": "Yellow Storyteller's Tote Bag", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Yellow_tote.jpg?width=240"}, {"url": "https://shop.bombaygothic.com/products/tote-bag", "name": "Tote Bag", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Tote.jpg?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/home", "name": "home & decor", "sub": "aromatic candles & coasters", "signature": "Bom'bahia' Aromatic Candle", "picks": [{"url": "https://shop.bombaygothic.com/products/candle-tides-of-time-urbs-prima-in-indis", "name": "Tides of Time Aromatic Candle", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/IMG_0075.jpg?width=240"}, {"url": "https://shop.bombaygothic.com/products/rose-window-round-marble-coasters-set-of-2", "name": "Rose Window Round Marble Coasters", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/5.png?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/games-entertainment", "name": "games & entertainment", "sub": "playing cards & memory game", "signature": "Victorian Gothic Ensemble Playing Cards", "picks": [{"url": "https://shop.bombaygothic.com/products/memory-game", "name": "Bombay Gothic Memory Game", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/memorygame.png?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/barware", "name": "barware", "sub": "whiskey, wine, shot & champagne glasses", "signature": "After Hours Whiskey Glasses", "picks": [{"url": "https://shop.bombaygothic.com/products/shot-glasses-gothic-glow-set-of-4", "name": "Gothic Glow Shot Glasses", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/shot_glasses.png?width=240"}, {"url": "https://shop.bombaygothic.com/products/bench-barrel-wine-glasses-set-of-2", "name": "Bench & Barrel Wine Glasses", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Bench_BarrelWineGlasses_Setof2.jpg?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/tableware", "name": "tableware", "sub": "plates, cups & saucers", "signature": "Rose Tracery Quarter Plate", "picks": [{"url": "https://shop.bombaygothic.com/products/ballard-bunder-plates", "name": "Ballard Bunder Plates", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/bombay-ballad-07.png?width=240"}, {"url": "https://shop.bombaygothic.com/products/portside-cup-and-saucer", "name": "Portside Cup and Saucer", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/bombay-ballad-04.png?width=240"}]}]</script>
