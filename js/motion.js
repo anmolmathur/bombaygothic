@@ -177,20 +177,36 @@
       }
 
       // ── 04 · Curated collections ───────────────────────────────────────
+      // Arch frames rise open from the base, then each card slowly cycles
+      // through products from its collection while it is on screen.
       chapterIn($('#collections [data-chapter]'));
-      gsap.set('#collections .grid > a', { opacity: 0, y: 30, scale: 0.8 });
-      ScrollTrigger.batch('#collections .grid > a', {
-        start: 'top 92%',
+      const catCards = $$('#collections .cat-card');
+      gsap.set(catCards, { opacity: 0, y: 50 });
+      gsap.set(catCards.map(c => $('.cat-frame', c)), { clipPath: 'inset(100% 0% 0% 0%)' });
+      ScrollTrigger.batch(catCards, {
+        start: 'top 90%',
         once: true,
-        onEnter: batch => gsap.to(batch, { opacity: 1, y: 0, scale: 1, stagger: 0.08, duration: 0.7, ease: 'back.out(2)' })
+        onEnter: batch => {
+          gsap.to(batch, { opacity: 1, y: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out' });
+          gsap.to(batch.map(c => $('.cat-frame', c)), { clipPath: 'inset(0% 0% 0% 0%)', stagger: 0.12, duration: 1.2, ease: 'expo.out' });
+          gsap.from(batch.map(c => $('.cat-meta', c)), { y: 16, opacity: 0, stagger: 0.12, duration: 0.8, delay: 0.3, ease: 'power2.out' });
+        }
       });
-      $$('#collections .grid > a').forEach(link => {
-        const icon = link.querySelector('i');
-        link.addEventListener('mouseenter', () => {
-          gsap.fromTo(icon, { rotate: 0 }, { keyframes: { rotate: [0, -12, 10, -6, 0] }, duration: 0.6, ease: 'power1.inOut' });
-          gsap.to(icon, { y: -6, duration: 0.3, ease: 'power2.out' });
+      catCards.forEach((card, i) => {
+        const imgs = $$('.cat-img', card);
+        if (imgs.length < 2) return;
+        const cycle = gsap.timeline({ repeat: -1, paused: true, delay: i * 0.4 });
+        imgs.forEach((img, k) => {
+          const next = imgs[(k + 1) % imgs.length];
+          cycle.to(img, { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, k * 2.8 + 2)
+            .to(next, { opacity: 1, duration: 0.9, ease: 'power1.inOut' }, k * 2.8 + 2);
         });
-        link.addEventListener('mouseleave', () => gsap.to(icon, { y: 0, duration: 0.4, ease: 'power2.out' }));
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top bottom',
+          end: 'bottom top',
+          onToggle: self => (self.isActive ? cycle.play() : cycle.pause())
+        });
       });
 
       // ── Scroll-speed marquee ───────────────────────────────────────────
@@ -322,9 +338,13 @@
           .fromTo('.kg-pen', { left: '0%' }, { left: '100%', duration: 1 }, 0)
           .fromTo(pan, { x: 0 }, { x: () => -panTravel(), duration: 1 }, 0)
           .to('.kg-pen', { opacity: 0, duration: 0.08 }, 1);
+        // As the pen reaches a landmark: dot lands, stem grows up into the sky, label settles on top.
         spots.forEach(spot => {
           const at = parseFloat(spot.dataset.at);
-          tl.fromTo(spot, { opacity: 0, y: 14, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.08, ease: 'back.out(2)' }, at);
+          tl.set(spot, { opacity: 1 }, at)
+            .fromTo($('.kg-dot', spot), { scale: 0 }, { scale: 1, duration: 0.03, ease: 'back.out(3)' }, at)
+            .fromTo($('.kg-stem', spot), { scaleY: 0 }, { scaleY: 1, duration: 0.06, ease: 'power2.out' }, at + 0.02)
+            .fromTo($('.kg-label', spot), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.05, ease: 'power2.out' }, at + 0.07);
         });
         if (desktop) {
           // Lean in to the statue that named the precinct, then settle back.
@@ -335,7 +355,12 @@
         } else {
           // Narrow screens: once drawn, glide back so the library and the
           // statue settle side by side with their labels in view.
-          const settleX = () => -gsap.utils.clamp(0, panTravel(), 0.58 * pan.offsetWidth - window.innerWidth / 2);
+          const statue = spots[spots.length - 1];
+          const settleX = () => {
+            // stop where the statue's label (which extends to the right) just fits on screen
+            const labelRight = statue.offsetLeft + $('.kg-label', statue).offsetWidth - 14;
+            return -gsap.utils.clamp(0, panTravel(), labelRight - window.innerWidth + 12);
+          };
           tl.to(pan, { x: settleX, duration: 0.45, ease: 'power1.inOut' }, 1.05)
             .to({}, { duration: 0.25 });
         }

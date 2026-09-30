@@ -233,16 +233,33 @@
         @media (max-width: 767px) { .motion-ok .kg-img { height: 46vh; } }
         .kg-pen { position: absolute; top: 4%; bottom: 0; left: 0; width: 2px; background: #AA4837; box-shadow: 0 0 18px rgba(170, 72, 55, 0.55); opacity: 0; pointer-events: none; }
         .kg-pen::after { content: ""; position: absolute; top: -6px; left: -4px; width: 10px; height: 10px; border-radius: 50%; background: #AA4837; }
-        /* The dot sits exactly on the landmark; the label hangs above it (or below with --below) */
-        .kg-spot { position: absolute; translate: -50% calc(-100% + 6px); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; pointer-events: none; }
-        .kg-spot--below { translate: -50% -6px; }
-        .kg-dot { width: 12px; height: 12px; border-radius: 50%; background: #AA4837; box-shadow: 0 0 0 6px rgba(170, 72, 55, 0.2); }
-        .kg-label { order: -1; background: rgba(249, 248, 242, 0.94); border: 1px solid rgba(170, 72, 55, 0.35); border-radius: 999px; padding: 0.45rem 0.9rem; font: 400 0.8rem/1.2 Raleway, sans-serif; color: #1A1A1A; white-space: nowrap; text-align: center; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); }
-        .kg-spot--below .kg-label { order: 1; }
+        /* Hotspot = a zero-width column from the label (in open sky) down to the dot on the landmark */
+        .kg-spot { position: absolute; width: 0; pointer-events: none; }
+        .kg-stem { position: absolute; left: -0.5px; top: 0; bottom: 0; width: 1px; background: #AA4837; transform-origin: 50% 100%; }
+        .kg-dot { position: absolute; left: -6px; bottom: -6px; width: 12px; height: 12px; border-radius: 50%; background: #AA4837; box-shadow: 0 0 0 6px rgba(170, 72, 55, 0.2); }
+        .kg-label { position: absolute; bottom: 100%; left: 0; translate: -50% -6px; background: rgba(249, 248, 242, 0.95); border: 1px solid rgba(170, 72, 55, 0.35); border-radius: 999px; padding: 0.45rem 0.9rem; font: 400 0.8rem/1.2 Raleway, sans-serif; color: #1A1A1A; white-space: nowrap; text-align: center; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); }
+        .kg-spot--right .kg-label { translate: -14px -6px; text-align: left; }
         .kg-label small { display: block; font-size: 0.68rem; color: #AA4837; letter-spacing: 0.08em; }
         @media (max-width: 767px) { .kg-label { font-size: 0.7rem; padding: 0.35rem 0.7rem; } .kg-label small { font-size: 0.6rem; } }
-        .kg-spot { opacity: 1; }
         .motion-ok .kg-spot { opacity: 0; }
+
+        /* Curated collections: arch-topped category cards */
+        .cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
+        @media (min-width: 768px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem 2rem; } }
+        .cat-card { display: flex; flex-direction: column; text-align: left; color: #333333; }
+        .cat-frame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #efe9dd; border-radius: 50% 50% 10px 10px / 32% 32% 10px 10px; }
+        .cat-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .cat-img--alt { opacity: 0; }
+        .cat-card:hover .cat-img, .cat-card:focus-visible .cat-img { transform: scale(1.06); }
+        .cat-num { position: absolute; left: 50%; bottom: 0.75rem; translate: -50% 0; font: 400 0.7rem/1 Raleway, sans-serif; letter-spacing: 0.3em; color: #F9F8F2; background: rgba(26, 26, 26, 0.55); padding: 0.4rem 0.6rem 0.4rem 0.9rem; border-radius: 999px; }
+        .cat-meta { display: flex; flex-direction: column; gap: 0.2rem; padding-top: 0.9rem; }
+        .cat-name { font: 400 1.15rem/1.25 Raleway, sans-serif; transition: color 0.3s; }
+        .cat-sub { font: 200 0.9rem/1.4 Raleway, sans-serif; color: #6b7280; }
+        .cat-cta { margin-top: 0.35rem; font: 400 0.7rem/1 Raleway, sans-serif; letter-spacing: 0.25em; text-transform: uppercase; color: #AA4837; }
+        .cat-cta i { display: inline-block; font-style: normal; transition: transform 0.3s; }
+        .cat-card:hover .cat-name { color: #AA4837; }
+        .cat-card:hover .cat-cta i { transform: translateX(6px); }
+        @media (min-width: 768px) { .cat-name { font-size: 1.4rem; } }
 
         /* Bombay Ballad: band drifts like a passing ship */
         .ballad-band { overflow: hidden; }
@@ -553,9 +570,10 @@
                 <div class="kg-pan">
                     <img src="images/kala-ghoda-panorama.jpg" class="kg-img" alt="Architectural line drawing of the Kala Ghoda precinct in Mumbai: Elphinstone College, the David Sassoon Library and the Kala Ghoda equestrian statue" width="3200" height="1419">
                     <span class="kg-pen" aria-hidden="true"></span>
-                    <div class="kg-spot" style="left:12%;top:21%" data-at="0.12"><span class="kg-dot"></span><span class="kg-label">Elphinstone College<small>Victorian Gothic</small></span></div>
-                    <div class="kg-spot" style="left:51.7%;top:53%" data-at="0.52"><span class="kg-dot"></span><span class="kg-label">David Sassoon Library<small>reading room founded 1847</small></span></div>
-                    <div class="kg-spot kg-spot--below" style="left:64.5%;top:64%" data-at="0.645"><span class="kg-dot"></span><span class="kg-label">Kala Ghoda<small>the black horse that named the precinct</small></span></div>
+                    <!-- Hotspots: left = landmark x; top = where the label sits (open sky); height = drop to the dot on the landmark. All % of the drawing. -->
+                    <div class="kg-spot kg-spot--right" style="left:12%;top:11%;height:23%" data-at="0.12"><span class="kg-stem"></span><span class="kg-dot"></span><span class="kg-label">Elphinstone College<small>Victorian Gothic</small></span></div>
+                    <div class="kg-spot" style="left:51.75%;top:22%;height:31.5%" data-at="0.52"><span class="kg-stem"></span><span class="kg-dot"></span><span class="kg-label">David Sassoon Library<small>reading room founded 1847</small></span></div>
+                    <div class="kg-spot kg-spot--right" style="left:64.5%;top:33%;height:27%" data-at="0.645"><span class="kg-stem"></span><span class="kg-dot"></span><span class="kg-label">Kala Ghoda<small>the black horse that named the precinct</small></span></div>
                 </div>
             </div>
         </div>
@@ -651,46 +669,87 @@
                 <div class="chapter-rule"><span class="chapter-line"></span><span class="chapter-num">04</span><span class="chapter-line"></span></div>
                 <p class="chapter-kicker">shop by category</p>
                 <h2 class="chapter-title font-playfair text-4xl md:text-5xl">Curated Collections Just for You</h2>
-                <p class="chapter-lede">Explore our curated collections of artistic curios inspired by Bombay's architectural designs and timeless charm. Each Bombay Gothic collection is a love letter to the city — capturing its architectural designs and timeless charm. Whether you're a born-and-raised Bombayite or simply in love with its spirit, our collections invite you to experience the city in a way that’s both personal and poetic.</p>
+                <p class="chapter-lede">Explore our curated collections of artistic curios inspired by Bombay's architectural designs and timeless charm.</p>
             </header>
 
-            <!-- Icon Grid (Updated with new categories) -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-8 gap-y-12 mt-6 w-full">
-                
-                <!-- Category 1: Candles -->
-                <a href="https://shop.bombaygothic.com/collections/candles" target="_blank" class="group flex flex-col items-center space-y-3">
-                    <i class="fa-solid fa-fire text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
-                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Candles</span>
+            <!-- Category cards: mirror the "category" menu on shop.bombaygothic.com (update both together) -->
+            <div class="cat-grid mt-6 w-full">
+                <a href="https://shop.bombaygothic.com/collections/drinkware" target="_blank" class="cat-card group">
+                    <div class="cat-frame">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/redglass.jpg?width=720" alt="drinkware: Gothic Light Glass Mugs" class="cat-img" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Flask2.jpg?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/flasksipper_gothicechoes_yellow.png?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <span class="cat-num" aria-hidden="true">01</span>
+                    </div>
+                    <div class="cat-meta">
+                        <span class="cat-name">drinkware</span>
+                        <span class="cat-sub">glass mugs, flasks &amp; sippers</span>
+                        <span class="cat-cta" aria-hidden="true">explore <i>&rarr;</i></span>
+                    </div>
                 </a>
-                
-                <!-- Category 2: Drinkware -->
-                <a href="https://shop.bombaygothic.com/collections/glass-mugs" target="_blank" class="group flex flex-col items-center space-y-3">
-                    <i class="fa-solid fa-mug-hot text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
-                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Drinkware</span>
+                <a href="https://shop.bombaygothic.com/collections/accessories" target="_blank" class="cat-card group">
+                    <div class="cat-frame">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/diary_boundandbold.png?width=720" alt="accessories: Bound and Bold Diary" class="cat-img" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Yellow_tote.jpg?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Kala_Ghoda_Kaleidoscope_3ba32b80-7032-43b7-90ac-ab20c29dd815.jpg?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <span class="cat-num" aria-hidden="true">02</span>
+                    </div>
+                    <div class="cat-meta">
+                        <span class="cat-name">accessories</span>
+                        <span class="cat-sub">diaries, totes &amp; desk pieces</span>
+                        <span class="cat-cta" aria-hidden="true">explore <i>&rarr;</i></span>
+                    </div>
                 </a>
-                
-                <!-- Category 3: Stationery -->
-                <a href="https://shop.bombaygothic.com/collections/notebook-notepads" target="_blank" class="group flex flex-col items-center space-y-3">
-                    <i class="fa-solid fa-book text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
-                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Stationery</span>
+                <a href="https://shop.bombaygothic.com/collections/home" target="_blank" class="cat-card group">
+                    <div class="cat-frame">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/IMG_0040.jpg?width=720" alt="home &amp; decor: Bom'bahia' Aromatic Candle" class="cat-img" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/IMG_0075.jpg?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/5.png?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <span class="cat-num" aria-hidden="true">03</span>
+                    </div>
+                    <div class="cat-meta">
+                        <span class="cat-name">home &amp; decor</span>
+                        <span class="cat-sub">aromatic candles &amp; coasters</span>
+                        <span class="cat-cta" aria-hidden="true">explore <i>&rarr;</i></span>
+                    </div>
                 </a>
-
-                <!-- Category 4: Art Frames -->
-                <a href="https://shop.bombaygothic.com/collections/picture-frames" target="_blank" class="group flex flex-col items-center space-y-3">
-                    <i class="fa-solid fa-image text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
-                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Art Frames</span>
+                <a href="https://shop.bombaygothic.com/collections/games-entertainment" target="_blank" class="cat-card group">
+                    <div class="cat-frame">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/32A56141-6DD8-4776-A477-D8127FACBE92.png?width=720" alt="games &amp; entertainment: Victorian Gothic Ensemble Playing Cards" class="cat-img" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/memorygame.png?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <span class="cat-num" aria-hidden="true">04</span>
+                    </div>
+                    <div class="cat-meta">
+                        <span class="cat-name">games &amp; entertainment</span>
+                        <span class="cat-sub">playing cards &amp; memory game</span>
+                        <span class="cat-cta" aria-hidden="true">explore <i>&rarr;</i></span>
+                    </div>
                 </a>
-
-                <!-- Category 5: Flasks -->
-                <a href="https://shop.bombaygothic.com/collections/flasks" target="_blank" class="group flex flex-col items-center space-y-3">
-                    <i class="fa-solid fa-prescription-bottle text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
-                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Flasks</span>
+                <a href="https://shop.bombaygothic.com/collections/barware" target="_blank" class="cat-card group">
+                    <div class="cat-frame">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/WhiskeyGlasses.jpg?width=720" alt="barware: After Hours Whiskey Glasses" class="cat-img" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/shot_glasses.png?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/ChampagneGlasses.jpg?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <span class="cat-num" aria-hidden="true">05</span>
+                    </div>
+                    <div class="cat-meta">
+                        <span class="cat-name">barware</span>
+                        <span class="cat-sub">whiskey, wine, shot &amp; champagne glasses</span>
+                        <span class="cat-cta" aria-hidden="true">explore <i>&rarr;</i></span>
+                    </div>
                 </a>
-
-                <!-- Category 6: Games -->
-                <a href="https://shop.bombaygothic.com/collections/memory-game" target="_blank" class="group flex flex-col items-center space-y-3">
-                    <i class="fa-solid fa-puzzle-piece text-4xl text-gray-400 group-hover:text-brand-terracotta transition-colors duration-300"></i>
-                    <span class="font-raleway text-brand-text group-hover:text-brand-terracotta transition-colors duration-300">Games</span>
+                <a href="https://shop.bombaygothic.com/collections/tableware" target="_blank" class="cat-card group">
+                    <div class="cat-frame">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/RoseWindowRoundMarbleCoasters_Setof2_a075f1f0-2d08-440a-b764-e46b706b7205.jpg?width=720" alt="tableware: Rose Tracery Quarter Plate" class="cat-img" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/bombay-ballad-07.png?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/bombay-ballad-04.png?width=720" alt="" aria-hidden="true" class="cat-img cat-img--alt" loading="lazy" width="720" height="720">
+                        <span class="cat-num" aria-hidden="true">06</span>
+                    </div>
+                    <div class="cat-meta">
+                        <span class="cat-name">tableware</span>
+                        <span class="cat-sub">plates, cups &amp; saucers</span>
+                        <span class="cat-cta" aria-hidden="true">explore <i>&rarr;</i></span>
+                    </div>
                 </a>
             </div>
 
