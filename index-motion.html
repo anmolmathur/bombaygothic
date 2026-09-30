@@ -93,7 +93,12 @@
             }
         })();
         // Collections variant switch for review: ?cats=cards shows the arch-card grid instead of the list
-        if (/[?&]cats=cards\b/.test(location.search)) document.documentElement.classList.add('cats-cards');
+        // Collections variant switch for review: ?cats=cards (arch cards) or ?cats=list (editorial list everywhere).
+        // Default: disc gallery on desktop, list on phones.
+        (function () {
+            var m = location.search.match(/[?&]cats=(cards|list)\b/);
+            if (m) document.documentElement.classList.add('cats-' + m[1]);
+        })();
     </script>
 
     <style type="text/tailwindcss">
@@ -193,6 +198,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrambleTextPlugin.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
     <style>
         /* --hdr is the sticky header height, set by js/motion.js; pinned scenes sit below it */
         :root { --hdr: 0px; }
@@ -282,6 +288,48 @@
         .cat-row:hover .cat-row-name-inner, .cat-row:focus-visible .cat-row-name-inner { color: #AA4837; transform: translateX(10px); }
         .cat-row:hover .cat-row-arrow, .cat-row:focus-visible .cat-row-arrow { transform: translateX(6px); }
         .cat-float { display: none; }
+        /* Curated collections, variant C (desktop default): disc gallery */
+        .cat-variant-discs { display: none; }
+        @media (min-width: 1024px) {
+            .motion-ok:not(.cats-list):not(.cats-cards) .cat-variant-discs { display: block; }
+            .motion-ok:not(.cats-list):not(.cats-cards) .cat-variant-list { display: none; }
+        }
+        .cat-variant-discs { width: 100vw; } /* parent column is centred, so this sits full-bleed */
+        .disc-stage { --disc: min(50vh, 29vw); position: relative; height: calc(100vh - var(--hdr)); display: grid; grid-template-columns: minmax(280px, 25vw) 1fr minmax(240px, 20vw); grid-template-rows: 1fr auto; align-items: center; column-gap: 2vw; padding: 1.5rem 4vw 1.75rem; text-align: left; overflow: hidden; background: #F9F8F2; }
+        .disc-grain { position: absolute; inset: -50%; pointer-events: none; z-index: 5; opacity: 0.08; mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+        .disc-info { grid-column: 1; grid-row: 1; position: relative; z-index: 3; }
+        .disc-title-wrap { display: flex; align-items: flex-end; min-height: 2.4em; overflow: hidden; padding-bottom: 0.25em; margin-bottom: 0.6rem; font: 200 clamp(2.2rem, 3.4vw, 3.4rem)/1.08 Raleway, sans-serif; color: #1A1A1A; }
+        .disc-title { display: inline-block; }
+        .disc-row { position: relative; display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; padding: 0.85rem 0; }
+        .disc-rule { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: rgba(51, 51, 51, 0.22); transform-origin: 0 50%; }
+        .disc-label { font: 400 0.66rem/1.3 Raleway, sans-serif; letter-spacing: 0.25em; text-transform: uppercase; color: #AA4837; white-space: nowrap; }
+        .disc-value { font: 300 0.95rem/1.4 Raleway, sans-serif; color: #333333; text-align: right; }
+        .disc-cta { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.4rem; background: #AA4837; color: #fff; font: 400 0.95rem/1 Raleway, sans-serif; padding: 0.85rem 1.4rem; border-radius: 0.375rem; transition: background 0.3s; }
+        .disc-cta:hover { background: #1A1A1A; }
+        .disc-track { grid-column: 2; grid-row: 1; position: relative; align-self: stretch; perspective: 1400px; z-index: 1; touch-action: pan-y; cursor: grab; }
+        .disc-track:active { cursor: grabbing; }
+        .disc { position: absolute; left: 50%; top: 50%; width: var(--disc); height: var(--disc); margin: calc(var(--disc) / -2) 0 0 calc(var(--disc) / -2); transform-style: preserve-3d; will-change: transform, opacity; -webkit-user-drag: none; user-select: none; }
+        .disc-tilt { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; }
+        .disc-face { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 50% 50%, #fbfaf5 62%, #ece5d6 100%); box-shadow: 0 0 0 1px rgba(26, 26, 26, 0.06), 0 30px 60px -20px rgba(26, 26, 26, 0.35); }
+        .disc-face img { position: absolute; inset: 7.5%; width: 85%; height: 85%; object-fit: cover; border-radius: 50%; pointer-events: none; -webkit-user-drag: none; }
+        .disc-ring { position: absolute; inset: 4.4%; border-radius: 50%; border: 1px solid rgba(170, 72, 55, 0.6); box-shadow: inset 0 0 0 3px #fbfaf5, inset 0 0 0 4px rgba(170, 72, 55, 0.35); pointer-events: none; }
+        .disc-sheen { position: absolute; inset: 0; border-radius: 50%; pointer-events: none; mix-blend-mode: soft-light;
+            background: conic-gradient(from 0deg, rgba(255,255,255,0) 0deg, rgba(255,255,255,.55) 35deg, rgba(255,255,255,0) 80deg, rgba(255,255,255,0) 170deg, rgba(255,255,255,.4) 215deg, rgba(255,255,255,0) 260deg, rgba(255,255,255,0) 360deg); }
+        .disc-shadow { position: absolute; left: 12%; right: 12%; bottom: -10%; height: 12%; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(26, 26, 26, 0.25), rgba(26, 26, 26, 0) 70%); filter: blur(4px); }
+        .disc-picks { grid-column: 3; grid-row: 1; position: relative; z-index: 3; display: flex; flex-direction: column; }
+        .disc-pick { display: grid; grid-template-columns: 64px 1fr; gap: 0.9rem; align-items: center; padding: 0.9rem 0; border-top: 1px solid rgba(51, 51, 51, 0.22); color: #333333; }
+        .disc-pick:last-child { border-bottom: 1px solid rgba(51, 51, 51, 0.22); }
+        .disc-pick-img { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; background: #efe9dd; box-shadow: 0 0 0 3px #fbfaf5, 0 0 0 4px rgba(170, 72, 55, 0.4); }
+        .disc-pick-img img { width: 100%; height: 100%; object-fit: cover; }
+        .disc-pick-text { display: flex; flex-direction: column; gap: 0.25rem; }
+        .disc-pick-name { font: 300 0.95rem/1.35 Raleway, sans-serif; transition: color 0.3s; }
+        .disc-pick:hover .disc-pick-name { color: #AA4837; }
+        .disc-progress { grid-column: 1 / -1; grid-row: 2; position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: center; font: 400 0.7rem/1 Raleway, sans-serif; letter-spacing: 0.25em; text-transform: uppercase; color: #6b7280; }
+        .disc-count { color: #AA4837; font-variant-numeric: tabular-nums; }
+        .disc-ticks { display: flex; gap: 0.5rem; }
+        .disc-ticks i { display: block; width: 28px; height: 2px; background: rgba(51, 51, 51, 0.2); transition: background 0.3s, width 0.3s; }
+        .disc-ticks i.is-active { width: 48px; background: #AA4837; }
         @media (min-width: 1024px) {
             .cat-row { grid-template-columns: 3.5rem 1fr auto; gap: 1.5rem; padding: 1.1rem 0.5rem; }
             .cat-row-thumb { display: none; }
@@ -704,6 +752,99 @@
                 <h2 class="chapter-title font-playfair text-4xl md:text-5xl">Curated Collections Just for You</h2>
                 <p class="chapter-lede">Explore our curated collections of artistic curios inspired by Bombay's architectural designs and timeless charm.</p>
             </header>
+
+            <!-- Variant C (desktop default): disc gallery, after a24.raviklaassens.com — each category is a plate-like disc;
+                 scroll, drag, arrow keys or click a neighbour to move through. Phones keep the list (variant B). -->
+            <div class="cat-variant-discs" aria-roledescription="carousel" aria-label="Shop by category">
+                <div class="disc-stage">
+                    <div class="disc-grain" aria-hidden="true"></div>
+                    <div class="disc-info">
+                        <p class="disc-title-wrap"><span class="disc-title" data-field="name">drinkware</span></p>
+                        <div class="disc-row"><span class="disc-rule"></span><span class="disc-label">category</span><span class="disc-value" data-field="index">01 / 06</span></div>
+                        <div class="disc-row"><span class="disc-rule"></span><span class="disc-label">featuring</span><span class="disc-value" data-field="sub">glass mugs, flasks &amp; sippers</span></div>
+                        <div class="disc-row"><span class="disc-rule"></span><span class="disc-label">signature piece</span><span class="disc-value" data-field="signature">Gothic Light Glass Mugs</span></div>
+                        <a href="https://shop.bombaygothic.com/collections/drinkware" target="_blank" class="disc-cta btn-magnetic" data-field="cta">explore <span data-field="cta-name">drinkware</span> <i aria-hidden="true">&rarr;</i></a>
+                    </div>
+                    <div class="disc-track" aria-live="polite">
+                        <a href="https://shop.bombaygothic.com/collections/drinkware" target="_blank" class="disc" data-disc="0" aria-label="drinkware collection">
+                            <span class="disc-tilt">
+                                <span class="disc-shadow"></span>
+                                <span class="disc-face">
+                                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/redglass.jpg?width=900" alt="" loading="lazy" width="900" height="900">
+                                    <span class="disc-ring"></span>
+                                    <span class="disc-sheen"></span>
+                                </span>
+                            </span>
+                        </a>
+                        <a href="https://shop.bombaygothic.com/collections/accessories" target="_blank" class="disc" data-disc="1" aria-label="accessories collection">
+                            <span class="disc-tilt">
+                                <span class="disc-shadow"></span>
+                                <span class="disc-face">
+                                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/diary_boundandbold.png?width=900" alt="" loading="lazy" width="900" height="900">
+                                    <span class="disc-ring"></span>
+                                    <span class="disc-sheen"></span>
+                                </span>
+                            </span>
+                        </a>
+                        <a href="https://shop.bombaygothic.com/collections/home" target="_blank" class="disc" data-disc="2" aria-label="home &amp; decor collection">
+                            <span class="disc-tilt">
+                                <span class="disc-shadow"></span>
+                                <span class="disc-face">
+                                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/IMG_0040.jpg?width=900" alt="" loading="lazy" width="900" height="900">
+                                    <span class="disc-ring"></span>
+                                    <span class="disc-sheen"></span>
+                                </span>
+                            </span>
+                        </a>
+                        <a href="https://shop.bombaygothic.com/collections/games-entertainment" target="_blank" class="disc" data-disc="3" aria-label="games &amp; entertainment collection">
+                            <span class="disc-tilt">
+                                <span class="disc-shadow"></span>
+                                <span class="disc-face">
+                                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/32A56141-6DD8-4776-A477-D8127FACBE92.png?width=900" alt="" loading="lazy" width="900" height="900">
+                                    <span class="disc-ring"></span>
+                                    <span class="disc-sheen"></span>
+                                </span>
+                            </span>
+                        </a>
+                        <a href="https://shop.bombaygothic.com/collections/barware" target="_blank" class="disc" data-disc="4" aria-label="barware collection">
+                            <span class="disc-tilt">
+                                <span class="disc-shadow"></span>
+                                <span class="disc-face">
+                                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/WhiskeyGlasses.jpg?width=900" alt="" loading="lazy" width="900" height="900">
+                                    <span class="disc-ring"></span>
+                                    <span class="disc-sheen"></span>
+                                </span>
+                            </span>
+                        </a>
+                        <a href="https://shop.bombaygothic.com/collections/tableware" target="_blank" class="disc" data-disc="5" aria-label="tableware collection">
+                            <span class="disc-tilt">
+                                <span class="disc-shadow"></span>
+                                <span class="disc-face">
+                                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/RoseWindowRoundMarbleCoasters_Setof2_a075f1f0-2d08-440a-b764-e46b706b7205.jpg?width=900" alt="" loading="lazy" width="900" height="900">
+                                    <span class="disc-ring"></span>
+                                    <span class="disc-sheen"></span>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="disc-picks">
+                        <a href="https://shop.bombaygothic.com/products/flask-bombay-bohemian" target="_blank" class="disc-pick" data-pick="0">
+                            <span class="disc-pick-img"><img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Flask2.jpg?width=240" alt="" loading="lazy" width="240" height="240"></span>
+                            <span class="disc-pick-text"><span class="disc-label">from the collection</span><span class="disc-pick-name" data-field="pick0">Bombay Bohemian Thermos Flask</span></span>
+                        </a>
+                        <a href="https://shop.bombaygothic.com/products/coffee-flask-sipper" target="_blank" class="disc-pick" data-pick="1">
+                            <span class="disc-pick-img"><img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/flasksipper_gothicechoes_yellow.png?width=240" alt="" loading="lazy" width="240" height="240"></span>
+                            <span class="disc-pick-text"><span class="disc-label">from the collection</span><span class="disc-pick-name" data-field="pick1">Coffee Flask Sipper</span></span>
+                        </a>
+                    </div>
+                    <div class="disc-progress" aria-hidden="true">
+                        <span class="disc-count"><span data-field="count">01</span> / 06</span>
+                        <span class="disc-ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                        <span class="disc-hint">scroll &middot; drag &middot; &larr; &rarr;</span>
+                    </div>
+                </div>
+                <script type="application/json" id="disc-data">[{"url": "https://shop.bombaygothic.com/collections/drinkware", "name": "drinkware", "sub": "glass mugs, flasks & sippers", "signature": "Gothic Light Glass Mugs", "picks": [{"url": "https://shop.bombaygothic.com/products/flask-bombay-bohemian", "name": "Bombay Bohemian Thermos Flask", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Flask2.jpg?width=240"}, {"url": "https://shop.bombaygothic.com/products/coffee-flask-sipper", "name": "Coffee Flask Sipper", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/flasksipper_gothicechoes_yellow.png?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/accessories", "name": "accessories", "sub": "diaries, totes & desk pieces", "signature": "Bound and Bold Diary", "picks": [{"url": "https://shop.bombaygothic.com/products/tote-bag-storytellers-tote", "name": "Yellow Storyteller's Tote Bag", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Yellow_tote.jpg?width=240"}, {"url": "https://shop.bombaygothic.com/products/tote-bag", "name": "Tote Bag", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Tote.jpg?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/home", "name": "home & decor", "sub": "aromatic candles & coasters", "signature": "Bom'bahia' Aromatic Candle", "picks": [{"url": "https://shop.bombaygothic.com/products/candle-tides-of-time-urbs-prima-in-indis", "name": "Tides of Time Aromatic Candle", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/IMG_0075.jpg?width=240"}, {"url": "https://shop.bombaygothic.com/products/rose-window-round-marble-coasters-set-of-2", "name": "Rose Window Round Marble Coasters", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/5.png?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/games-entertainment", "name": "games & entertainment", "sub": "playing cards & memory game", "signature": "Victorian Gothic Ensemble Playing Cards", "picks": [{"url": "https://shop.bombaygothic.com/products/memory-game", "name": "Bombay Gothic Memory Game", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/memorygame.png?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/barware", "name": "barware", "sub": "whiskey, wine, shot & champagne glasses", "signature": "After Hours Whiskey Glasses", "picks": [{"url": "https://shop.bombaygothic.com/products/shot-glasses-gothic-glow-set-of-4", "name": "Gothic Glow Shot Glasses", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/shot_glasses.png?width=240"}, {"url": "https://shop.bombaygothic.com/products/bench-barrel-wine-glasses-set-of-2", "name": "Bench & Barrel Wine Glasses", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/Bench_BarrelWineGlasses_Setof2.jpg?width=240"}]}, {"url": "https://shop.bombaygothic.com/collections/tableware", "name": "tableware", "sub": "plates, cups & saucers", "signature": "Rose Tracery Quarter Plate", "picks": [{"url": "https://shop.bombaygothic.com/products/ballard-bunder-plates", "name": "Ballard Bunder Plates", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/bombay-ballad-07.png?width=240"}, {"url": "https://shop.bombaygothic.com/products/portside-cup-and-saucer", "name": "Portside Cup and Saucer", "img": "https://cdn.shopify.com/s/files/1/0890/6096/6682/files/bombay-ballad-04.png?width=240"}]}]</script>
+            </div>
 
             <!-- Variant B (default): editorial list — hover a row on desktop and its product floats beside the cursor.
                  Variant A (arch cards) stays below for comparison: open the page with ?cats=cards -->

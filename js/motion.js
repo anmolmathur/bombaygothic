@@ -5,7 +5,7 @@
 
 (function () {
   if (typeof gsap === 'undefined') return;
-  gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin, DrawSVGPlugin);
+  gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin, DrawSVGPlugin, Observer);
 
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -182,7 +182,9 @@
 
       // ── 04 · Curated collections ───────────────────────────────────────
       chapterIn($('#collections [data-chapter]'));
-      if (document.documentElement.classList.contains('cats-cards')) catCardsIn();
+      const catsMode = document.documentElement.classList;
+      if (catsMode.contains('cats-cards')) catCardsIn();
+      else if (desktop && !catsMode.contains('cats-list')) catDiscsIn();
       else catListIn();
 
       // ── Scroll-speed marquee ───────────────────────────────────────────
@@ -320,7 +322,183 @@
         });
       }
 
-      // Variant B (default): rules draw across, names rise out of their masks,
+      // Variant C (desktop default): disc gallery, after a24.raviklaassens.com.
+      // Scroll steps through the six categories (pinned, snapping); the discs
+      // flow in a cover-flow arc, lean with scroll speed and tilt under the
+      // pointer. Drag, arrow keys or clicking a neighbour move it too.
+      function catDiscsIn() {
+        const root = $('.cat-variant-discs');
+        const stage = $('.disc-stage', root);
+        const track = $('.disc-track', root);
+        const discs = $$('.disc', root);
+        const data = JSON.parse($('#disc-data').textContent);
+        const n = discs.length;
+        const field = f => $(`[data-field="${f}"]`, root);
+        const ticks = $$('.disc-ticks i', root);
+        const state = { p: 0 };
+        const bank = { lean: 0 }; // separate target so its overwrite never kills the scroll tween
+        let active = 0;
+        let dragged = false;
+        let infoTl; // declared before the scroll tween, which can render (and call setActive) immediately
+
+        discs.forEach(d => { d.setAttribute('draggable', 'false'); $('img', d).setAttribute('draggable', 'false'); });
+        gsap.to($$('.disc-sheen', root), { rotation: 360, duration: 16, ease: 'none', repeat: -1 });
+        gsap.to($('.disc-grain', root), {
+          x: () => gsap.utils.random(-60, 60), y: () => gsap.utils.random(-60, 60),
+          duration: 0.12, ease: 'steps(1)', repeat: -1, repeatRefresh: true
+        });
+
+        const size = () => discs[0].offsetWidth;
+        // neighbour spacing adapts to the centre column so side discs never slide under the text panels
+        const gapFor = () => Math.max(size() * 0.35, Math.min(size() * 0.58, track.offsetWidth / 2 - size() * 0.3 - 12));
+        const render = () => {
+          const D = size();
+          const gap = gapFor();
+          const depth = D * 0.6;
+          discs.forEach((el, i) => {
+            const d = i - state.p;
+            const ad = Math.abs(d);
+            const s = Math.sign(d);
+            gsap.set(el, {
+              x: s * (gap * Math.min(ad, 1) + gap * 0.42 * Math.max(0, ad - 1)),
+              y: Math.abs(bank.lean) * D * 0.04 * (1 - Math.min(ad, 1) * 0.5),
+              z: -depth * Math.min(ad, 2),
+              rotationY: -s * Math.min(ad, 1) * 38,
+              rotationZ: bank.lean * 7 * (1 - Math.min(ad, 1) * 0.4),
+              scale: 1 - 0.24 * Math.min(ad, 1) - 0.12 * Math.max(0, Math.min(ad - 1, 1)),
+              opacity: ad <= 1 ? 1 - 0.3 * ad : Math.max(0, 0.7 - (ad - 1) * 0.7),
+              zIndex: 100 - Math.round(ad * 10),
+              pointerEvents: ad > 1.6 ? 'none' : 'auto'
+            });
+          });
+          const idx = gsap.utils.clamp(0, n - 1, Math.round(state.p));
+          if (idx !== active) setActive(idx, Math.sign(idx - active));
+        };
+
+        const tween = gsap.to(state, {
+          p: n - 1,
+          ease: 'none',
+          onUpdate: render,
+          scrollTrigger: {
+            trigger: stage,
+            start: () => `top ${hdr()}px`,
+            end: () => '+=' + window.innerHeight * 0.7 * (n - 1),
+            pin: true,
+            scrub: 0.6,
+            snap: { snapTo: 1 / (n - 1), duration: { min: 0.25, max: 0.6 }, delay: 0.05, ease: 'power2.inOut' },
+            invalidateOnRefresh: true,
+            onUpdate: self => {
+              // lean into the direction of travel, then settle
+              const v = gsap.utils.clamp(-1, 1, self.getVelocity() / 2500);
+              gsap.to(bank, { lean: v, duration: 0.35, overwrite: true, onUpdate: render });
+              gsap.to(bank, { lean: 0, duration: 0.9, delay: 0.2, ease: 'power2.out', onUpdate: render });
+            },
+            onRefresh: render
+          }
+        });
+        const st = tween.scrollTrigger;
+        const scrollFor = i => st.start + (st.end - st.start) * (i / (n - 1));
+        const go = i => {
+          i = gsap.utils.clamp(0, n - 1, i);
+          window.scrollTo({ top: scrollFor(i), behavior: 'smooth' });
+        };
+
+        // Info panel: title rises through its mask, rules redraw, values swap, number decodes.
+        function setActive(i, dir) {
+          const prev = active;
+          active = i;
+          ticks.forEach((t, k) => t.classList.toggle('is-active', k === i));
+          gsap.to($('.disc-tilt', discs[prev]), { rotationX: 0, rotationY: 0, duration: 0.5, ease: 'power2.out' });
+          const c = data[i];
+          const num = String(i + 1).padStart(2, '0');
+          const values = [field('sub'), field('signature'), $('.disc-cta', root)];
+          const picks = $$('.disc-pick', root);
+          if (infoTl) infoTl.kill();
+          infoTl = gsap.timeline();
+          infoTl
+            .to(field('name'), { yPercent: -110 * dir, duration: 0.22, ease: 'power2.in' }, 0)
+            .to(values, { opacity: 0, y: -10 * dir, duration: 0.18, ease: 'power1.in' }, 0)
+            .to(picks, { opacity: 0, x: 16 * dir, duration: 0.18, ease: 'power1.in', stagger: 0.04 }, 0)
+            .call(() => {
+              field('name').textContent = c.name;
+              field('sub').textContent = c.sub;
+              field('signature').textContent = c.signature;
+              field('cta-name').textContent = c.name;
+              $('.disc-cta', root).href = c.url;
+              picks.forEach((pk, k) => {
+                const item = c.picks[k];
+                pk.style.visibility = item ? '' : 'hidden';
+                if (!item) return;
+                pk.href = item.url;
+                $('img', pk).src = item.img;
+                field('pick' + k).textContent = item.name;
+              });
+            }, null, 0.23)
+            .fromTo(field('name'), { yPercent: 110 * dir }, { yPercent: 0, duration: 0.6, ease: 'expo.out' }, 0.24)
+            .fromTo($$('.disc-rule', root), { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: 'expo.out', stagger: 0.06 }, 0.24)
+            .fromTo(values, { opacity: 0, y: 10 * dir }, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out', stagger: 0.05 }, 0.3)
+            .fromTo(picks, { opacity: 0, x: -16 * dir }, { opacity: 1, x: 0, duration: 0.45, ease: 'power3.out', stagger: 0.06 }, 0.32)
+            .to(field('index'), { scrambleText: { text: `${num} / 06`, chars: '0123456789', speed: 0.6 }, duration: 0.5 }, 0.24)
+            .to(field('count'), { scrambleText: { text: num, chars: '0123456789', speed: 0.6 }, duration: 0.5 }, 0.24);
+        }
+
+        // Pointer tilt on the active disc.
+        const tiltX = discs.map(d => gsap.quickTo($('.disc-tilt', d), 'rotationX', { duration: 0.6, ease: 'power3.out' }));
+        const tiltY = discs.map(d => gsap.quickTo($('.disc-tilt', d), 'rotationY', { duration: 0.6, ease: 'power3.out' }));
+        if (finePointer()) {
+          track.addEventListener('pointermove', e => {
+            const r = discs[active].getBoundingClientRect();
+            const nx = gsap.utils.clamp(-1, 1, (e.clientX - (r.left + r.width / 2)) / (r.width / 2));
+            const ny = gsap.utils.clamp(-1, 1, (e.clientY - (r.top + r.height / 2)) / (r.height / 2));
+            tiltY[active](nx * 14);
+            tiltX[active](-ny * 14);
+          });
+          track.addEventListener('pointerleave', () => { tiltX[active](0); tiltY[active](0); });
+        }
+
+        // Drag to move through (converted into page scroll so pin + snap stay in charge).
+        Observer.create({
+          target: track,
+          type: 'pointer,touch',
+          dragMinimum: 6,
+          onDragStart: () => { dragged = true; },
+          onDrag: self => {
+            const perPx = (st.end - st.start) / (n - 1) / gapFor();
+            window.scrollBy({ top: -self.deltaX * perPx, behavior: 'instant' });
+          },
+          onDragEnd: () => setTimeout(() => { dragged = false; }, 60)
+        });
+
+        // Click: a neighbour comes to the front; the front disc opens its collection.
+        discs.forEach((d, i) => d.addEventListener('click', e => {
+          if (dragged || i !== active) {
+            e.preventDefault();
+            if (!dragged) go(i);
+          }
+        }));
+
+        // Arrow keys while the gallery is on screen.
+        const onKey = e => {
+          if (!st.isActive) return;
+          if (e.key === 'ArrowRight') { e.preventDefault(); go(active + 1); }
+          if (e.key === 'ArrowLeft') { e.preventDefault(); go(active - 1); }
+        };
+        document.addEventListener('keydown', onKey);
+
+        // Entrance: rules draw, discs fan out from the centre.
+        gsap.from($$('.disc-rule', root), {
+          scaleX: 0, duration: 1, ease: 'expo.inOut', stagger: 0.08,
+          scrollTrigger: { trigger: stage, start: 'top 75%', once: true }
+        });
+        gsap.from(discs.map(d => $('.disc-tilt', d)), {
+          opacity: 0, yPercent: 20, duration: 1.1, ease: 'expo.out', stagger: 0.06,
+          scrollTrigger: { trigger: stage, start: 'top 75%', once: true }
+        });
+        ticks[0].classList.add('is-active');
+        render();
+      }
+
+      // Variant B (phones, and ?cats=list): rules draw across, names rise out of their masks,
       // numbers decode; on desktop a preview of the hovered category floats
       // beside the cursor and tilts with its speed.
       function catListIn() {
