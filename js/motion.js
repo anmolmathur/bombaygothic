@@ -177,37 +177,9 @@
       }
 
       // ── 04 · Curated collections ───────────────────────────────────────
-      // Arch frames rise open from the base, then each card slowly cycles
-      // through products from its collection while it is on screen.
       chapterIn($('#collections [data-chapter]'));
-      const catCards = $$('#collections .cat-card');
-      gsap.set(catCards, { opacity: 0, y: 50 });
-      gsap.set(catCards.map(c => $('.cat-frame', c)), { clipPath: 'inset(100% 0% 0% 0%)' });
-      ScrollTrigger.batch(catCards, {
-        start: 'top 90%',
-        once: true,
-        onEnter: batch => {
-          gsap.to(batch, { opacity: 1, y: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out' });
-          gsap.to(batch.map(c => $('.cat-frame', c)), { clipPath: 'inset(0% 0% 0% 0%)', stagger: 0.12, duration: 1.2, ease: 'expo.out' });
-          gsap.from(batch.map(c => $('.cat-meta', c)), { y: 16, opacity: 0, stagger: 0.12, duration: 0.8, delay: 0.3, ease: 'power2.out' });
-        }
-      });
-      catCards.forEach((card, i) => {
-        const imgs = $$('.cat-img', card);
-        if (imgs.length < 2) return;
-        const cycle = gsap.timeline({ repeat: -1, paused: true, delay: i * 0.4 });
-        imgs.forEach((img, k) => {
-          const next = imgs[(k + 1) % imgs.length];
-          cycle.to(img, { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, k * 2.8 + 2)
-            .to(next, { opacity: 1, duration: 0.9, ease: 'power1.inOut' }, k * 2.8 + 2);
-        });
-        ScrollTrigger.create({
-          trigger: card,
-          start: 'top bottom',
-          end: 'bottom top',
-          onToggle: self => (self.isActive ? cycle.play() : cycle.pause())
-        });
-      });
+      if (document.documentElement.classList.contains('cats-cards')) catCardsIn();
+      else catListIn();
 
       // ── Scroll-speed marquee ───────────────────────────────────────────
       velocityBand();
@@ -311,6 +283,88 @@
         return gsap.to(el, { scrambleText: { text, chars, revealDelay: 0.2, speed: 0.5 }, duration: 1.2 });
       }
 
+      // Variant A (?cats=cards): arch frames rise open, then each card slowly
+      // cycles through products from its collection while it is on screen.
+      function catCardsIn() {
+        const catCards = $$('#collections .cat-card');
+        gsap.set(catCards, { opacity: 0, y: 50 });
+        gsap.set(catCards.map(c => $('.cat-frame', c)), { clipPath: 'inset(100% 0% 0% 0%)' });
+        ScrollTrigger.batch(catCards, {
+          start: 'top 90%',
+          once: true,
+          onEnter: batch => {
+            gsap.to(batch, { opacity: 1, y: 0, stagger: 0.12, duration: 0.9, ease: 'power3.out' });
+            gsap.to(batch.map(c => $('.cat-frame', c)), { clipPath: 'inset(0% 0% 0% 0%)', stagger: 0.12, duration: 1.2, ease: 'expo.out' });
+            gsap.from(batch.map(c => $('.cat-meta', c)), { y: 16, opacity: 0, stagger: 0.12, duration: 0.8, delay: 0.3, ease: 'power2.out' });
+          }
+        });
+        catCards.forEach((card, i) => {
+          const imgs = $$('.cat-img', card);
+          if (imgs.length < 2) return;
+          const cycle = gsap.timeline({ repeat: -1, paused: true, delay: i * 0.4 });
+          imgs.forEach((img, k) => {
+            const next = imgs[(k + 1) % imgs.length];
+            cycle.to(img, { opacity: 0, duration: 0.9, ease: 'power1.inOut' }, k * 2.8 + 2)
+              .to(next, { opacity: 1, duration: 0.9, ease: 'power1.inOut' }, k * 2.8 + 2);
+          });
+          ScrollTrigger.create({
+            trigger: card,
+            start: 'top bottom',
+            end: 'bottom top',
+            onToggle: self => (self.isActive ? cycle.play() : cycle.pause())
+          });
+        });
+      }
+
+      // Variant B (default): rules draw across, names rise out of their masks,
+      // numbers decode; on desktop a preview of the hovered category floats
+      // beside the cursor and tilts with its speed.
+      function catListIn() {
+        const list = $('.cat-variant-list');
+        const rows = $$('.cat-row', list);
+        const tl = gsap.timeline({ scrollTrigger: { trigger: list, start: 'top 80%', once: true } });
+        tl.fromTo($$('.cat-row-line', list), { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: 'expo.inOut', stagger: 0.08 }, 0)
+          .from($$('.cat-row-name-inner', list), { yPercent: 110, duration: 0.9, ease: 'power3.out', stagger: 0.08 }, 0.25)
+          .from($$('.cat-row-sub, .cat-row-arrow', list), { opacity: 0, x: -12, duration: 0.7, ease: 'power2.out', stagger: 0.04 }, 0.45)
+          .from($$('.cat-row-thumb', list), { clipPath: 'inset(100% 0% 0% 0%)', duration: 0.9, ease: 'expo.out', stagger: 0.08 }, 0.2);
+        $$('.cat-row-num', list).forEach((num, i) => tl.add(scramble(num, '0123456789'), 0.2 + i * 0.08));
+
+        if (!desktop || !finePointer()) return;
+        const float = $('.cat-float', list);
+        const imgs = $$('img', float);
+        const xTo = gsap.quickTo(float, 'x', { duration: 0.6, ease: 'power3.out' });
+        const yTo = gsap.quickTo(float, 'y', { duration: 0.6, ease: 'power3.out' });
+        const rotTo = gsap.quickTo(float, 'rotation', { duration: 0.5, ease: 'power3.out' });
+        let lastX = 0;
+        let current = -1;
+        list.addEventListener('mousemove', e => {
+          const r = list.getBoundingClientRect();
+          const x = e.clientX - r.left;
+          xTo(x);
+          yTo(e.clientY - r.top);
+          rotTo(gsap.utils.clamp(-12, 12, (x - lastX) * 0.6));
+          lastX = x;
+        });
+        const show = i => {
+          if (i === current) return;
+          current = i;
+          imgs.forEach((img, k) => gsap.to(img, { opacity: k === i ? 1 : 0, duration: 0.35, overwrite: true }));
+          gsap.fromTo(imgs[i], { scale: 1.2 }, { scale: 1, duration: 0.6, ease: 'power3.out' });
+        };
+        rows.forEach(row => row.addEventListener('mouseenter', () => {
+          show(+row.dataset.index);
+          gsap.to(float, { autoAlpha: 1, scale: 1, duration: 0.35, ease: 'power3.out', overwrite: 'auto' });
+          gsap.to(rows.filter(r => r !== row), { opacity: 0.35, duration: 0.3, overwrite: 'auto' });
+          gsap.to(row, { opacity: 1, duration: 0.3, overwrite: 'auto' });
+        }));
+        $('.cat-list', list).addEventListener('mouseleave', () => {
+          current = -1;
+          gsap.to(float, { autoAlpha: 0, scale: 0.85, duration: 0.3, ease: 'power2.in', overwrite: 'auto' });
+          gsap.to(rows, { opacity: 1, duration: 0.3, overwrite: 'auto' });
+        });
+        gsap.set(float, { scale: 0.85 });
+      }
+
       function kalaGhoda() {
         const stage = $('.kg-stage');
         const pan = $('.kg-pan');
@@ -348,7 +402,7 @@
         });
         if (desktop) {
           // Lean in to the statue that named the precinct, then settle back.
-          tl.to(pan, { scale: 1.45, transformOrigin: '64.5% 62%', duration: 0.6, ease: 'power1.inOut' }, 1.05)
+          tl.to(pan, { scale: 1.45, transformOrigin: '63% 68%', duration: 0.6, ease: 'power1.inOut' }, 1.05)
             .to(spots.slice(0, 2), { opacity: 0, duration: 0.2 }, 1.05)
             .to(pan, { scale: 1, duration: 0.5, ease: 'power1.inOut' }, 1.8)
             .to(spots.slice(0, 2), { opacity: 1, duration: 0.2 }, 2.1);

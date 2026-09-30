@@ -92,6 +92,8 @@
                 document.documentElement.classList.add('is-safari');
             }
         })();
+        // Collections variant switch for review: ?cats=cards shows the arch-card grid instead of the list
+        if (/[?&]cats=cards\b/.test(location.search)) document.documentElement.classList.add('cats-cards');
     </script>
 
     <style type="text/tailwindcss">
@@ -260,6 +262,36 @@
         .cat-card:hover .cat-name { color: #AA4837; }
         .cat-card:hover .cat-cta i { transform: translateX(6px); }
         @media (min-width: 768px) { .cat-name { font-size: 1.4rem; } }
+        /* Curated collections, variant B: editorial list with a floating preview */
+        .cat-variant-cards { display: none !important; }
+        .cats-cards .cat-variant-cards { display: grid !important; }
+        .cats-cards .cat-variant-list { display: none; }
+        .cat-list { width: 100%; text-align: left; }
+        .cat-row-wrap { position: relative; }
+        .cat-row-line { display: block; height: 1px; background: rgba(51, 51, 51, 0.18); transform-origin: 0 50%; }
+        .cat-row { display: grid; grid-template-columns: auto 56px 1fr auto; align-items: center; gap: 0.9rem; padding: 0.85rem 0.25rem; color: #333333; }
+        .cat-row-num { font: 400 0.7rem/1 Raleway, sans-serif; letter-spacing: 0.25em; color: #AA4837; font-variant-numeric: tabular-nums; }
+        .cat-row-thumb { width: 56px; height: 70px; overflow: hidden; background: #efe9dd; border-radius: 50% 50% 6px 6px / 32% 32% 6px 6px; }
+        .cat-row-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .cat-row-text { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+        .cat-row-name { display: block; overflow: hidden; padding-bottom: 0.06em; }
+        .cat-row-name-inner { display: inline-block; font: 300 1.3rem/1.2 Raleway, sans-serif; transition: color 0.35s, transform 0.45s cubic-bezier(.2,.7,.2,1); }
+        .cat-row-sub { font: 200 0.85rem/1.4 Raleway, sans-serif; color: #6b7280; }
+        .cat-row-arrow { font-size: 1.1rem; color: #AA4837; transition: transform 0.35s; }
+        .cat-row:hover .cat-row-name-inner, .cat-row:focus-visible .cat-row-name-inner { color: #AA4837; transform: translateX(10px); }
+        .cat-row:hover .cat-row-arrow, .cat-row:focus-visible .cat-row-arrow { transform: translateX(6px); }
+        .cat-float { display: none; }
+        @media (min-width: 1024px) {
+            .cat-row { grid-template-columns: 3.5rem 1fr auto; gap: 1.5rem; padding: 1.1rem 0.5rem; }
+            .cat-row-thumb { display: none; }
+            .cat-row-text { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 2rem; }
+            .cat-row-name-inner { font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 200; }
+            .cat-row-sub { font-size: 0.95rem; text-align: right; }
+            .cat-row-arrow { font-size: 1.4rem; }
+            /* floating preview that follows the cursor over the list */
+            .cat-float { display: block; position: absolute; left: 0; top: 0; width: 240px; height: 300px; pointer-events: none; z-index: 5; overflow: hidden; border-radius: 50% 50% 10px 10px / 32% 32% 10px 10px; box-shadow: 0 24px 60px rgba(26, 26, 26, 0.22); opacity: 0; visibility: hidden; translate: -50% -50%; }
+            .cat-float img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+        }
 
         /* Bombay Ballad: band drifts like a passing ship */
         .ballad-band { overflow: hidden; }
@@ -573,7 +605,7 @@
                     <!-- Hotspots: left = landmark x; top = where the label sits (open sky); height = drop to the dot on the landmark. All % of the drawing. -->
                     <div class="kg-spot kg-spot--right" style="left:12%;top:11%;height:23%" data-at="0.12"><span class="kg-stem"></span><span class="kg-dot"></span><span class="kg-label">Elphinstone College<small>Victorian Gothic</small></span></div>
                     <div class="kg-spot" style="left:51.75%;top:22%;height:31.5%" data-at="0.52"><span class="kg-stem"></span><span class="kg-dot"></span><span class="kg-label">David Sassoon Library<small>reading room founded 1847</small></span></div>
-                    <div class="kg-spot kg-spot--right" style="left:64.5%;top:33%;height:27%" data-at="0.645"><span class="kg-stem"></span><span class="kg-dot"></span><span class="kg-label">Kala Ghoda<small>the black horse that named the precinct</small></span></div>
+                    <div class="kg-spot kg-spot--right" style="left:62.7%;top:33%;height:38.5%" data-at="0.63"><span class="kg-stem"></span><span class="kg-dot"></span><span class="kg-label">Kala Ghoda<small>the black horse that named the precinct</small></span></div>
                 </div>
             </div>
         </div>
@@ -672,8 +704,78 @@
                 <p class="chapter-lede">Explore our curated collections of artistic curios inspired by Bombay's architectural designs and timeless charm.</p>
             </header>
 
+            <!-- Variant B (default): editorial list — hover a row on desktop and its product floats beside the cursor.
+                 Variant A (arch cards) stays below for comparison: open the page with ?cats=cards -->
+            <div class="cat-variant-list relative w-full mt-4">
+                <ul class="cat-list" role="list">
+                    <li class="cat-row-wrap cat-row-wrap--top" aria-hidden="true"><span class="cat-row-line"></span></li>
+                <li class="cat-row-wrap">
+                    <a href="https://shop.bombaygothic.com/collections/drinkware" target="_blank" class="cat-row" data-index="0">
+                        <span class="cat-row-num">01</span>
+                        <span class="cat-row-thumb"><img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/redglass.jpg?width=240" alt="" loading="lazy" width="240" height="240"></span>
+                        <span class="cat-row-text"><span class="cat-row-name"><span class="cat-row-name-inner">drinkware</span></span><span class="cat-row-sub">glass mugs, flasks &amp; sippers</span></span>
+                        <span class="cat-row-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <span class="cat-row-line" aria-hidden="true"></span>
+                </li>
+                <li class="cat-row-wrap">
+                    <a href="https://shop.bombaygothic.com/collections/accessories" target="_blank" class="cat-row" data-index="1">
+                        <span class="cat-row-num">02</span>
+                        <span class="cat-row-thumb"><img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/diary_boundandbold.png?width=240" alt="" loading="lazy" width="240" height="240"></span>
+                        <span class="cat-row-text"><span class="cat-row-name"><span class="cat-row-name-inner">accessories</span></span><span class="cat-row-sub">diaries, totes &amp; desk pieces</span></span>
+                        <span class="cat-row-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <span class="cat-row-line" aria-hidden="true"></span>
+                </li>
+                <li class="cat-row-wrap">
+                    <a href="https://shop.bombaygothic.com/collections/home" target="_blank" class="cat-row" data-index="2">
+                        <span class="cat-row-num">03</span>
+                        <span class="cat-row-thumb"><img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/IMG_0040.jpg?width=240" alt="" loading="lazy" width="240" height="240"></span>
+                        <span class="cat-row-text"><span class="cat-row-name"><span class="cat-row-name-inner">home &amp; decor</span></span><span class="cat-row-sub">aromatic candles &amp; coasters</span></span>
+                        <span class="cat-row-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <span class="cat-row-line" aria-hidden="true"></span>
+                </li>
+                <li class="cat-row-wrap">
+                    <a href="https://shop.bombaygothic.com/collections/games-entertainment" target="_blank" class="cat-row" data-index="3">
+                        <span class="cat-row-num">04</span>
+                        <span class="cat-row-thumb"><img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/32A56141-6DD8-4776-A477-D8127FACBE92.png?width=240" alt="" loading="lazy" width="240" height="240"></span>
+                        <span class="cat-row-text"><span class="cat-row-name"><span class="cat-row-name-inner">games &amp; entertainment</span></span><span class="cat-row-sub">playing cards &amp; memory game</span></span>
+                        <span class="cat-row-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <span class="cat-row-line" aria-hidden="true"></span>
+                </li>
+                <li class="cat-row-wrap">
+                    <a href="https://shop.bombaygothic.com/collections/barware" target="_blank" class="cat-row" data-index="4">
+                        <span class="cat-row-num">05</span>
+                        <span class="cat-row-thumb"><img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/WhiskeyGlasses.jpg?width=240" alt="" loading="lazy" width="240" height="240"></span>
+                        <span class="cat-row-text"><span class="cat-row-name"><span class="cat-row-name-inner">barware</span></span><span class="cat-row-sub">whiskey, wine, shot &amp; champagne glasses</span></span>
+                        <span class="cat-row-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <span class="cat-row-line" aria-hidden="true"></span>
+                </li>
+                <li class="cat-row-wrap">
+                    <a href="https://shop.bombaygothic.com/collections/tableware" target="_blank" class="cat-row" data-index="5">
+                        <span class="cat-row-num">06</span>
+                        <span class="cat-row-thumb"><img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/RoseWindowRoundMarbleCoasters_Setof2_a075f1f0-2d08-440a-b764-e46b706b7205.jpg?width=240" alt="" loading="lazy" width="240" height="240"></span>
+                        <span class="cat-row-text"><span class="cat-row-name"><span class="cat-row-name-inner">tableware</span></span><span class="cat-row-sub">plates, cups &amp; saucers</span></span>
+                        <span class="cat-row-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <span class="cat-row-line" aria-hidden="true"></span>
+                </li>
+                </ul>
+                <div class="cat-float" aria-hidden="true">
+                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/redglass.jpg?width=560" alt="drinkware: Gothic Light Glass Mugs" loading="lazy" width="560" height="560">
+                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/diary_boundandbold.png?width=560" alt="accessories: Bound and Bold Diary" loading="lazy" width="560" height="560">
+                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/IMG_0040.jpg?width=560" alt="home &amp; decor: Bom'bahia' Aromatic Candle" loading="lazy" width="560" height="560">
+                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/32A56141-6DD8-4776-A477-D8127FACBE92.png?width=560" alt="games &amp; entertainment: Victorian Gothic Ensemble Playing Cards" loading="lazy" width="560" height="560">
+                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/WhiskeyGlasses.jpg?width=560" alt="barware: After Hours Whiskey Glasses" loading="lazy" width="560" height="560">
+                    <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/RoseWindowRoundMarbleCoasters_Setof2_a075f1f0-2d08-440a-b764-e46b706b7205.jpg?width=560" alt="tableware: Rose Tracery Quarter Plate" loading="lazy" width="560" height="560">
+                </div>
+            </div>
+
             <!-- Category cards: mirror the "category" menu on shop.bombaygothic.com (update both together) -->
-            <div class="cat-grid mt-6 w-full">
+            <div class="cat-grid cat-variant-cards mt-6 w-full">
                 <a href="https://shop.bombaygothic.com/collections/drinkware" target="_blank" class="cat-card group">
                     <div class="cat-frame">
                         <img src="https://cdn.shopify.com/s/files/1/0890/6096/6682/files/redglass.jpg?width=720" alt="drinkware: Gothic Light Glass Mugs" class="cat-img" loading="lazy" width="720" height="720">
