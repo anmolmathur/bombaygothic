@@ -1308,7 +1308,11 @@
         fetch(root.dataset.feedUrl, { credentials: 'omit' })
             .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
             .then(function (data) {
-                var posts = (data && data.posts) || [];
+                // Posts to leave out of the rail (e.g. the older of two near-identical reels). Add the Instagram shortcode.
+                var skip = ['Dd6WgP2iCQU'];
+                var posts = ((data && data.posts) || []).filter(function (p) {
+                    return !skip.some(function (code) { return (p.permalink || '').indexOf('/' + code + '/') !== -1; });
+                });
                 if (!posts.length) return;
                 posts.forEach(function (p) {
                     var li = document.createElement('li');
