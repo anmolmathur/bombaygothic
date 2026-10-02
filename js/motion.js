@@ -1,4 +1,4 @@
-// js/motion.js — GSAP motion layer for the index-motion.html preview.
+// js/motion.js — GSAP motion layer for the homepage (index.html).
 // Every effect lives inside gsap.matchMedia() so visitors who prefer reduced
 // motion get the plain, fully visible page. ScrollTriggers are created in
 // page order (top to bottom) so pin spacing is measured correctly.

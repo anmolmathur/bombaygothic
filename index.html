@@ -190,7 +190,7 @@
     </style>
     <script defer src="/js/bg-analytics.js"></script>
 
-    <!-- GSAP (motion preview) -->
+    <!-- GSAP -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
@@ -385,11 +385,6 @@
         /* SplitText line masks */
         .split-line { overflow: hidden; padding-bottom: 0.08em; }
 
-        /* Preview badge — delete when promoting to index.html */
-        .motion-badge { position: fixed; left: 16px; bottom: 16px; z-index: 70; font: 400 11px/1 Raleway, sans-serif; letter-spacing: .2em; text-transform: uppercase; background: #1A1A1A; color: #F9F8F2; padding: 10px 14px; border-radius: 999px; opacity: .85; }
-        .motion-badge:hover { opacity: 1; background: #AA4837; }
-        @media (max-width: 767px) { .motion-badge { font-size: 9px; padding: 8px 12px; left: 10px; bottom: 10px; } }
-
         @media (prefers-reduced-motion: reduce) {
             .ballad-band img { transform: none; }
         }
@@ -398,7 +393,6 @@
 
 <body class="bg-brand-beige font-raleway text-brand-text">
     <div class="bg-progress" aria-hidden="true"></div>
-    <a href="index.html" class="motion-badge" title="Open the current live homepage">motion preview &middot; view live</a>
 
     <!-- Section 1: Header - Strip (Updated with Title Case Text) -->
     <div class="bg-brand-terracotta text-white font-raleway font-extralight py-3 overflow-hidden whitespace-nowrap text-sm tracking-wider">
@@ -1339,7 +1333,7 @@
     })();
     </script>
 
-    <!-- GSAP motion layer (preview) -->
+    <!-- GSAP motion layer -->
     <script src="js/motion.js"></script>
 
 </body>
